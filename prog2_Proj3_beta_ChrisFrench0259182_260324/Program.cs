@@ -62,7 +62,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
 
             Console.CursorVisible = false;
-            map.MapLoader();
+            map.DrawMap();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'Q' to exit...\nFight enemies '&' by manouvering to them or try to avoid them... Lava '%' will damage you ");
 
@@ -78,7 +78,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 player._name = Name;
                 MovePlayer();
-                if (map.Maps[player._y][player._x] == 'G')
+                if (map._mapsCurrent[player._y][player._x] == 'G')
                 {
                     isPlaying = false;
                     continue; //skips past rest
@@ -90,7 +90,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.Beep(300, 100);
                         Console.Beep(200, 150);
                         Console.SetCursorPosition(enemies[i]._x, enemies[i]._y);
-                        WriteTileWithColor(map.Maps[enemies[i]._y][enemies[i]._x]);
+                        WriteTileWithColor(map._mapsCurrent[enemies[i]._y][enemies[i]._x]);
                         enemies.RemoveAt(i);
                         //isPlaying = true;
                         //continue; //skips past rest
@@ -109,7 +109,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
             }
-            if ((map.Maps[player._y][player._x] == 'G') || (player._health == 0))
+            if ((map._mapsCurrent[player._y][player._x] == 'G') || (player._health == 0))
             {
                 if (player._health == 0)
                 {
@@ -119,7 +119,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.ReadKey(true);
                 }
 
-                if (map.Maps[player._y][player._x] == 'G')
+                if (map._mapsCurrent[player._y][player._x] == 'G')
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     isPlaying = false;
@@ -206,7 +206,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (!hitEnemy && map.CanMoveTo(nextX, nextY))
             {
                 Console.SetCursorPosition(player._x, player._y);
-                char oldTile = map.Maps[player._y][player._x];
+                char oldTile = map._mapsCurrent[player._y][player._x];
                 WriteTileWithColor(oldTile);
 
                 player._x = nextX;
@@ -261,7 +261,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
 
-                if (map.Maps[player._y][player._x] == 'w')// applies spring water healing
+                if (map._mapsCurrent[player._y][player._x] == 'w')// applies spring water healing
                 {
                     player._health += 20;
                     if (player._health > plMaxHP)
@@ -275,7 +275,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.WriteLine($" water and is healed for 20 pts {player._name} now has {player._health} HP");
                 }
 
-                if (map.Maps[player._y][player._x] == '%')// applies lava damage 
+                if (map._mapsCurrent[player._y][player._x] == '%')// applies lava damage 
                 {
                     player._health = player._health - 30;
 
@@ -329,7 +329,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
             }
 
-            char targetTile = map.Maps[nextY][nextX];
+            char targetTile = map._mapsCurrent[nextY][nextX];
 
             if (map.CanMoveTo(nextX, nextY) && targetTile != '%' && (nextX != player._x || nextY != player._y) && targetTile != 'w' && targetTile != '#')
 
@@ -396,7 +396,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //        goldTreasure = false;
         //    }
         //    Console.ResetColor();
-        }
+       // }
 
         //static void DrawPrisoner()
         //{
