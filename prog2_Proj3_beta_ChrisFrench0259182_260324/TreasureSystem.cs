@@ -32,8 +32,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
 
-        _mapsCurrent= _maps1;
-
         public static void DrawGold()
         {
             if (_goldTreasure)
@@ -67,7 +65,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
-        public static void DrawPrisoner()
+       public static void DrawPrisoner()
         {
             if (_newPrisoner)
             {
@@ -92,7 +90,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
                 _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
-                Console.SetCursorPosition(_prisoner_x_pos, _prisoner_y_pos);
+                Console.SetCursorPosition(_prisoner_x_pos,_prisoner_y_pos);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("S");
                 Console.ResetColor();

@@ -18,6 +18,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public string[] _maps3;
         public string[] _maps4;
         public string[] _mapsCurrent;
+
+
+
+
+
+        _mapsCurrent= _maps1;
+
+
         public void MapLoader()
         {
             try
