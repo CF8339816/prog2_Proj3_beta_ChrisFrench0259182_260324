@@ -78,7 +78,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 player._name = Name;
                 MovePlayer();
-                if (map._mapsCurrent[player._y][player._x] == 'G')
+                if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
                     isPlaying = false;
                     continue; //skips past rest
@@ -109,7 +109,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
             }
-            if ((map._mapsCurrent[player._y][player._x] == 'G') || (player._health == 0))
+            if ((map._mapsCurrent[player._y][player._x] == 'X') || (player._health == 0))
             {
                 if (player._health == 0)
                 {
@@ -119,7 +119,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.ReadKey(true);
                 }
 
-                if (map._mapsCurrent[player._y][player._x] == 'G')
+                if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     isPlaying = false;
@@ -230,35 +230,30 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
 
-                    // 1. Add to the count
+                   
                     captives += 1;
 
-                    // 2. Remove this specific prisoner location so they don't get "freed" twice
+                    
                     prisonerLocations.Remove((player._x, player._y));
 
                     Console.SetCursorPosition(60, 4);
                     Console.WriteLine($"{player._name} has freed a captive... Good Job!");
 
-                    // 3. Logic for spawning new ones
-                    // If you want to respawn all 8 when the last one is found:
-                    if (prisonerLocations.Count == 0)
-                    {
-                        newPrisoner = true;
-                    }
-                }
-
-
-                if ((player._x, player._y) == (prisoner_x_pos, prisoner_y_pos))// applies lootable gold 
-                {
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    captives += 1;
-
-                    Console.SetCursorPosition(60, 4);
-                    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
-                    newPrisoner = true;
-                    //DrawPrisoner();
                     TreasureSystem.DrawPrisoner();
                 }
+
+
+                //if ((player._x, player._y) == (prisoner_x_pos, prisoner_y_pos))// applies lootable gold 
+                //{
+                //    Console.ForegroundColor = ConsoleColor.Gray;
+                //    captives += 1;
+
+                //    Console.SetCursorPosition(60, 4);
+                //    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
+                //    newPrisoner = true;
+                //    //DrawPrisoner();
+                //    TreasureSystem.DrawPrisoner();
+                //}
 
 
                 if (map._mapsCurrent[player._y][player._x] == 'w')// applies spring water healing
@@ -293,7 +288,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         isPlaying = false;
                     }
                 }
+//>>>>>>>>>>>>>>>>
+                if ((map._mapsCurrent[player._y][player._x] == '@') ||(map._mapsCurrent[player._y][player._x] ==  '*'))// applies lava damage 
+                {
+                   var spawnPoint  LoadMap.MapChanger(x,y);
+                }
+
+
+
             }
+
+
         }
 
 
