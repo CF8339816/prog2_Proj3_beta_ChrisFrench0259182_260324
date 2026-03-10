@@ -25,7 +25,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
             bool hitEnemy = false;
-            foreach (var enmy in Program.enemies)
+            foreach (var enmy in Program.enemies)  // back in programs   possible rename check enemy colisions
             {
                 if (nextX == enmy._x && nextY == enmy._y)
                 {
@@ -63,7 +63,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Program.isPlaying = true;
                         }
                     }
-                }
+                }/// make check a bool and return bool
             }
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
             {
@@ -71,37 +71,37 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 char oldTile = Program.map._mapsCurrent[_y][_x];
                 Program.WriteTileWithColor(oldTile);
 
-                _x = nextX;
+                _x = nextX;// allowed to move here 
                 _y = nextY;
 
-                if ((_x, _y) == (Program.treasure_x_pos, Program.treasure_y_pos))// applies lootable gold 
+                if ((_x, _y) == (CollectSpawner.treasure_x_pos, CollectSpawner.treasure_y_pos))// applies lootable gold 
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Program.gold += Program.loot;
+                    CollectSpawner._gold += CollectSpawner.loot;
                     Console.SetCursorPosition(60, 5);
                     Console.WriteLine($" {_name} loots 15 amounts of golds! ");
                     Console.SetCursorPosition(60, 6);
-                    Console.WriteLine($"{_name} now has {Program.gold} gold...woooo!");
-                    Program.goldTreasure = true;
+                    Console.WriteLine($"{_name} now has {CollectSpawner._gold} gold...woooo!");
+                    CollectSpawner._goldTreasure = true;
                     //DrawGold();
-                    CollectSpawner.DrawGold();
+                    Treasure.DrawGold();
                 }
 
 
-                if (Program.prisonerLocations.Contains((_x, _y)))
+                if (Captive.prisonerLocations.Contains((_x, _y)))
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
 
 
-                    Program.captives += 1;
+                    CollectSpawner._captives += 1;
 
 
-                    Program.prisonerLocations.Remove((_x, _y));
+                    Captive.prisonerLocations.Remove((_x, _y));
 
                     Console.SetCursorPosition(60, 4);
                     Console.WriteLine($"{_name} has freed a captive... Good Job!");
 
-                    CollectSpawner.DrawPrisoner();
+                    Captive.DrawPrisoner();
                 }
 
 

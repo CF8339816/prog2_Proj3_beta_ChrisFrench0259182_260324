@@ -194,8 +194,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 DrawMap();
                 return FindTile('*'); // Spawn at the backward entrance of next map
             }
-            // Step on *: Go Backward
-            else if (tile == '*' && _currentMapIndex > 0)
+            
+            else if (tile == '*' && _currentMapIndex > 0)// Step on * to Go Backward
             {
                 _currentMapIndex--;
                 _mapsCurrent = _allMaps[_currentMapIndex];

@@ -10,95 +10,99 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     public class CollectSpawner
 
     {
-        static int _prisoner = 0;
-        static bool _newPrisoner = true;
-        static Random _prisonerSpawn = new Random();
-        static (int, int) _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
-        static int _prisoner_x_pos;
-        static int _prisoner_y_pos;
-        static (int, int) _prisoner_min_max_x = (9, 45);
-        static (int, int) _prisoner_min_max_y = (7, 20);
-        static int _captives = 0;
-        static int _gold = 0;
-        static bool _goldTreasure = true;
-        static Random _goldPileSpawn = new Random();
-        static (int, int) _plPosition = (Program.player._x, Program.player._y);
-        static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
-        static int treasure_x_pos;
-        static int treasure_y_pos;
-        static (int, int) treasure_min_max_x = (9, 45);
-        static (int, int) treasure_min_max_y = (7, 20);
-        static int loot = 15;
+       public static int _prisoner = 0;
+        public static bool _newPrisoner = true;
+        public static Random _prisonerSpawn = new Random();
+        public static (int, int) _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
+        public static int _prisoner_x_pos;
+        public static int _prisoner_y_pos;
+        public static (int, int) _prisoner_min_max_x = (9, 45);
+        public static (int, int) _prisoner_min_max_y = (7, 20);
+        public static int _captives = 0;
+        public static int _gold = 0;
+        public static bool _goldTreasure = true;
+        public static Random _goldPileSpawn = new Random();
+        public static (int, int) _plPosition = (Program.player._x, Program.player._y);
+        public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
+        public static int treasure_x_pos;
+        public static int treasure_y_pos;
+        public static (int, int) treasure_min_max_x = (9, 45);
+        public static (int, int) treasure_min_max_y = (7, 20);
+        public static int loot = 15;
 
-
-
-        public static void DrawGold()
+        public CollectSpawner()
         {
-            if (_goldTreasure)
-            {
-                bool clearGoldSpawn = false;
-                while (!clearGoldSpawn)
-                {
-                    treasure_x_pos = _goldPileSpawn.Next(treasure_min_max_x.Item1, treasure_min_max_x.Item2 + 2);
-                    treasure_y_pos = _goldPileSpawn.Next(treasure_min_max_y.Item1, treasure_min_max_y.Item2 + 2);
-                    char targetTile = Program.map._mapsCurrent[Program.nextY][Program.nextX];
-
-                    if (Program.map.CanMoveTo(treasure_x_pos, treasure_y_pos) && targetTile != '%' && targetTile != 'w' && targetTile != '#' && targetTile != 'S')
-                    {
-
-                        if (treasure_x_pos != Program.player._x || treasure_y_pos != Program.player._y) //checks for player
-                        {
-                            clearGoldSpawn = true;
-                        }
-
-                    }
-                }
-
-                goldLoc = (treasure_x_pos, treasure_y_pos);
-                Console.SetCursorPosition(treasure_x_pos, treasure_y_pos);
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("$");
-                Console.ResetColor();
-                _goldTreasure = false;
-            }
-            Console.ResetColor();
+            Treasure.DrawGold();
+            Captive.DrawPrisoner();
         }
 
+        //public static void DrawGold()
+        //{
+        //    if (_goldTreasure)
+        //    {
+        //        bool clearGoldSpawn = false;
+        //        while (!clearGoldSpawn)
+        //        {
+        //            treasure_x_pos = _goldPileSpawn.Next(treasure_min_max_x.Item1, treasure_min_max_x.Item2 + 4);
+        //            treasure_y_pos = _goldPileSpawn.Next(treasure_min_max_y.Item1, treasure_min_max_y.Item2 + 4);
+        //            char targetTile = Program.map._mapsCurrent[Program.nextY][Program.nextX];
 
-       public static void DrawPrisoner()
-        {
-            if (_newPrisoner)
-            {
+            //            if (Program.map.CanMoveTo(treasure_x_pos, treasure_y_pos) && targetTile != '%' && targetTile != 'w' && targetTile != '#' && targetTile != 'S')
+            //            {
 
-                bool clearPrisonerSpawn = false;
-                while (!clearPrisonerSpawn)
-                {
+            //                if (treasure_x_pos != Program.player._x || treasure_y_pos != Program.player._y) //checks for player
+            //                {
+            //                    clearGoldSpawn = true;
+            //                }
 
-                    _prisoner_x_pos = _prisonerSpawn.Next(_prisoner_min_max_x.Item1, _prisoner_min_max_x.Item2 + 1);
-                    _prisoner_y_pos = _prisonerSpawn.Next(_prisoner_min_max_y.Item1, _prisoner_min_max_y.Item2 + 1);
-                    char targetTile = Program.map._mapsCurrent[Program.nextY][Program.nextX];
+            //            }
+            //        }
 
-                    if (Program.map.CanMoveTo(_prisoner_x_pos, _prisoner_y_pos) && targetTile != '%' && targetTile != 'w' && targetTile != '#' && targetTile != '$')
-                    {
+            //        goldLoc = (treasure_x_pos, treasure_y_pos);
+            //        Console.SetCursorPosition(treasure_x_pos, treasure_y_pos);
+            //        Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //        Console.Write("$");
+            //        Console.ResetColor();
+            //        _goldTreasure = false;
+            //    }
+            //    Console.ResetColor();
+            //}
 
-                        if (_prisoner_x_pos != Program.player._x || _prisoner_y_pos != Program.player._y) //checks for player
-                        {
-                            clearPrisonerSpawn = true;
-                        }
 
-                    }
-                }
+            //public static void DrawPrisoner()
+            // {
+            //     if (_newPrisoner)
+            //     {
 
-                _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
-                Console.SetCursorPosition(_prisoner_x_pos,_prisoner_y_pos);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("S");
-                Console.ResetColor();
-                _newPrisoner = false;
+            //         bool clearPrisonerSpawn = false;
+            //         while (!clearPrisonerSpawn)
+            //         {
 
-            }
-            Console.ResetColor();
-        }
+            //             _prisoner_x_pos = _prisonerSpawn.Next(_prisoner_min_max_x.Item1, _prisoner_min_max_x.Item2 + 1);
+            //             _prisoner_y_pos = _prisonerSpawn.Next(_prisoner_min_max_y.Item1, _prisoner_min_max_y.Item2 + 1);
+            //             char targetTile = Program.map._mapsCurrent[Program.nextY][Program.nextX];
+
+            //             if (Program.map.CanMoveTo(_prisoner_x_pos, _prisoner_y_pos) && targetTile != '%' && targetTile != 'w' && targetTile != '#' && targetTile != '$')
+            //             {
+
+            //                 if (_prisoner_x_pos != Program.player._x || _prisoner_y_pos != Program.player._y) //checks for player
+            //                 {
+            //                     clearPrisonerSpawn = true;
+            //                 }
+
+            //             }
+            //         }
+
+            //         _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
+            //         Console.SetCursorPosition(_prisoner_x_pos,_prisoner_y_pos);
+            //         Console.ForegroundColor = ConsoleColor.White;
+            //         Console.Write("S");
+            //         Console.ResetColor();
+            //         _newPrisoner = false;
+
+            //     }
+            //     Console.ResetColor();
+            // }
     }
 }
 
