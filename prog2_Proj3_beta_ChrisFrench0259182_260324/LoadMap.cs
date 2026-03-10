@@ -206,7 +206,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             return null; // No map change
         }
 
-        private (int x, int y) FindTile(char target)
+        public (int x, int y) FindTile(char target)
         {
             for (int y = 0; y < _mapsCurrent.Length; y++)
             {
@@ -257,7 +257,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.Write(tile);
             Console.ResetColor();
         }
-        private void SetTileColor(char tile)// sets the tile colors for the map
+        public void SetTileColor(char tile)// sets the tile colors for the map
         {
             switch (tile)
             {

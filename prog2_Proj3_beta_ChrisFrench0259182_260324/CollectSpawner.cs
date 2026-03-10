@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class TreasureSystem
+    public class CollectSpawner
 
     {
         static int _prisoner = 0;

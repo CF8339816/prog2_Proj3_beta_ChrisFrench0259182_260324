@@ -23,36 +23,36 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static LoadMap map = new LoadMap();
 
 
-        static bool isPlaying = true;
+        public static bool isPlaying = true;
 
         public static int nextX;
         public static int nextY;
 
-        static int plMaxHP = 50;
+        //public static int plMaxHP = 50;
 
-        static bool isAlly = false; //sets bool to check for other allies in movement path
+        public static bool isAlly = false; //sets bool to check for other allies in movement path
 
-        static int Prisoner = 0;
-        static bool newPrisoner = true;
-        static Random prisonerSpawn = new Random();
-        static (int, int) prisonerLoc = (prisoner_x_pos, prisoner_y_pos);
-        static int prisoner_x_pos;
-        static int prisoner_y_pos;
-        static (int, int) prisoner_min_max_x = (9, 45);
-        static (int, int) prisoner_min_max_y = (7, 20);
-        static int captives = 0;
-        static List<(int, int)> prisonerLocations = new List<(int, int)>();
+        public static int Prisoner = 0;
+        public static bool newPrisoner = true;
+        public static Random prisonerSpawn = new Random();
+        public static (int, int) prisonerLoc = (prisoner_x_pos, prisoner_y_pos);
+        public static int prisoner_x_pos;
+        public static int prisoner_y_pos;
+        public static (int, int) prisoner_min_max_x = (9, 45);
+        public static (int, int) prisoner_min_max_y = (7, 20);
+        public static int captives = 0;
+        public static List<(int, int)> prisonerLocations = new List<(int, int)>();
 
-        static int gold = 0;
-        static bool goldTreasure = true;
-        static Random goldPileSpawn = new Random();
-        static (int, int) PlPosition = (player._x, player._y);
-        static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
-        static int treasure_x_pos;
-        static int treasure_y_pos;
-        static (int, int) treasure_min_max_x = (9, 45);
-        static (int, int) treasure_min_max_y = (7, 20);
-        static int loot = 15;
+        public static int gold = 0;
+        public static bool goldTreasure = true;
+        public static Random goldPileSpawn = new Random();
+        public static (int, int) PlPosition = (player._x, player._y);
+        public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
+        public static int treasure_x_pos;
+        public static int treasure_y_pos;
+        public static (int, int) treasure_min_max_x = (9, 45);
+        public static (int, int) treasure_min_max_y = (7, 20);
+        public static int loot = 15;
 
         static void Main(string[] args)
         {
@@ -77,7 +77,24 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             while (isPlaying)
             {
                 player._name = Name;
-                MovePlayer();
+                // MovePlayer();
+                
+                int plX = 0, plY = 0;
+                ConsoleKey input = Console.ReadKey(true).Key;
+                // move player with W,A,S,D or optional arrow keys 
+                if (input == ConsoleKey.LeftArrow) plX = -1;
+                if (input == ConsoleKey.A) plX = -1;
+                if (input == ConsoleKey.RightArrow) plX = 1;
+                if (input == ConsoleKey.D) plX = 1;
+                if (input == ConsoleKey.UpArrow) plY = -1;
+                if (input == ConsoleKey.W) plY = -1;
+                if (input == ConsoleKey.DownArrow) plY = 1;
+                if (input == ConsoleKey.S) plY = 1;
+
+                if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
+
+                player.Move(plX, plY);
+
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
                     isPlaying = false;
@@ -101,8 +118,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 //DrawGold();
                 //DrawPrisoner();
 
-                TreasureSystem.DrawGold();
-                TreasureSystem.DrawPrisoner();
+                CollectSpawner.DrawGold();
+                CollectSpawner.DrawPrisoner();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(60, 2);
                 Console.WriteLine($" Name:{player._name} Health:{player._health} Gold:{gold} Captives Freed:{captives}");
@@ -144,165 +161,165 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void MovePlayer()
         {
 
-            int plX = 0, plY = 0;
-            ConsoleKey input = Console.ReadKey(true).Key;
-            // move player with W,A,S,D or optional arrow keys 
-            if (input == ConsoleKey.LeftArrow) plX = -1;
-            if (input == ConsoleKey.A) plX = -1;
-            if (input == ConsoleKey.RightArrow) plX = 1;
-            if (input == ConsoleKey.D) plX = 1;
-            if (input == ConsoleKey.UpArrow) plY = -1;
-            if (input == ConsoleKey.W) plY = -1;
-            if (input == ConsoleKey.DownArrow) plY = 1;
-            if (input == ConsoleKey.S) plY = 1;
+            //int plX = 0, plY = 0;
+            //ConsoleKey input = Console.ReadKey(true).Key;
+            //// move player with W,A,S,D or optional arrow keys 
+            //if (input == ConsoleKey.LeftArrow) plX = -1;
+            //if (input == ConsoleKey.A) plX = -1;
+            //if (input == ConsoleKey.RightArrow) plX = 1;
+            //if (input == ConsoleKey.D) plX = 1;
+            //if (input == ConsoleKey.UpArrow) plY = -1;
+            //if (input == ConsoleKey.W) plY = -1;
+            //if (input == ConsoleKey.DownArrow) plY = 1;
+            //if (input == ConsoleKey.S) plY = 1;
 
-            if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
+            //if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
 
-            int nextX = player._x + plX;
-            int nextY = player._y + plY;
-
-
-            bool hitEnemy = false;
-            foreach (var enmy in enemies)
-            {
-                if (nextX == enmy._x && nextY == enmy._y)
-                {
-
-                    Console.Beep(800, 50);
-                    enmy._health -= player._attack;
-                    player._health -= enmy._attack;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {player._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {player._name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {player._name} has {player._health} health...");
-
-                    if (player._health <= 0 || enmy._health <= 0)
-                    {
-                        if (player._health <= 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            player._health = 0;
-                            Console.SetCursorPosition(60, 20);
-                            Console.WriteLine($" {player._name} has {player._health} health, {player._name} has died");
-                            isPlaying = false;
-                        }
-                        if (enmy._health <= 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            enmy._health = 0;
-                            Console.SetCursorPosition(60, 21);
-                            Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
-                            isPlaying = true;
-                        }
-                    }
-                }
-            }
-            if (!hitEnemy && map.CanMoveTo(nextX, nextY))
-            {
-                Console.SetCursorPosition(player._x, player._y);
-                char oldTile = map._mapsCurrent[player._y][player._x];
-                WriteTileWithColor(oldTile);
-
-                player._x = nextX;
-                player._y = nextY;
-
-                if ((player._x, player._y) == (treasure_x_pos, treasure_y_pos))// applies lootable gold 
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    gold += loot;
-                    Console.SetCursorPosition(60, 5);
-                    Console.WriteLine($" {player._name} loots 15 amounts of golds! ");
-                    Console.SetCursorPosition(60, 6);
-                    Console.WriteLine($"{player._name} now has {gold} gold...woooo!");
-                    goldTreasure = true;
-                    //DrawGold();
-                    TreasureSystem.DrawGold();
-                }
+            //            int nextX = player._x + plX;
+            //            int nextY = player._y + plY;
 
 
-                if (prisonerLocations.Contains((player._x, player._y)))
-                {
-                    Console.ForegroundColor = ConsoleColor.Gray;
+            //            bool hitEnemy = false;
+            //            foreach (var enmy in enemies)
+            //            {
+            //                if (nextX == enmy._x && nextY == enmy._y)
+            //                {
 
-                   
-                    captives += 1;
+            //                    Console.Beep(800, 50);
+            //                    enmy._health -= player._attack;
+            //                    player._health -= enmy._attack;
+            //                    Console.ForegroundColor = ConsoleColor.Red;
+            //                    Console.SetCursorPosition(60, 14);
+            //                    Console.WriteLine($" {enmy._name} takes {player._attack} points of combat damage");
+            //                    Console.SetCursorPosition(60, 15);
+            //                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+            //                    Console.ForegroundColor = ConsoleColor.DarkRed;
+            //                    Console.SetCursorPosition(60, 17);
+            //                    Console.WriteLine($" {player._name} takes {enmy._attack} points of combat damage");
+            //                    Console.SetCursorPosition(60, 18);
+            //                    Console.WriteLine($" {player._name} has {player._health} health...");
 
-                    
-                    prisonerLocations.Remove((player._x, player._y));
+            //                    if (player._health <= 0 || enmy._health <= 0)
+            //                    {
+            //                        if (player._health <= 0)
+            //                        {
+            //                            Console.ForegroundColor = ConsoleColor.Magenta;
+            //                            player._health = 0;
+            //                            Console.SetCursorPosition(60, 20);
+            //                            Console.WriteLine($" {player._name} has {player._health} health, {player._name} has died");
+            //                            isPlaying = false;
+            //                        }
+            //                        if (enmy._health <= 0)
+            //                        {
+            //                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            //                            enmy._health = 0;
+            //                            Console.SetCursorPosition(60, 21);
+            //                            Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
+            //                            isPlaying = true;
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //            if (!hitEnemy && map.CanMoveTo(nextX, nextY))
+            //            {
+            //                Console.SetCursorPosition(player._x, player._y);
+            //                char oldTile = map._mapsCurrent[player._y][player._x];
+            //                WriteTileWithColor(oldTile);
 
-                    Console.SetCursorPosition(60, 4);
-                    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
+            //                player._x = nextX;
+            //                player._y = nextY;
 
-                    TreasureSystem.DrawPrisoner();
-                }
-
-
-                //if ((player._x, player._y) == (prisoner_x_pos, prisoner_y_pos))// applies lootable gold 
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Gray;
-                //    captives += 1;
-
-                //    Console.SetCursorPosition(60, 4);
-                //    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
-                //    newPrisoner = true;
-                //    //DrawPrisoner();
-                //    TreasureSystem.DrawPrisoner();
-                //}
-
-
-                if (map._mapsCurrent[player._y][player._x] == 'w')// applies spring water healing
-                {
-                    player._health += 20;
-                    if (player._health > plMaxHP)
-                    {
-                        player._health = plMaxHP;
-                    }
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.SetCursorPosition(60, 11);
-                    Console.WriteLine($" {player._name} Finds cool refreshing sparkling mineral");
-                    Console.SetCursorPosition(60, 12);
-                    Console.WriteLine($" water and is healed for 20 pts {player._name} now has {player._health} HP");
-                }
-
-                if (map._mapsCurrent[player._y][player._x] == '%')// applies lava damage 
-                {
-                    player._health = player._health - 30;
-
-                    if (player._health < 0)
-                    {
-                        player._health = 0;
-                    }
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 8);
-                    Console.WriteLine($" {player._name} takes 30 points of lava damage");
-                    Console.SetCursorPosition(60, 9);
-                    Console.WriteLine($" {player._name} now has {player._health} HP");
-                    if (player._health == 0)
-                    {
-                        isPlaying = false;
-                    }
-                }
-//>>>>>>>>>>>>>>>>
-                if ((map._mapsCurrent[player._y][player._x] == '@') ||(map._mapsCurrent[player._y][player._x] ==  '*'))// applies lava damage 
-                {
-                   var spawnPoint  LoadMap.MapChanger(x,y);
-                }
+            //                if ((player._x, player._y) == (treasure_x_pos, treasure_y_pos))// applies lootable gold 
+            //                {
+            //                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //                    gold += loot;
+            //                    Console.SetCursorPosition(60, 5);
+            //                    Console.WriteLine($" {player._name} loots 15 amounts of golds! ");
+            //                    Console.SetCursorPosition(60, 6);
+            //                    Console.WriteLine($"{player._name} now has {gold} gold...woooo!");
+            //                    goldTreasure = true;
+            //                    //DrawGold();
+            //                    CollectSpawner.DrawGold();
+            //                }
 
 
+            //                if (prisonerLocations.Contains((player._x, player._y)))
+            //                {
+            //                    Console.ForegroundColor = ConsoleColor.Gray;
 
-            }
+
+            //                    captives += 1;
+
+
+            //                    prisonerLocations.Remove((player._x, player._y));
+
+            //                    Console.SetCursorPosition(60, 4);
+            //                    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
+
+            //                    CollectSpawner.DrawPrisoner();
+            //                }
+
+
+            //                //if ((player._x, player._y) == (prisoner_x_pos, prisoner_y_pos))// applies lootable gold 
+            //                //{
+            //                //    Console.ForegroundColor = ConsoleColor.Gray;
+            //                //    captives += 1;
+
+            //                //    Console.SetCursorPosition(60, 4);
+            //                //    Console.WriteLine($"{player._name} has freed a captive... Good Job!");
+            //                //    newPrisoner = true;
+            //                //    //DrawPrisoner();
+            //                //    TreasureSystem.DrawPrisoner();
+            //                //}
+
+
+            //                if (map._mapsCurrent[player._y][player._x] == 'w')// applies spring water healing
+            //                {
+            //                    player._health += 20;
+            //                    if (player._health > plMaxHP)
+            //                    {
+            //                        player._health = plMaxHP;
+            //                    }
+            //                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //                    Console.SetCursorPosition(60, 11);
+            //                    Console.WriteLine($" {player._name} Finds cool refreshing sparkling mineral");
+            //                    Console.SetCursorPosition(60, 12);
+            //                    Console.WriteLine($" water and is healed for 20 pts {player._name} now has {player._health} HP");
+            //                }
+
+            //                if (map._mapsCurrent[player._y][player._x] == '%')// applies lava damage 
+            //                {
+            //                    player._health = player._health - 30;
+
+            //                    if (player._health < 0)
+            //                    {
+            //                        player._health = 0;
+            //                    }
+            //                    Console.ForegroundColor = ConsoleColor.Red;
+            //                    Console.SetCursorPosition(60, 8);
+            //                    Console.WriteLine($" {player._name} takes 30 points of lava damage");
+            //                    Console.SetCursorPosition(60, 9);
+            //                    Console.WriteLine($" {player._name} now has {player._health} HP");
+            //                    if (player._health == 0)
+            //                    {
+            //                        isPlaying = false;
+            //                    }
+            //                }
+            ////>>>>>>>>>>>>>>>>
+            //                if ((map._mapsCurrent[player._y][player._x] == '@') ||(map._mapsCurrent[player._y][player._x] ==  '*'))// applies lava damage 
+            //                {
+            //                   var spawnPoint  LoadMap.MapChanger(x,y);
+            //                }
+
+
+
+            //            }
 
 
         }
 
 
-        static void WriteTileWithColor(char tile) //colours the map tiles and writes them to screen
+        public static void WriteTileWithColor(char tile) //colours the map tiles and writes them to screen
         {
             if (tile == '%') Console.ForegroundColor = ConsoleColor.Red;
             else if (tile == 'w') Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -313,7 +330,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
 
-        static void MoveEnemy(Enemy enmy)
+        public static void MoveEnemy(Enemy enmy)
         {
             Thread.Sleep(75);
             int nextX = enmy._x;
@@ -352,7 +369,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
         }
 
-        static void DrawEntities()// draws the player and the enemy symbols/ sprites
+        public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
 
             foreach (var enmy in enemies)
@@ -401,11 +418,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //        goldTreasure = false;
         //    }
         //    Console.ResetColor();
-       // }
+        // }
 
         //static void DrawPrisoner()
         //{
-            
+
         //    if (newPrisoner)
         //    {
         //        prisonerLocations.Clear(); // Clear old positions
@@ -423,7 +440,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         //                if (map.CanMoveTo(prisLocX, prisLocY) && targetTile != '%' && targetTile != 'w' && targetTile != '#' && targetTile != '$')
         //                {
-                        
+
         //                    if ((prisLocX != player._x || prisLocY != player._y) && !prisonerLocations.Contains((prisLocX, prisLocY)))// makes sure two prisoners don't spawn in the same location
         //                    {
         //                        clearPrisonerSpawn = true;
@@ -441,8 +458,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //        newPrisoner = false;
         //    }
         //}
-       
-        static void alias()
+
+        public static void alias()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.BackgroundColor = ConsoleColor.Black;
