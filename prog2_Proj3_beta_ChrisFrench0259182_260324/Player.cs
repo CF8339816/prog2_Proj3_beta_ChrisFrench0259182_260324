@@ -8,7 +8,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class Player : Character
     {
-        public static int plMaxHP = 50;
+        public int plMaxHP = 50;
+        public int plXP = 0;
+
         public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: 20, symbol: '!', hp: 50, color: ConsoleColor.Blue)
         {
 
@@ -79,7 +81,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     CollectSpawner._gold += CollectSpawner.loot;
                     Console.SetCursorPosition(60, 5);
-                    Console.WriteLine($" {_name} loots 15 amounts of golds! ");
+                    Console.WriteLine($" {_name} loots {CollectSpawner.loot} amounts of golds! ");
                     Console.SetCursorPosition(60, 6);
                     Console.WriteLine($"{_name} now has {CollectSpawner._gold} gold...woooo!");
                     CollectSpawner._goldTreasure = true;
@@ -101,7 +103,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.SetCursorPosition(60, 4);
                     Console.WriteLine($"{_name} has freed a captive... Good Job!");
 
-                    Captive.DrawPrisoner();
+                   // Captive.DrawPrisoner();
                 }
 
 

@@ -20,7 +20,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public (int, int) _min_max_x = (1, 55);
         public (int, int) _min_max_y = (1, 24);
-        protected Character(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color)
+        protected Character(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color )
         {
             _name = Name;
             _x = x;

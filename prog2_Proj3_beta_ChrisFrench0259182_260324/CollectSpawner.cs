@@ -28,7 +28,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int treasure_y_pos;
         public static (int, int) treasure_min_max_x = (9, 45);
         public static (int, int) treasure_min_max_y = (7, 20);
-        public static int loot = 15;
+        public static Random _lootRando = new Random();
+        public static int loot;
 
         public CollectSpawner()
         {
