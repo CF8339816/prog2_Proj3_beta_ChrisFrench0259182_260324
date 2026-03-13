@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void MoveEnemy(Enemy enmy)
         {
-            Thread.Sleep(75);
+            Thread.Sleep(125);
             int nextX = enmy._x;
             int nextY = enmy._y;
             Random _rando = new Random();
@@ -55,6 +55,61 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 nextY = 0;
             }
         }
+
+         //public static void MoveTowards(Program.player._x, Program.player._y)
+        public static void MoveTowards(Enemy enemyRiders)
+        {
+          
+            Thread.Sleep(75);
+
+            int nextX = enemyRiders._x;
+            int nextY = enemyRiders._y;
+
+            
+            if (enemyRiders._x < Program.player._x) nextX++;
+            else if (enemyRiders._x > Program.player._x) nextX--;
+
+        
+            if (enemyRiders._y < Program.player._y) nextY++;
+            else if (enemyRiders._y > Program.player._y) nextY--;
+
+          
+            bool isPathBlockedByEnemy = false;
+            foreach (Enemy other in MyEvents.enemyRiderList) 
+            {
+                if (other != enemyRiders && nextX == other._x && nextY == other._y)
+                {
+                    isPathBlockedByEnemy = true;
+                    break;
+                }
+            }
+
+            char targetTile = Program.map._mapsCurrent[nextY][nextX];
+
+            if (!isPathBlockedByEnemy &&
+                Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '^' && targetTile != 'w' && targetTile != 'M' && (nextX != Program.player._x || nextY != Program.player._y))
+            {
+             
+                Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
+                Console.Write(" ");
+
+
+                enemyRiders._x = nextX;
+                enemyRiders._y = nextY;
+
+            
+                Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
+                Console.ForegroundColor = enemyRiders._color;
+                Console.Write(enemyRiders._symbol);
+                Console.ResetColor();
+            }
+        }
+
+
+
+
+
+
     }
 
 

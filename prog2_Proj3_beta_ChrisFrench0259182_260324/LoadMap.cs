@@ -72,103 +72,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
 
 
-            //try
-            //{// recovers map from text file and stores it to an array  hasa check in case of file recovery issue
-            //    _maps1 = File.ReadAllLines(_filepath1);
-            //    Console.Clear(); // Ensure screen is fresh
-
-            //    foreach (string line in _maps1)
-            //    {
-            //        foreach (char mapTile in line)
-            //        {
-            //            SetTileColor(mapTile);
-            //            Console.Write(mapTile);
-            //        }
-            //        Console.WriteLine();
-            //    }
-            //    Console.ResetColor();
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    Console.WriteLine($"Error: The file '{_filepath1}' was not found.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //}
-            //try
-            //{// recovers map from text file and stores it to an array  hasa check in case of file recovery issue
-            //    _maps2 = File.ReadAllLines(_filepath2);
-            //    Console.Clear(); // Ensure screen is fresh
-
-            //    foreach (string line in _maps2)
-            //    {
-            //        foreach (char mapTile in line)
-            //        {
-            //            SetTileColor(mapTile);
-            //            Console.Write(mapTile);
-            //        }
-            //        Console.WriteLine();
-            //    }
-            //    Console.ResetColor();
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    Console.WriteLine($"Error: The file '{_filepath2}' was not found.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //}
-            //try
-            //{// recovers map from text file and stores it to an array  hasa check in case of file recovery issue
-            //    _maps3 = File.ReadAllLines(_filepath3);
-            //    Console.Clear(); // Ensure screen is fresh
-
-            //    foreach (string line in _maps3)
-            //    {
-            //        foreach (char mapTile in line)
-            //        {
-            //            SetTileColor(mapTile);
-            //            Console.Write(mapTile);
-            //        }
-            //        Console.WriteLine();
-            //    }
-            //    Console.ResetColor();
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    Console.WriteLine($"Error: The file '{_filepath1}' was not found.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //}
-
-            //try
-            //{// recovers map from text file and stores it to an array  hasa check in case of file recovery issue
-            //    _maps4 = File.ReadAllLines(_filepath4);
-            //    Console.Clear(); // Ensure screen is fresh
-
-            //    foreach (string line in _maps4)
-            //    {
-            //        foreach (char mapTile in line)
-            //        {
-            //            SetTileColor(mapTile);
-            //            Console.Write(mapTile);
-            //        }
-            //        Console.WriteLine();
-            //    }
-            //    Console.ResetColor();
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    Console.WriteLine($"Error: The file '{_filepath4}' was not found.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //}
         }
         public (int x, int y)? MapChanger(int x, int y) //sets the map changer to look for the specified tiles to get the x,y ints
         {
@@ -195,7 +98,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
            
         }
-         MyEvents.MapCheck();
+      
         public (int x, int y) FindTile(char target)
         {
             for (int y = 0; y < _mapsCurrent.Length; y++)

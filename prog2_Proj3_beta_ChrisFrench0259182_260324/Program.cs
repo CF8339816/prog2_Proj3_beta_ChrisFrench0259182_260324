@@ -15,9 +15,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     class Program
     {
         public static string Name;
-        public static string PlayerAttack;
+        public static int plaAtkUP = 15;
 
-        public static Player player = new Player(" ", 3, 3, 15, '!', 50, ConsoleColor.Blue);
+        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', 50, ConsoleColor.Blue);
         public static List<Enemy> enemies = new List<Enemy>();
 
         public static LoadMap map = new LoadMap();
@@ -55,8 +55,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             while (isPlaying)
             {
                 player._name = Name;
+                player._attack = plaAtkUP;
+
                 // MovePlayer();
-                
+
                 int plX = 0, plY = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
                 // move player with W,A,S,D or optional arrow keys 
@@ -72,6 +74,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
 
                 player.Move(plX, plY);
+
+              // MyEvents.MyEvents();
 
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {

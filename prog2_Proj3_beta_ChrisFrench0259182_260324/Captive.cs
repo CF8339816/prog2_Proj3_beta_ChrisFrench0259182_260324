@@ -50,7 +50,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         }
                     }
 
-                    _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
+                    _prisonerLoc = (_prisoner_x_pos, _prisoner_x_pos);
                     Console.SetCursorPosition(_prisoner_x_pos, _prisoner_y_pos);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("S");
@@ -64,25 +64,31 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
-        //    public static void CheckCollection()
-        //{
-        //    // Check if player is standing on any prisoner's location
-        //    for (int i = 0; i < _prisonerLocations.Count; i++)
-        //    {
-        //        if (Program.player._x == _prisonerLocations[i].x && Program.player._y == _prisonerLocations[i].y)
-        //        {
-                    
-        //            _prisonerLocations.RemoveAt(i);
+        public static void CheckCollection()
+        {
+            // Check if player is standing on any prisoner's location
+            for (int i = 0; i < _prisonerLocations.Count; i++)
+            {
+                //>>>>>>>>>>>>           //if (Program.player._x == _prisoner_x_pos && Program.player._y == _prisoner_x_pos)
+                //if (Program.player._x != _prisonerLocations[i].x || Program.player._y != _prisonerLocations[i].y)
+                //{
+                //    continue;
+                //}
+                if (Captive._prisonerLocations.Contains((Program.player._x, Program.player._y)))
 
-        //            _captives++;
-                                        
-        //            Console.SetCursorPosition(Program.player._x, Program.player._y);
-        //            Console.Write(" ");
 
-        //            break;
-        //        }
-        //    }
-        //}
+
+                    _prisonerLocations.RemoveAt(i);
+
+                _captives++;
+                Player.plXP += 10;
+                Buffs.IncreaseATK(0);
+                Buffs.IncreaseMaxHealth(0);
+                Console.SetCursorPosition(Program.player._x, Program.player._y);
+                Console.Write(" ");
+
+                break;
+            }
+        }
     }
-
-    }
+}

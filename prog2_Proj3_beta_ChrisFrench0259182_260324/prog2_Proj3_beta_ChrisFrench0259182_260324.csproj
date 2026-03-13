@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buffs.cs" />
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="DamageSystem.cs" />

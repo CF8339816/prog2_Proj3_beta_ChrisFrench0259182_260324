@@ -10,7 +10,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     {
         public static int plMaxHP = 50;
         public static int plXP = 0;
-
+        public static int plLevel = 0;
         public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: 20, symbol: '!', hp: 50, color: ConsoleColor.Blue)
         {
 
@@ -90,22 +90,22 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
 
-                if (Captive._prisonerLocations.Contains((_x, _y)))
-                {
-                    //Console.ForegroundColor = ConsoleColor.Gray;
+                //if (Captive._prisonerLocations.Contains((_x, _y)))
+                //{
+                //    //Console.ForegroundColor = ConsoleColor.Gray;
 
 
-                    Captive._captives += 1;
-                    plXP += 10;
-                    plMaxHP += 2;
-                    Program.player._attack += 2;
-                    Captive._prisonerLocations.Remove((_x, _y));
+                //    Captive._captives += 1;
+                //    Treasure.loot += 3;
 
-                    Console.SetCursorPosition(60, 4);
-                    Console.WriteLine($"{_name} has freed a captive... Good Job!");
+                //    Program.player._attack += 2;
+                //    Captive._prisonerLocations.Remove((_x, _y));
 
-                   // Captive.DrawPrisoner();
-                }
+                //    Console.SetCursorPosition(60, 4);
+                //    Console.WriteLine($"{_name} has freed a captive... Good Job!");
+
+                //   // Captive.DrawPrisoner();
+                //}
 
 
 

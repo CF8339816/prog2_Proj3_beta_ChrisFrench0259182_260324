@@ -13,15 +13,18 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public MyEvents()
         {
+            MapCheck();
+        
+        } 
 
 
         public void MapCheck()
         {
-            LoadMap mapLoader = new LoadMap();
 
-            while (mapLoader._currentMapIndex == 3)
+
+            if (Program.map._currentMapIndex == 3)
             {
-
+                enemyRiderList.Clear();
                 enemyRiderList.Add(new Enemy("Slasher", 50, 4, 10, 'k', 25, ConsoleColor.Red));
                 enemyRiderList.Add(new Enemy("Crasher", 20, 23, 8, 'k', 20, ConsoleColor.Red));
                 enemyRiderList.Add(new Enemy("Harrier", 15, 12, 12, 'k', 30, ConsoleColor.Red));
@@ -34,13 +37,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 EnemyRiders enemyRiders = new EnemyRiders(playerRunner);
 
-
-                playerRunner.x = Program.player._x;
-                playerRunner.y = Program.player._y;
-
-                playerRunner.playerLocation(16 + i++, 8 + i++);
+                playerRunner.playerLocation(Program.player._x, Program.player._y);
             }
-        } }
+        } 
+    }
 
 
         
@@ -71,7 +71,16 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(60, 1);
                 Console.Write($"enemy hears player's escape and is chasing them down");
+            Console.ResetColor();
+
+            foreach (var enemy in MyEvents.enemyRiderList)
+            {
+                Enemy.MoveTowards(enemy);
             }
+
+
+
+        }
 
 
         }
@@ -92,11 +101,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
 
                 
-                x = (pPx = 18+i++);
+                //x = (pPx = 18+i++);
                 _ReachedPos?.Invoke();
                 //_ReachedPosX?.Invoke();
 
-                y = (pPy = 10 + i++);
+                //y = (pPy = 10 + i++);
                 _ReachedPos?.Invoke();
                 //_ReachedPosY?.Invoke();
 
@@ -129,4 +138,4 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
            // Console.ReadKey(true);
-}
+
