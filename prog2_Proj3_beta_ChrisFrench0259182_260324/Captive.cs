@@ -84,9 +84,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Player.plXP += 10;
                 Buffs.IncreaseATK(0);
                 Buffs.IncreaseMaxHealth(0);
+                Treasure._gold += 4;
                 Console.SetCursorPosition(Program.player._x, Program.player._y);
                 Console.Write(" ");
-
+                HUD.Moses();
                 break;
             }
         }

@@ -17,6 +17,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine("What is your character's name");
             Console.ForegroundColor = ConsoleColor.Blue;
             Program.Name = Console.ReadLine();
+            Console.ResetColor();
         }
 
         public static void Instructions()
@@ -24,14 +25,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(0, 27);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'Q' to exit...\nFight enemies '&' by manouvering to them or try to avoid them... Lava '%' will damage you ");
-
+            Console.ResetColor();
         }
         public static void plStats()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(60, 2);
             Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/ XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._captives}");
-
+            Console.ResetColor();
         }
         public static void plDied()
         {
@@ -39,7 +40,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 23);// outputs player death and end of game prompts to exit
             Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died with {Treasure._gold} golds on them");
             Console.ReadKey(true);
-
+            Console.ResetColor();
         }
 
         public static void plWin()
@@ -50,7 +51,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 23);
             Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._captives} captives.");
             Console.ReadKey(true);
-
+            Console.ResetColor();
         }
 
 
@@ -65,10 +66,39 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ReadKey(true);
             Console.WriteLine("\n\n\n\n\n\n");
             Console.ResetColor();
+            
         }
 
+        public static void Looter()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.SetCursorPosition(60, 5);
+            Console.WriteLine($" {Program.player._name} loots {Treasure.loot} amounts of golds! ");
+            Console.SetCursorPosition(60, 6);
+            Console.WriteLine($"{Program.player._name} now has {Treasure._gold} gold...woooo!");
 
+            Console.ResetColor();
+        }
 
+        public static void Moses()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            Console.SetCursorPosition(60, 4);
+            Console.WriteLine($"{Program.player._name} has freed a captive... Good Job!");
+
+            Console.ResetColor();
+        }
+
+        public static void AnakinMustafar()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(60, 8);
+            Console.WriteLine($" {Program.player._name} takes 30 points of lava damage");
+            Console.SetCursorPosition(60, 9);
+            Console.WriteLine($" {Program.player._name} now has {Program.player._health} HP");
+            Console.ResetColor();
+        }
 
 
 

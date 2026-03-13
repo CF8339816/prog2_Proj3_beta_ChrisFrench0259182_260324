@@ -76,18 +76,18 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 _x = nextX;// allowed to move here 
                 _y = nextY;
 
-                if ((_x, _y) == (Treasure.treasure_x_pos, Treasure.treasure_y_pos))// applies lootable gold 
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Treasure._gold += Treasure.loot;
-                    Console.SetCursorPosition(60, 5);
-                    Console.WriteLine($" {_name} loots {Treasure.loot} amounts of golds! ");
-                    Console.SetCursorPosition(60, 6);
-                    Console.WriteLine($"{_name} now has {Treasure._gold} gold...woooo!");
-                    Treasure._goldTreasure = true;
-                    //DrawGold();
-                    Treasure.DrawGold();
-                }
+                //if ((_x, _y) == (Treasure.treasure_x_pos, Treasure.treasure_y_pos))// applies lootable gold 
+                //{
+                //    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //    Treasure._gold += Treasure.loot;
+                //    Console.SetCursorPosition(60, 5);
+                //    Console.WriteLine($" {_name} loots {Treasure.loot} amounts of golds! ");
+                //    Console.SetCursorPosition(60, 6);
+                //    Console.WriteLine($"{_name} now has {Treasure._gold} gold...woooo!");
+                //    Treasure._goldTreasure = true;
+                //    //
+                //    Treasure.DrawGold();
+                //}
 
 
                 //if (Captive._prisonerLocations.Contains((_x, _y)))

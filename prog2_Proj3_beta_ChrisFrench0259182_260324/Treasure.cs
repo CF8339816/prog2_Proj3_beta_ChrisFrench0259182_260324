@@ -31,7 +31,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     bool clearGoldSpawn = false;
                     while (!clearGoldSpawn)
                     {
-                        loot = _lootRando.Next(5, 35);
+                        loot = _lootRando.Next(15, 35);
 
                         treasure_x_pos = _goldPileSpawn.Next(treasure_min_max_x.Item1, treasure_min_max_x.Item2 + 4);
                         treasure_y_pos = _goldPileSpawn.Next(treasure_min_max_y.Item1, treasure_min_max_y.Item2 + 4);
@@ -42,8 +42,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                             if (treasure_x_pos != Program.player._x || treasure_y_pos != Program.player._y) //checks for player
                             {
-                                clearGoldSpawn = true;
-                            }
+                            _gold += loot;
+
+                            HUD.Looter();
+                            clearGoldSpawn = true;
+                            DrawGold();
+                        }
 
                         }
                     }
