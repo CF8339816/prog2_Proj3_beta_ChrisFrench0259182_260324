@@ -14,19 +14,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         private string[] _filePaths = { "map1.txt", "map2.txt", "map3.txt", "map4.txt" };// creates a string of filep[atths to call tto for creatting the string of strings in all maps
         private string[][] _allMaps = new string[4][]; // stores maps in a string of strings so they can be inddexed to move forward and back through them
         public string[] _mapsCurrent; // initiattes ourt usage string for current to draw map from the all maps string
-        private int _currentMapIndex = 0; //initiates and sets the default map to display first 
-
-        //private string _filepath1 = "map1.txt";
-        //private string _filepath2 = "map2.txt";
-        //private string _filepath3 = "map3.txt";
-        //private string _filepath4 = "map4.txt";
-        //public string[] _maps1;
-        //public string[] _maps2;
-        //public string[] _maps3;
-        //public string[] _maps4;
-        //public string[] _mapsCurrent;
-
-        //_mapsCurrent= _maps1;
+        public int _currentMapIndex = 0; //initiates and sets the default map to display first 
 
         public LoadMap()
         {
@@ -204,8 +192,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
 
             return null; // No map change
-        }
 
+           
+        }
+         MyEvents.MapCheck();
         public (int x, int y) FindTile(char target)
         {
             for (int y = 0; y < _mapsCurrent.Length; y++)
@@ -291,8 +281,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 case '}': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.Black; break;
                 case '[': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
                 case ']': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
-                case 'X': Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; break; 
-
+                case 'X': Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; break;
+                case '`': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
                 default: Console.ForegroundColor = ConsoleColor.Black; Console.BackgroundColor = ConsoleColor.Black; break;
             }
         }

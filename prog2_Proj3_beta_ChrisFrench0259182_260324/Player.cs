@@ -8,8 +8,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class Player : Character
     {
-        public int plMaxHP = 50;
-        public int plXP = 0;
+        public static int plMaxHP = 50;
+        public static int plXP = 0;
 
         public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: 20, symbol: '!', hp: 50, color: ConsoleColor.Blue)
         {
@@ -76,29 +76,30 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 _x = nextX;// allowed to move here 
                 _y = nextY;
 
-                if ((_x, _y) == (CollectSpawner.treasure_x_pos, CollectSpawner.treasure_y_pos))// applies lootable gold 
+                if ((_x, _y) == (Treasure.treasure_x_pos, Treasure.treasure_y_pos))// applies lootable gold 
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    CollectSpawner._gold += CollectSpawner.loot;
+                    Treasure._gold += Treasure.loot;
                     Console.SetCursorPosition(60, 5);
-                    Console.WriteLine($" {_name} loots {CollectSpawner.loot} amounts of golds! ");
+                    Console.WriteLine($" {_name} loots {Treasure.loot} amounts of golds! ");
                     Console.SetCursorPosition(60, 6);
-                    Console.WriteLine($"{_name} now has {CollectSpawner._gold} gold...woooo!");
-                    CollectSpawner._goldTreasure = true;
+                    Console.WriteLine($"{_name} now has {Treasure._gold} gold...woooo!");
+                    Treasure._goldTreasure = true;
                     //DrawGold();
                     Treasure.DrawGold();
                 }
 
 
-                if (Captive.prisonerLocations.Contains((_x, _y)))
+                if (Captive._prisonerLocations.Contains((_x, _y)))
                 {
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    //Console.ForegroundColor = ConsoleColor.Gray;
 
 
-                    CollectSpawner._captives += 1;
-
-
-                    Captive.prisonerLocations.Remove((_x, _y));
+                    Captive._captives += 1;
+                    plXP += 10;
+                    plMaxHP += 2;
+                    Program.player._attack += 2;
+                    Captive._prisonerLocations.Remove((_x, _y));
 
                     Console.SetCursorPosition(60, 4);
                     Console.WriteLine($"{_name} has freed a captive... Good Job!");
@@ -118,7 +119,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.SetCursorPosition(60, 11);
-                    Console.WriteLine($" {_name} Finds cool refreshing sparkling mineral");
+                    Console.WriteLine($"{_name} Finds cool refreshing sparkling mineral");
                     Console.SetCursorPosition(60, 12);
                     Console.WriteLine($" water and is healed for 20 pts {_name} now has {_health} HP");
                 }

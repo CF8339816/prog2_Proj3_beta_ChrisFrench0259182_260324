@@ -30,14 +30,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(60, 2);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{ XP: {Player.plXP} Gold:{CollectSpawner._gold} Captives Freed:{CollectSpawner._captives}");
+            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/ XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._captives}");
 
         }
         public static void plDied()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.SetCursorPosition(60, 23);// outputs player death and end of game prompts to exit
-            Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died with {CollectSpawner._gold} golds on them");
+            Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died with {Treasure._gold} golds on them");
             Console.ReadKey(true);
 
         }
@@ -48,7 +48,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 22);// outputs player death and end of game prompts to exit
             Console.WriteLine($" {Program.player._name} has reached the goal with {Program.player._health} health, ");
             Console.SetCursorPosition(60, 23);
-            Console.WriteLine($"{Program.player._name} is safe with {CollectSpawner._gold} golds and freed {CollectSpawner._captives} captives.");
+            Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._captives} captives.");
             Console.ReadKey(true);
 
         }

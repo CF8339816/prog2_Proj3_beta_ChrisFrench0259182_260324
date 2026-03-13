@@ -15,7 +15,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     class Program
     {
         public static string Name;
-
+        public static string PlayerAttack;
 
         public static Player player = new Player(" ", 3, 3, 15, '!', 50, ConsoleColor.Blue);
         public static List<Enemy> enemies = new List<Enemy>();
@@ -48,7 +48,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 19, 15, 'H', 40, ConsoleColor.DarkYellow));
-            enemies.Add(new Enemy("testo", 4, 10, 0, ' ', 1, ConsoleColor.DarkGray));
+            enemies.Add(new Enemy("testo", 4, 10, 0, '`', 1, ConsoleColor.DarkGray));
 
 
 
@@ -91,11 +91,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
                     Enemy.MoveEnemy(enemies[i]);
                 }
+               
+                
                 DrawEntities();
-              
-                Treasure.DrawGold();
-                Captive.DrawPrisoner();
-              
+
+                CollectSpawner.DrawCollectables();
+
+
                 HUD.plStats();
 
 

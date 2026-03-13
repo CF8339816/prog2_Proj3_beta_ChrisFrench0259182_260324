@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -10,33 +11,29 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     public class CollectSpawner
 
     {
-       public static int _prisoner = 0;
-        public static bool _newPrisoner = true;
-        public static Random _prisonerSpawn = new Random();
-        public static (int, int) _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
-        public static int _prisoner_x_pos;
-        public static int _prisoner_y_pos;
-        public static (int, int) _prisoner_min_max_x = (9, 45);
-        public static (int, int) _prisoner_min_max_y = (7, 20);
-        public static int _captives = 0;
-        public static int _gold = 0;
-        public static bool _goldTreasure = true;
-        public static Random _goldPileSpawn = new Random();
-        public static (int, int) _plPosition = (Program.player._x, Program.player._y);
-        public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
-        public static int treasure_x_pos;
-        public static int treasure_y_pos;
-        public static (int, int) treasure_min_max_x = (9, 45);
-        public static (int, int) treasure_min_max_y = (7, 20);
-        public static Random _lootRando = new Random();
-        public static int loot;
+       
+       
 
         public CollectSpawner()
+        { }
+ 
+        public static void DrawCollectables()
         {
             Treasure.DrawGold();
             Captive.DrawPrisoner();
+
         }
 
+
+
+    }
+
+        
+        
+}
+        
+      
+    
         //public static void DrawGold()
         //{
         //    if (_goldTreasure)
@@ -104,6 +101,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             //     }
             //     Console.ResetColor();
             // }
-    }
-}
+
+
 

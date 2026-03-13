@@ -6,18 +6,32 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class Captive: CollectSpawner
+    public class Captive
     {
-      //  public List<(int, int)> prisonerLocations = new List<(int, int)>();
-        public void DrawPrisoner()
+
+        public static int _prisonerCount = 6;
+        public static bool _newPrisoner = true;
+        public static Random _prisonerSpawn = new Random();
+        public static (int, int) _prisonerLoc = (_prisoner_x_pos, _prisoner_y_pos);
+        public static int _prisoner_x_pos;
+        public static int _prisoner_y_pos;
+        public static (int, int) _prisoner_min_max_x = (9, 45);
+        public static (int, int) _prisoner_min_max_y = (7, 20);
+        public static int _captives = 0;
+
+          public static List<(int, int)> _prisonerLocations = new List<(int, int)>();
+        public static void DrawPrisoner()
         {
             if (_newPrisoner)
             {
-               // prisonerLocations.Clear(); // Clear old positions
+                _prisonerLocations.Clear(); // Clear old positions
 
-                //for (int i = 0; i < 8; i++)
-                //{
+                for (int i = 0; i < 8; i++)
+                {
                     bool clearPrisonerSpawn = false;
+
+
+
                     while (!clearPrisonerSpawn)
                     {
 
@@ -41,12 +55,34 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("S");
                     Console.ResetColor();
-                    _newPrisoner = false;
+
 
                 }
+                _newPrisoner = false;
                 Console.ResetColor();
             }
         }
 
-    //}
-}
+
+        //    public static void CheckCollection()
+        //{
+        //    // Check if player is standing on any prisoner's location
+        //    for (int i = 0; i < _prisonerLocations.Count; i++)
+        //    {
+        //        if (Program.player._x == _prisonerLocations[i].x && Program.player._y == _prisonerLocations[i].y)
+        //        {
+                    
+        //            _prisonerLocations.RemoveAt(i);
+
+        //            _captives++;
+                                        
+        //            Console.SetCursorPosition(Program.player._x, Program.player._y);
+        //            Console.Write(" ");
+
+        //            break;
+        //        }
+        //    }
+        //}
+    }
+
+    }

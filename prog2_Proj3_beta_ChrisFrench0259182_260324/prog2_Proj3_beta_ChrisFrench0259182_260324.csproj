@@ -51,6 +51,7 @@
     <Compile Include="HealtthSysstem.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="LoadMap.cs" />
+    <Compile Include="MyEvents.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
