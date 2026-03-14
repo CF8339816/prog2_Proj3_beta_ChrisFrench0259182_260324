@@ -20,6 +20,23 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
 
+        public static void combat()
+        {
+            foreach (var enmy in Program.enemies)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(60, 14);
+                Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                Console.SetCursorPosition(60, 15);
+                Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(60, 17);
+                Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                Console.SetCursorPosition(60, 18);
+                Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+            }
+        }
+
         public static void Instructions()
         {
             Console.SetCursorPosition(0, 27);
@@ -31,7 +48,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(60, 2);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/ XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
+            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
             Console.ResetColor();
         }
         public static void plDied()

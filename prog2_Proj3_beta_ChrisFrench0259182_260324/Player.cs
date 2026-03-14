@@ -35,16 +35,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.Beep(800, 50);
                     enmy._health -=_attack;
                    _health -= enmy._attack;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {_attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {_name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {_name} has {_health} health...");
+
+                    HUD.combat();
+
+                    //Console.ForegroundColor = ConsoleColor.Red;
+                    //Console.SetCursorPosition(60, 14);
+                    //Console.WriteLine($" {enmy._name} takes {_attack} points of combat damage");
+                    //Console.SetCursorPosition(60, 15);
+                    //Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                    //Console.ForegroundColor = ConsoleColor.DarkRed;
+                    //Console.SetCursorPosition(60, 17);
+                    //Console.WriteLine($" {_name} takes {enmy._attack} points of combat damage");
+                    //Console.SetCursorPosition(60, 18);
+                    //Console.WriteLine($" {_name} has {_health} health...");
 
                     if (_health <= 0 || enmy._health <= 0)
                     {
@@ -76,6 +79,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 _x = nextX;// allowed to move here 
                 _y = nextY;
 
+                #region//old working treasure, healing, lava and captives just in case
                 //if ((_x, _y) == (Treasure.treasure_x_pos, Treasure.treasure_y_pos))// applies lootable gold 
                 //{
                 //    Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -110,19 +114,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
 
-                if (Program.map._mapsCurrent[_y][_x] == 'w')// applies spring water healing
-                {
-                    _health += 20;
-                    if (_health > plMaxHP)
-                    {
-                        _health = plMaxHP;
-                    }
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.SetCursorPosition(60, 11);
-                    Console.WriteLine($"{_name} Finds cool refreshing sparkling mineral");
-                    Console.SetCursorPosition(60, 12);
-                    Console.WriteLine($" water and is healed for 20 pts {_name} now has {_health} HP");
-                }
+                //if (Program.map._mapsCurrent[_y][_x] == 'w')// applies spring water healing
+                //{
+                //    _health += 20;
+                //    if (_health > plMaxHP)
+                //    {
+                //        _health = plMaxHP;
+                //    }
+                //    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                //    Console.SetCursorPosition(60, 11);
+                //    Console.WriteLine($"{_name} Finds cool refreshing sparkling mineral");
+                //    Console.SetCursorPosition(60, 12);
+                //    Console.WriteLine($" water and is healed for 20 pts {_name} now has {_health} HP");
+                //}
 
                 //if (Program.map._mapsCurrent[_y][_x] == '%')// applies lava damage 
                 //{
@@ -147,7 +151,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 //{
                 //    var spawnPoint LoadMap.MapChanger(x, y);// should be looking for the reverse symbol so that you spawn at the entrance if going through the exit and the exit if you leave throught the entrance
                 //}
-
+                #endregion
 
 
             }
