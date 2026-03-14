@@ -22,6 +22,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static LoadMap map = new LoadMap();
 
+        public static int unicodeValue = 219;
+        public static char Q = (char)unicodeValue;
 
         public static bool isPlaying = true;
 
@@ -48,7 +50,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 19, 15, 'H', 40, ConsoleColor.DarkYellow));
-            enemies.Add(new Enemy("testo", 4, 10, 0, '`', 1, ConsoleColor.DarkGray));
+            enemies.Add(new Enemy("testo", 4, 10, 0, '\u00DB', 1, ConsoleColor.Cyan));
 
 
 
