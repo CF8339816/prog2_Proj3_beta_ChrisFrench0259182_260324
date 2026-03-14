@@ -124,24 +124,24 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.WriteLine($" water and is healed for 20 pts {_name} now has {_health} HP");
                 }
 
-                if (Program.map._mapsCurrent[_y][_x] == '%')// applies lava damage 
-                {
-                    _health = _health - 30;
+                //if (Program.map._mapsCurrent[_y][_x] == '%')// applies lava damage 
+                //{
+                //    _health = _health - 30;
 
-                    if (_health < 0)
-                    {
-                        _health = 0;
-                    }
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 8);
-                    Console.WriteLine($" {_name} takes 30 points of lava damage");
-                    Console.SetCursorPosition(60, 9);
-                    Console.WriteLine($" {_name} now has {_health} HP");
-                    if (_health == 0)
-                    {
-                        Program.isPlaying = false;
-                    }
-                }
+                //    if (_health < 0)
+                //    {
+                //        _health = 0;
+                //    }
+                //    Console.ForegroundColor = ConsoleColor.Red;
+                //    Console.SetCursorPosition(60, 8);
+                //    Console.WriteLine($" {_name} takes 30 points of lava damage");
+                //    Console.SetCursorPosition(60, 9);
+                //    Console.WriteLine($" {_name} now has {_health} HP");
+                //    if (_health == 0)
+                //    {
+                //        Program.isPlaying = false;
+                //    }
+                //}
                 ////>>>>>>>>>>>>>>>>
                 //if ((Program.map._mapsCurrent[_y][_x] == '@') || (Program.map._mapsCurrent[_y][_x] == '*'))//portal forward and backward throught the maps  
                 //{

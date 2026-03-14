@@ -46,6 +46,7 @@
     <Compile Include="Buffs.cs" />
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Collectable.cs" />
     <Compile Include="DamageSystem.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="GameManager.cs" />
