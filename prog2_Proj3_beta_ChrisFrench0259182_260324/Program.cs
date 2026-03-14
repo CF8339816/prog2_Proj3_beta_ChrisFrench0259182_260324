@@ -74,7 +74,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.S) plY = 1;
 
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
-
+                //EnviroDmg.LavaDamage();
                 player.Move(plX, plY);
 
               // MyEvents.MyEvents();

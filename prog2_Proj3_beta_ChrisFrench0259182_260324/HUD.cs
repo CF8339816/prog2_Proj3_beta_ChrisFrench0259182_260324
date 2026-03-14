@@ -31,7 +31,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(60, 2);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/ XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._captives}");
+            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/ XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
             Console.ResetColor();
         }
         public static void plDied()
@@ -49,7 +49,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 22);// outputs player death and end of game prompts to exit
             Console.WriteLine($" {Program.player._name} has reached the goal with {Program.player._health} health, ");
             Console.SetCursorPosition(60, 23);
-            Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._captives} captives.");
+            Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._freed} captives.");
             Console.ReadKey(true);
             Console.ResetColor();
         }

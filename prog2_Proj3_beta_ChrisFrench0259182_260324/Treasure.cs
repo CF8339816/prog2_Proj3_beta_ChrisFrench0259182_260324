@@ -15,15 +15,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
         public static int treasure_x_pos;
         public static int treasure_y_pos;
-        static int treasure_min_max_x;
-        static int treasure_min_max_y;
+        static (int, int) treasure_min_max_x;
+        static (int, int) treasure_min_max_y;
         public static Random _lootRando = new Random();
         public static int loot;
 
-        public Treasure(string Name, int x, int y, int count, char symbol, int output, ConsoleColor color (int, int) min_max_x, (int, int) min_max_y) : base(Name,  x,  y, count: 4 , symbol: '$', output: _gold, ConsoleColor.Yellow,  min_max_x, min_max_y)
+        public Treasure(string Name, int x, int y, int count, char symbol, int output, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name,  x,  y, count: 4 , symbol: '$', output: _gold, ConsoleColor.Yellow,  min_max_x, min_max_y)
         {
 
-            
+            Name = "gold";
 
 
 

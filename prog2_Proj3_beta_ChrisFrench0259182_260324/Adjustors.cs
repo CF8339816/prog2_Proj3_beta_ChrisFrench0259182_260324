@@ -6,7 +6,30 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    internal class Adjustors
+
+    public class Adjustors
     {
+        public string _name { get; set; }
+       
+        public char _symbol { get; protected set; }
+        public int _output { get; set; }
+
+        public ConsoleColor _color;
+
+        protected Adjustors(string Name, char symbol, int output, ConsoleColor color)
+        {
+            _name = Name;
+        
+            _symbol = symbol;
+            _output = output;
+            _color = color;
+          
+        }
+
+
+
+
+
+
     }
 }
