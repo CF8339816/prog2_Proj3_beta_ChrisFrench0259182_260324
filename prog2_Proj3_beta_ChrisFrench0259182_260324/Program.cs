@@ -32,7 +32,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
        
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.SetCursorPosition(0, 0);
             HUD.alias();
@@ -40,9 +40,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
 
             Console.CursorVisible = false;
-            map.DrawMap();
+            map.DrawMap();  
+            MyEvents.MapCheck();
             HUD.Instructions();
-
+            CollectSpawner.DrawCollectables();
             enemies.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
@@ -56,7 +57,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 player._name = Name;
                 player._attack = plaAtkUP;
 
-                // MovePlayer();
+            
 
                 int plX = 0, plY = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
@@ -73,8 +74,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
             
                 player.Move(plX, plY);
-               //EnviroDmg.LavaDamage();
-              // MyEvents.MyEvents();
+               
 
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
@@ -95,11 +95,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Enemy.MoveEnemy(enemies[i]);
                 }
                
-                
-                DrawEntities();
-
-                CollectSpawner.DrawCollectables();
-
+                    DrawEntities();
+           
 
                 HUD.plStats();
 

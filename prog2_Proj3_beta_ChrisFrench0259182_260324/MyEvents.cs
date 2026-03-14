@@ -11,14 +11,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int i = 1;
         public static List<Enemy> enemyRiderList = new List<Enemy>();
 
-        public MyEvents()
+        public  MyEvents()
         {
-            MapCheck();
-        
-        } 
+           
+
+        }
 
 
-        public void MapCheck()
+        public static void MapCheck()
         {
 
 
@@ -39,38 +39,38 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 playerRunner.playerLocation(Program.player._x, Program.player._y);
             }
-        } 
+        }
     }
 
 
-        
-        
-   
-        public class EnemyRiders
+
+
+
+    public class EnemyRiders
+    {
+
+        PlayerRunner _playerRunner;
+
+
+        public EnemyRiders(PlayerRunner playerRunner)
         {
-           
-            PlayerRunner _playerRunner;
+            playerRunner._ReachedPos += chasePlayerDown;
+            //player._ReachedPosX += chasePlayerDown;
+            //player._ReachedPosY += chasePlayerDown;
+
+            _playerRunner = playerRunner;
+        }
 
 
-            public EnemyRiders(PlayerRunner playerRunner)
-            {
-                playerRunner._ReachedPos += chasePlayerDown;
-                //player._ReachedPosX += chasePlayerDown;
-                //player._ReachedPosY += chasePlayerDown;
-
-                _playerRunner = playerRunner;   
-            }
-
-
-            public void Unsubscribe()
-            {
-                _playerRunner._ReachedPos -= chasePlayerDown;
-            }
-            void chasePlayerDown()
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(60, 1);
-                Console.Write($"enemy hears player's escape and is chasing them down");
+        public void Unsubscribe()
+        {
+            _playerRunner._ReachedPos -= chasePlayerDown;
+        }
+        void chasePlayerDown()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(60, 1);
+            Console.Write($"enemy hears player's escape and is chasing them down");
             Console.ResetColor();
 
             foreach (var enemy in MyEvents.enemyRiderList)
@@ -83,42 +83,42 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
-        }
+    }
 
-        public class PlayerRunner
+    public class PlayerRunner
+    {
+        public int pPx;
+        public int pPy;
+        public int x;
+        public int y;
+
+        public Action _ReachedPos = null;
+        //public Action _ReachedPosY = null;
+        //public Action _ReachedPosX = null;  
+
+        public void playerLocation(int x, int y)
+
         {
-            public int pPx;
-            public int pPy;
-            public int x; 
-            public int y;
-
-            public Action _ReachedPos = null;
-            //public Action _ReachedPosY = null;
-            //public Action _ReachedPosX = null;  
-
-            public void playerLocation(int x, int y)
-
-            {
-
-                
-                //x = (pPx = 18+i++);
-                _ReachedPos?.Invoke();
-                //_ReachedPosX?.Invoke();
-
-                //y = (pPy = 10 + i++);
-                _ReachedPos?.Invoke();
-                //_ReachedPosY?.Invoke();
 
 
+            //x = (pPx = 18+i++);
+            _ReachedPos?.Invoke();
+            //_ReachedPosX?.Invoke();
 
-            }
+            //y = (pPy = 10 + i++);
+            _ReachedPos?.Invoke();
+            //_ReachedPosY?.Invoke();
 
 
 
         }
+
 
 
     }
+
+
+}
           
     
   ///notes about events Action, Invokeand, and Unsubscribe  

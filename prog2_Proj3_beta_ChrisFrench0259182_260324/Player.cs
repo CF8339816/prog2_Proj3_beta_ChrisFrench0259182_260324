@@ -68,6 +68,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Program.isPlaying = true;
                         }
                     }
+
+                    //EnviroDmg.LavaDamage();
+                    //EnviroHeals.SpringWatterHealling();
+                    //Treasure.CheckTreasureCollection();
+                    //Captive.CheckCollection();
+
                 }/// make check a bool and return bool
             }
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
