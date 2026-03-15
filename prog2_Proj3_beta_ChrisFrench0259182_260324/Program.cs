@@ -157,7 +157,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.WriteLine("Player Move");
               //  Console.ReadKey(true);
                 Treasure.CheckTreasureCollection();
-               // Captive.CheckCapCollection();
+                Captive.CheckCapCollection();
 
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {

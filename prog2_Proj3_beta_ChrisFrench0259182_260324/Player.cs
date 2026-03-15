@@ -25,7 +25,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             int nextX =_x + X;
             int nextY = _y + Y;
-            Thread.Sleep(5);
+            Thread.Sleep(0);
 
             bool hitEnemy = false;
             foreach (var enmy in Program.enemies)  // back in programs   possible rename check enemy colisions

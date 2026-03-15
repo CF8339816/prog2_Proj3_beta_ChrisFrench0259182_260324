@@ -89,27 +89,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void CheckCapCollection()
         {
-            // Check if player is standing on any prisoner's location
-
-        //      public static void CheckTreasureCollection()
-        //{
-            //if (Program.player._x == treasure_x_pos && Program.player._y == treasure_y_pos)// Check if player is on the treasure tile
-            //{
-
-            //for (int i = activeGoldPiles.Count - 1; i >= 0; i--)
-            //{
-            //    if (Program.player._x == activeGoldPiles[i].x && Program.player._y == activeGoldPiles[i].y)
-            //    {
-            //        loot = _lootRando.Next(15, 35);
-            //        _gold += loot;
-            //        HUD.Looter();
-
-
-            //        activeGoldPiles.RemoveAt(i);// remove picked up loot pile
-
-            //    }
-            //}
-
+    
 
             for (int i = _prisonerLocations.Count - 1; i >= 0; i--)
                // for (int i = 0; i < _prisonerLocations.Count; i++)
@@ -118,17 +98,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (Program.player._x == _prisonerLocations[i].x && Program.player._y == _prisonerLocations[i].y)
                 {
                     _prisonerLocations.RemoveAt(i);
-                    _freed++;
-
+                   
+                    _freed +=1;
+                    HUD.Moses();
                     Player.plXP += 10;
                     Buffs.IncreaseATK(0);
                     Buffs.IncreaseMaxHealth(0);
                     Treasure._gold += 4;
-                    Console.SetCursorPosition(Program.player._x, Program.player._y);
-                    Console.Write(" ");
-                    HUD.Moses();
-                    break;
-        
+
+                    _prisonerLocations.RemoveAt(i);
                 }
             }
         }
