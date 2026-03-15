@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void MoveEnemy(Enemy enmy)
         {
-            Thread.Sleep(125);
+            Thread.Sleep(40);
             int nextX = enmy._x;
             int nextY = enmy._y;
             Random _rando = new Random();
@@ -60,7 +60,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void MoveTowards(Enemy enemyRiders)
         {
           
-            Thread.Sleep(75);
+            Thread.Sleep(20);
 
             int nextX = enemyRiders._x;
             int nextY = enemyRiders._y;
