@@ -35,7 +35,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
 
             char targetTile = Program.map._mapsCurrent[y][x];
-            char[] forbiddenTiles = { '#', 'w', '%','|'};//, 'S', '$', '&', 'O', 'H', '@', '!','*'
+            char[] forbiddenTiles = { '#', 'w', '%','|', 'M', '-', '+' };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
             {
                 return true;
@@ -116,7 +116,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
-            enemies.Add(new Enemy("testo", 4, 11, 0, '▓', 1, ConsoleColor.DarkGray));
+            enemies.Add(new Enemy("testo", 2, 9, 0, '▓', 1, ConsoleColor.DarkGray));
 
             Console.SetCursorPosition(60, 0);
             Console.WriteLine("enemies added to  list");
