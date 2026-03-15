@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
@@ -24,7 +25,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             int nextX =_x + X;
             int nextY = _y + Y;
-
+            Thread.Sleep(5);
 
             bool hitEnemy = false;
             foreach (var enmy in Program.enemies)  // back in programs   possible rename check enemy colisions
@@ -38,16 +39,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                     HUD.combat();
 
-                    //Console.ForegroundColor = ConsoleColor.Red;
-                    //Console.SetCursorPosition(60, 14);
-                    //Console.WriteLine($" {enmy._name} takes {_attack} points of combat damage");
-                    //Console.SetCursorPosition(60, 15);
-                    //Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    //Console.ForegroundColor = ConsoleColor.DarkRed;
-                    //Console.SetCursorPosition(60, 17);
-                    //Console.WriteLine($" {_name} takes {enmy._attack} points of combat damage");
-                    //Console.SetCursorPosition(60, 18);
-                    //Console.WriteLine($" {_name} has {_health} health...");
+                   
 
                     if (_health <= 0 || enmy._health <= 0)
                     {

@@ -13,7 +13,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         
         
         
-        static int xp = 0;
+      //  static int xp = 0;
         static int level = 1;
         static Random randomATK = new Random();
         static Random randomXP = new Random();

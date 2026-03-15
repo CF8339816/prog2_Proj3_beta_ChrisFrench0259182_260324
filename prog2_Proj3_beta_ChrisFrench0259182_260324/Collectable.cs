@@ -32,10 +32,5 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
              _min_max_y = min_max_y;    
         }
 
-
-
-
-
-
     }
 }

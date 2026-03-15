@@ -24,8 +24,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static bool isPlaying = true;
 
-        public static int nextX;
-        public static int nextY;
+        //public static int nextX;
+        //public static int nextY;
 
       
         public static bool isAlly = false; //sets bool to check for other allies in movement path
@@ -40,24 +40,68 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
 
             Console.CursorVisible = false;
-            map.DrawMap();  
+            map.DrawMap();
+
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("map drawn");
+            Console.ReadKey(true);
+
+
             MyEvents.MapCheck();
+
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("map checked");
+            Console.ReadKey(true);
+
             HUD.Instructions();
-            CollectSpawner.DrawCollectables();
+
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("instructions written");
+            Console.ReadKey(true);
+
+            //CollectSpawner.DrawCollectables();
+            Treasure.treasure_min_max_x = (8, 46);
+            Treasure.treasure_min_max_y = (8, 21);
+            Treasure.DrawGold();
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("gold drawn");
+            Console.ReadKey(true);
+
+            Captive._prisoner_min_max_x = (8, 46);
+            Captive._prisoner_min_max_y = (8, 21);
+
+            //Captive.DrawPrisoner();
+
+
+            //    Console.SetCursorPosition(60, 0);
+            //    Console.WriteLine("prisoner drawn");
+            //    Console.ReadKey(true);
+
+           
             enemies.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
             enemies.Add(new Enemy("testo", 4, 10, 0, '☻', 1, ConsoleColor.Cyan));
 
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("enemies added to  list");
+            Console.ReadKey(true);
 
 
+            //GameManager.PlayGame();
             while (isPlaying)
             {
-                player._name = Name;
-                player._attack = plaAtkUP;
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("Loop running");
+                //Console.ReadKey(true);
 
-            
+
+                player._name =Name;
+                player._attack =plaAtkUP;
+              
+
+
 
                 int plX = 0, plY = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
@@ -72,9 +116,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.S) plY = 1;
 
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
-            
-                player.Move(plX, plY);
-               
+
+               player.Move(plX, plY);
+
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("Player Move");
+              //  Console.ReadKey(true);
+                Treasure.CheckTreasureCollection();
+               // Captive.CheckCapCollection();
 
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
@@ -90,18 +139,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.SetCursorPosition(enemies[i]._x, enemies[i]._y);
                         WriteTileWithColor(map._mapsCurrent[enemies[i]._y][enemies[i]._x]);
                         enemies.RemoveAt(i);
-                       
+
                     }
-                    Enemy.MoveEnemy(enemies[i]);
+                    else
+                    {
+                        Enemy.MoveEnemy(enemies[i]);
+                    }
                 }
-               
-                    DrawEntities();
-           
+
+                DrawEntities();
 
                 HUD.plStats();
 
-
             }
+
+
             if ((map._mapsCurrent[player._y][player._x] == 'X') || (player._health == 0))
             {
                 if (player._health == 0)
@@ -158,6 +210,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
+
+
+
+
+
+       
     }
 
 }
