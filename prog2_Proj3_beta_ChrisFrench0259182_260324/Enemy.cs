@@ -40,9 +40,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
-            if (Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && (nextX != Program.player._x || nextY != Program.player._y) && targetTile != 'w' && targetTile != '#')
-
-            {
+            //if (Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && (nextX != Program.player._x || nextY != Program.player._y) && targetTile != 'w' && targetTile != '#')
+                if (!Program.IsTileOccupied(nextX, nextY))
+                           {
                 Console.SetCursorPosition(enmy._x, enmy._y);
                 Console.Write(" ");
 

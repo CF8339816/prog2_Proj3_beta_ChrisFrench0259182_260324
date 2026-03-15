@@ -17,12 +17,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int _prisoner_y_pos;
         public static (int, int) _prisoner_min_max_x = (8, 46);
         public static (int, int) _prisoner_min_max_y = (8, 21);
-        public static int _freed = 0;
+        public static int _freed;
        
         public static List<(int x, int y)> _prisonerLocations = new List<(int, int)>();
 
 
-        public Captive(string Name, int x, int y, int count, char symbol, int output, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 8, symbol: 'S', output: _freed, ConsoleColor.White, min_max_x, min_max_y)
+        public Captive(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 8, symbol: 'S', ConsoleColor.White, min_max_x, min_max_y)
         {
             Name = "hostage";
             _prisonerCount = count;
@@ -60,15 +60,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                         capSpawnX = _prisonerSpawn.Next(_prisoner_min_max_x.Item1, _prisoner_min_max_x.Item2 + 1);///
                         capSpawnY = _prisonerSpawn.Next(_prisoner_min_max_y.Item1, _prisoner_min_max_y.Item2 + 1);///
-                        //char targetTile = Program.map._mapsCurrent[_prisoner_x_pos][_prisoner_y_pos];///
-                        //char[] forbiddenTiles = { '#', 'w', '%', 'S', '$', '&', 'O', 'H', '@', '!', '*' };
-                        //bool isForbidden = Array.Exists(forbiddenTiles, t => t == targetTile);
+                 
 
-                        //Console.SetCursorPosition(60, 1);
-                        //Console.WriteLine($"map tile referenced {targetTile}");
-                        //Console.ReadKey(true);
-
-                        if (Program.IsTileOccupied(capSpawnX, capSpawnY))///
+                        if (!Program.IsTileOccupied(capSpawnX, capSpawnY))///
                         {
                             if (capSpawnX != Program.player._x || capSpawnY != Program.player._y)///
                             {
@@ -96,7 +90,29 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void CheckCapCollection()
         {
             // Check if player is standing on any prisoner's location
-            for (int i = 0; i < _prisonerLocations.Count; i++)
+
+        //      public static void CheckTreasureCollection()
+        //{
+            //if (Program.player._x == treasure_x_pos && Program.player._y == treasure_y_pos)// Check if player is on the treasure tile
+            //{
+
+            //for (int i = activeGoldPiles.Count - 1; i >= 0; i--)
+            //{
+            //    if (Program.player._x == activeGoldPiles[i].x && Program.player._y == activeGoldPiles[i].y)
+            //    {
+            //        loot = _lootRando.Next(15, 35);
+            //        _gold += loot;
+            //        HUD.Looter();
+
+
+            //        activeGoldPiles.RemoveAt(i);// remove picked up loot pile
+
+            //    }
+            //}
+
+
+            for (int i = _prisonerLocations.Count - 1; i >= 0; i--)
+               // for (int i = 0; i < _prisonerLocations.Count; i++)
             {
               
                 if (Program.player._x == _prisonerLocations[i].x && Program.player._y == _prisonerLocations[i].y)
