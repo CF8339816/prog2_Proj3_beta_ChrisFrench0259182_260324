@@ -29,8 +29,42 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
       
         public static bool isAlly = false; //sets bool to check for other allies in movement path
+        public static bool IsTileOccupied(int x, int y)
+        {
 
-       
+            // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
+
+            char targetTile = Program.map._mapsCurrent[y][x];
+            char[] forbiddenTiles = { '#', 'w', '%', 'S', '$', '&', 'O', 'H', '@', '!', '*' };
+            if (Array.Exists(forbiddenTiles, t => t == targetTile))
+            {
+                return true;
+            }
+
+            // Check if player  is there
+            if (x == Program.player._x && y == Program.player._y)
+            {
+                return true;
+            }
+            // check for enemmies
+            if (Program.enemies.Any(enmy => enmy._x == x && enmy._y == y))
+            {
+                return true;
+            }
+            // Check for gold spawn
+            if (Treasure.activeGoldPiles.Any(g => g.x == x && g.y == y))
+            {
+                return true;
+            }
+            // Check there is already a captive there
+            if (Captive._prisonerLocations.Any(p => p.x == x && p.y == y))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         public static void Main(string[] args)
         {
@@ -59,7 +93,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine("instructions written");
             Console.ReadKey(true);
 
-            //CollectSpawner.DrawCollectables();
+            
             Treasure.treasure_min_max_x = (8, 46);
             Treasure.treasure_min_max_y = (8, 21);
             Treasure.DrawGold();
@@ -70,12 +104,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Captive._prisoner_min_max_x = (8, 46);
             Captive._prisoner_min_max_y = (8, 21);
 
-            //Captive.DrawPrisoner();
+            Captive.DrawPrisoner();
 
 
-            //    Console.SetCursorPosition(60, 0);
-            //    Console.WriteLine("prisoner drawn");
-            //    Console.ReadKey(true);
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("prisoner drawn");
+                Console.ReadKey(true);
 
            
             enemies.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));

@@ -37,7 +37,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
-
+       
 
         public static void DrawPrisoner()
         {
@@ -60,15 +60,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                         capSpawnX = _prisonerSpawn.Next(_prisoner_min_max_x.Item1, _prisoner_min_max_x.Item2 + 1);///
                         capSpawnY = _prisonerSpawn.Next(_prisoner_min_max_y.Item1, _prisoner_min_max_y.Item2 + 1);///
-                        char targetTile = Program.map._mapsCurrent[_prisoner_x_pos][_prisoner_y_pos];///
-                        char[] forbiddenTiles = { '#', 'w', '%', 'S', '$', '&', 'O', 'H', '@', '!', '*' };
-                        bool isForbidden = Array.Exists(forbiddenTiles, t => t == targetTile);
+                        //char targetTile = Program.map._mapsCurrent[_prisoner_x_pos][_prisoner_y_pos];///
+                        //char[] forbiddenTiles = { '#', 'w', '%', 'S', '$', '&', 'O', 'H', '@', '!', '*' };
+                        //bool isForbidden = Array.Exists(forbiddenTiles, t => t == targetTile);
 
                         //Console.SetCursorPosition(60, 1);
                         //Console.WriteLine($"map tile referenced {targetTile}");
                         //Console.ReadKey(true);
 
-                        if (Program.map.CanMoveTo(capSpawnX, capSpawnY) && !isForbidden)///
+                        if (Program.IsTileOccupied(capSpawnX, capSpawnY))///
                         {
                             if (capSpawnX != Program.player._x || capSpawnY != Program.player._y)///
                             {
