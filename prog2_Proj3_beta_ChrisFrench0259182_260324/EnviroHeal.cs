@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class EnviroHeals : Adjustors
+    public class EnviroHeal : Adjustors
     {
 
         public static int _healing;
 
-        public EnviroHeals(string Name, char symbol, int output, ConsoleColor color) : base(Name, symbol: 'w', output: _healing, ConsoleColor.DarkCyan)
+        public EnviroHeal(string Name, char symbol, int output, ConsoleColor color) : base(Name, symbol: 'w', output: _healing, ConsoleColor.DarkCyan)
         {
 
             Name = "Spring Water";
@@ -26,9 +26,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (Program.map._mapsCurrent[Program.player._y][Program.player._x] == 'w')// applies spring water healing
                 {
                     Program.player._health += 20;
-                    if (Program.player._health > Player.plMaxHP)
+                    if (Program.player._health > Program.plaMaxHP)
                     {
-                    Program.player._health = Player.plMaxHP;
+                    Program.player._health = Program.plaMaxHP;
                     }
                      Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.SetCursorPosition(60, 11);

@@ -126,20 +126,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
 
-        //public void DrawFullMap()
-        //{
-        //    Console.Clear();
-        //    for (int y = 0; y < _mapsCurrent.Length; y++)
-        //    {
-        //        foreach (char tile in _mapsCurrent[y])
-        //        {
-        //            SetTileColor(tile);
-        //            Console.Write(tile);
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //    Console.ResetColor();
-        //}
         public void DrawTileAt(int x, int y)// redrawsorigional  map when tile isvacated by  player or enemy.
         {
             if (y < 0 || y >= _mapsCurrent.Length || x < 0 || x >= _mapsCurrent[y].Length) return;

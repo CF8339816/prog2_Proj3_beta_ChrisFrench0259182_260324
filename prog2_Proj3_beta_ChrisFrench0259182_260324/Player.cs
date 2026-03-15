@@ -55,6 +55,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         {
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             enmy._health = 0;
+                            plXP += 15;
+
                             Console.SetCursorPosition(60, 21);
                             Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                             Program.isPlaying = true;

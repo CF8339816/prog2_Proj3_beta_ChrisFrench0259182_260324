@@ -10,9 +10,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     class GameManager
     {
 
-        public static LoadMap map = new LoadMap();
+      //  public static LoadMap map = new LoadMap();
 
-        public static bool isPlaying = true;
+       // public static bool isPlaying = true;
         public GameManager()
 
         {

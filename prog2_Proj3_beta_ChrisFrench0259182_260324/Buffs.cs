@@ -36,7 +36,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (Player.plXP >= (level * 100)) // defines level of xp where level will increase
             {
                 level++; //increases level by 1
-                Player.plMaxHP += 10;
+                Program.plaMaxHP += 10;
                 Program.plaAtkUP += 5;
 
             }
@@ -60,7 +60,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             int upHpMax = randomATK.Next(2, 5);
 
             HpMax = upHpMax; //randomizes attack power up
-            Player.plMaxHP += HpMax; //modifies adds attack buff to attack power
+            Program.plaMaxHP += HpMax; //modifies adds attack buff to attack power
 
 
         }

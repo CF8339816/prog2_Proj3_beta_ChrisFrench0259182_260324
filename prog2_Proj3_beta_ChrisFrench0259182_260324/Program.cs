@@ -35,7 +35,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
 
             char targetTile = Program.map._mapsCurrent[y][x];
-            char[] forbiddenTiles = { '#', 'w', '%',  '*' };//'S', '$', '&', 'O', 'H', '@', '!',
+            char[] forbiddenTiles = { '#', 'w', '%'  };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
             {
                 return true;
@@ -116,7 +116,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
-            enemies.Add(new Enemy("testo", 3, 10, 0, '☺', 1, ConsoleColor.DarkGray));
+            enemies.Add(new Enemy("testo", 10, 3, 0, '▓', 1, ConsoleColor.DarkGray));
 
             Console.SetCursorPosition(60, 0);
             Console.WriteLine("enemies added to  list");
@@ -155,10 +155,32 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 Console.SetCursorPosition(60, 0);
                 Console.WriteLine("Player Move");
-              //  Console.ReadKey(true);
+                //Console.ReadKey(true);
+                //LoadMap.(int x, int y) ? MapChanger(int x, int y);
+                var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
+
+                if (newSpawn.HasValue) //changes maps if triggers are found
+                {
+                    // sets player position to new spawn point 
+                    player._x = newSpawn.Value.x;
+                    player._y = newSpawn.Value.y;
+
+
+                    //Treasure.DrawGold();
+                    // Captive.DrawPrisoner();
+                }
+
+
+
+
+
+
+
+
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
-
+                EnviroHeal.SpringWatterHealling();
+                EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
                     isPlaying = false;
