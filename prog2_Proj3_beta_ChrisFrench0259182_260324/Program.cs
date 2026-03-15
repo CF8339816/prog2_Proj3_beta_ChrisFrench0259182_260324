@@ -35,7 +35,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
 
             char targetTile = Program.map._mapsCurrent[y][x];
-            char[] forbiddenTiles = { '#', 'w', '%'  };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
+            char[] forbiddenTiles = { '#', 'w', '%','|'};//, 'S', '$', '&', 'O', 'H', '@', '!','*'
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
             {
                 return true;
