@@ -25,7 +25,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             int nextX =_x + X;
             int nextY = _y + Y;
-            Thread.Sleep(0);
+           // Thread.Sleep(0);
 
             bool hitEnemy = false;
             foreach (var enmy in Program.enemies)  // back in programs   possible rename check enemy colisions
@@ -34,6 +34,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 {
 
                     Console.Beep(800, 50);
+                    Console.SetCursorPosition(nextX, nextY);///
+                    Console.BackgroundColor = ConsoleColor.Yellow;///
+                    Console.ResetColor();///
                     enmy._health -=_attack;
                    _health -= enmy._attack;
 
@@ -62,7 +65,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Program.isPlaying = true;
                         }
                     }
-
+                    break;///
                 }
             }
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
@@ -74,94 +77,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 _x = nextX;// allowed to move here 
                 _y = nextY;
 
-                #region//old working treasure, healing, lava and captives just in case
-                //if ((_x, _y) == (Treasure.treasure_x_pos, Treasure.treasure_y_pos))// applies lootable gold 
-                //{
-                //    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                //    Treasure._gold += Treasure.loot;
-                //    Console.SetCursorPosition(60, 5);
-                //    Console.WriteLine($" {_name} loots {Treasure.loot} amounts of golds! ");
-                //    Console.SetCursorPosition(60, 6);
-                //    Console.WriteLine($"{_name} now has {Treasure._gold} gold...woooo!");
-                //    Treasure._goldTreasure = true;
-                //    //
-                //    Treasure.DrawGold();
-                //}
-
-
-                //if (Captive._prisonerLocations.Contains((_x, _y)))
-                //{
-                //    //Console.ForegroundColor = ConsoleColor.Gray;
-
-
-                //    Captive._captives += 1;
-                //    Treasure.loot += 3;
-
-                //    Program.player._attack += 2;
-                //    Captive._prisonerLocations.Remove((_x, _y));
-
-                //    Console.SetCursorPosition(60, 4);
-                //    Console.WriteLine($"{_name} has freed a captive... Good Job!");
-
-                //   // Captive.DrawPrisoner();
-                //}
-
-
-
-
-                //if (Program.map._mapsCurrent[_y][_x] == 'w')// applies spring water healing
-                //{
-                //    _health += 20;
-                //    if (_health > plMaxHP)
-                //    {
-                //        _health = plMaxHP;
-                //    }
-                //    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                //    Console.SetCursorPosition(60, 11);
-                //    Console.WriteLine($"{_name} Finds cool refreshing sparkling mineral");
-                //    Console.SetCursorPosition(60, 12);
-                //    Console.WriteLine($" water and is healed for 20 pts {_name} now has {_health} HP");
-                //}
-
-                //if (Program.map._mapsCurrent[_y][_x] == '%')// applies lava damage 
-                //{
-                //    _health = _health - 30;
-
-                //    if (_health < 0)
-                //    {
-                //        _health = 0;
-                //    }
-                //    Console.ForegroundColor = ConsoleColor.Red;
-                //    Console.SetCursorPosition(60, 8);
-                //    Console.WriteLine($" {_name} takes 30 points of lava damage");
-                //    Console.SetCursorPosition(60, 9);
-                //    Console.WriteLine($" {_name} now has {_health} HP");
-                //    if (_health == 0)
-                //    {
-                //        Program.isPlaying = false;
-                //    }
-                //}
-                ////>>>>>>>>>>>>>>>>
-                //if ((Program.map._mapsCurrent[_y][_x] == '@') || (Program.map._mapsCurrent[_y][_x] == '*'))//portal forward and backward throught the maps  
-                //{
-                //    var spawnPoint LoadMap.MapChanger(x, y);// should be looking for the reverse symbol so that you spawn at the entrance if going through the exit and the exit if you leave throught the entrance
-                //}
-                #endregion
-
-
             }
-
 
         }
 
-
     }
-
-
-
-      
-
-
+    
 }
 
 

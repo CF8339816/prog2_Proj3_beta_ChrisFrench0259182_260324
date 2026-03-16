@@ -117,7 +117,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
-            enemies.Add(new Enemy("testo", 2, 9, 0, '▓', 1, ConsoleColor.DarkGray));
+        
 
             Console.SetCursorPosition(60, 0);
             Console.WriteLine("enemies added to  list");
@@ -135,9 +135,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 player._name =Name;
                 player._attack =plaAtkUP;
               
-
-
-
                 int plX = 0, plY = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
                 // move player with W,A,S,D or optional arrow keys 
@@ -171,13 +168,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     // Captive.DrawPrisoner();
                 }
 
-
-
-
-
-
-
-
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
                 EnviroHeal.SpringWatterHealling();
@@ -205,7 +195,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
                 DrawEntities();
-
+                Thread.Sleep(20);///
                 HUD.plStats();
 
             }

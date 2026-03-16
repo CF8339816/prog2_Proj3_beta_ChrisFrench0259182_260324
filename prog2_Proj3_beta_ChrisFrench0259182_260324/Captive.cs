@@ -106,7 +106,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Buffs.IncreaseMaxHealth(0);
                     Treasure._gold += 4;
 
-                    _prisonerLocations.RemoveAt(i);
+                   
                 }
             }
         }

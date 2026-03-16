@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void MoveEnemy(Enemy enmy)
         {
-            Thread.Sleep(40);
+            //Thread.Sleep(40);
             int nextX = enmy._x;
             int nextY = enmy._y;
             Random _rando = new Random();
@@ -41,7 +41,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
             //if (Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && (nextX != Program.player._x || nextY != Program.player._y) && targetTile != 'w' && targetTile != '#')
-                if (!Program.IsTileOccupied(nextX, nextY))
+                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
                            {
                 Console.SetCursorPosition(enmy._x, enmy._y);
                 Console.Write(" ");
@@ -60,7 +60,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void MoveTowards(Enemy enemyRiders)
         {
           
-            Thread.Sleep(20);
+           // Thread.Sleep(20);
 
             int nextX = enemyRiders._x;
             int nextY = enemyRiders._y;

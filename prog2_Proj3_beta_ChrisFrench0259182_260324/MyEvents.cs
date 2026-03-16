@@ -6,136 +6,65 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
+
     public class MyEvents
     {
-        public static int i = 1;
         public static List<Enemy> enemyRiderList = new List<Enemy>();
-
-        public  MyEvents()
-        {
-           
-
-        }
-
+        public static bool _ambushTriggered = false;
 
         public static void MapCheck()
         {
+            enemyRiderList.Clear();
+            enemyRiderList.Add(new Enemy("Slasher", 50, 4, 10, 'k', 25, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Crasher", 20, 23, 8, 'k', 20, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Harrier", 15, 12, 12, 'k', 30, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("PackAlphaNasty", 49, 19, 15, 'K', 40, ConsoleColor.DarkRed));
 
-
-            if (Program.map._currentMapIndex == 3)
+            // Only run this logic on Map 3 if not already triggered
+            if (Program.map._currentMapIndex == 3 && !_ambushTriggered)
             {
-                enemyRiderList.Clear();
-                enemyRiderList.Add(new Enemy("Slasher", 50, 4, 10, 'k', 25, ConsoleColor.Red));
-                enemyRiderList.Add(new Enemy("Crasher", 20, 23, 8, 'k', 20, ConsoleColor.Red));
-                enemyRiderList.Add(new Enemy("Harrier", 15, 12, 12, 'k', 30, ConsoleColor.Red));
-                enemyRiderList.Add(new Enemy("PackAlphaNasty", 49, 19, 15, 'K', 40, ConsoleColor.DarkRed));
-                enemyRiderList.Add(new Enemy("watcher", 2, 10, 0, '`', 1, ConsoleColor.DarkGray));
+                // Define your trigger coordinates (example: x:15, y:10)
+                if (Program.player._x <= 15 || Program.player._y <= 10)
+                {
+                    _ambushTriggered = true;
+                    Console.SetCursorPosition(60, 0);
+                    Console.WriteLine("here comes a new challenger");
+                    Console.ReadKey(true);
+                    Console.Beep(); // Audio cue for the ambush
+                    foreach (var enmy in enemyRiderList)
+                    {
+                        if (enmy._health > 0) // Only draw if alive
+                        {
+                            Console.SetCursorPosition(enmy._x, enmy._y);
+                            Console.ForegroundColor = enmy._color;
+                            Console.Write(enmy._symbol);
+                        }
+                    }
 
 
+                    Console.SetCursorPosition(Program.player._x, Program.player._y);
+                    Console.ForegroundColor = Program.player._color;
+                    Console.Write(Program.player._symbol);
+                    Console.ResetColor();
+                }
+            }
+        }
 
-                PlayerRunner playerRunner = new PlayerRunner();
-
-                EnemyRiders enemyRiders = new EnemyRiders(playerRunner);
-
-                playerRunner.playerLocation(Program.player._x, Program.player._y);
+        public static void UpdateRiders()
+        {
+            // Only move riders if the ambush has started
+            if (_ambushTriggered)
+            {
+                foreach (var enemy in enemyRiderList)
+                {
+                    if (enemy._health > 0)
+                    {
+                        Enemy.MoveEnemy(enemy); // Or your MoveTowards method
+                    }
+                }
             }
         }
     }
-
-
-
-
-
-    public class EnemyRiders
-    {
-
-        PlayerRunner _playerRunner;
-
-
-        public EnemyRiders(PlayerRunner playerRunner)
-        {
-            playerRunner._ReachedPos += chasePlayerDown;
-            //player._ReachedPosX += chasePlayerDown;
-            //player._ReachedPosY += chasePlayerDown;
-
-            _playerRunner = playerRunner;
-        }
-
-
-        public void Unsubscribe()
-        {
-            _playerRunner._ReachedPos -= chasePlayerDown;
-        }
-        void chasePlayerDown()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.SetCursorPosition(60, 1);
-            Console.Write($"enemy hears player's escape and is chasing them down");
-            Console.ResetColor();
-
-            foreach (var enemy in MyEvents.enemyRiderList)
-            {
-                Enemy.MoveTowards(enemy);
-            }
-
-
-
-        }
-
-
-    }
-
-    public class PlayerRunner
-    {
-        public int pPx;
-        public int pPy;
-        public int x;
-        public int y;
-
-        public Action _ReachedPos = null;
-        //public Action _ReachedPosY = null;
-        //public Action _ReachedPosX = null;  
-
-        public void playerLocation(int x, int y)
-
-        {
-
-
-            //x = (pPx = 18+i++);
-            _ReachedPos?.Invoke();
-            //_ReachedPosX?.Invoke();
-
-            //y = (pPy = 10 + i++);
-            _ReachedPos?.Invoke();
-            //_ReachedPosY?.Invoke();
-
-
-
-        }
-
-
-
-    }
-
-
 }
-          
-    
-  ///notes about events Action, Invokeand, and Unsubscribe  
-    //Action myAction = null;
 
-
-            ////if (myAction != null)
-            ////{
-            ////    myAction(); 
-            ////}
-            ////else
-            ////{
-            ////    Console.WriteLine("Action Null Could not invoke");
-            ////}
-
-            //myAction?.Invoke();//Above can be written as  
-
-
-           // Console.ReadKey(true);
 
