@@ -17,7 +17,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine("What is your character's name");
             Console.ForegroundColor = ConsoleColor.Blue;
             Program.Name = Console.ReadLine();
-            Console.ResetColor();
+            while (true)
+            {
+                if (Program.Name.Length <= Program.MaxNameLLength) break;
+
+                Console.WriteLine($"Error: Input is too long! please limit to 15 characters({Program.Name.Length}/{Program.MaxNameLLength})");
+             alias();
+            }
+           
+        Console.ResetColor();
         }
 
         public static void combat()

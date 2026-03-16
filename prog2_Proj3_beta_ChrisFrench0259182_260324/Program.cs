@@ -15,6 +15,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     class Program
     {
         public static string Name;
+        public static int MaxNameLLength = 15;
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
         public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue);
