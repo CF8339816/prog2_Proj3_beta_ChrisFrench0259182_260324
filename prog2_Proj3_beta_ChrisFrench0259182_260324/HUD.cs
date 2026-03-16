@@ -47,8 +47,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void plStats()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(60, 1);
+            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} XP: {Player.plXP} Gold:{Treasure._gold}");
             Console.SetCursorPosition(60, 2);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} XP: {Player.plXP} Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
+            Console.WriteLine($"Captives Freed:{Captive._freed}");
             Console.ResetColor();
         }
         public static void plDied()
