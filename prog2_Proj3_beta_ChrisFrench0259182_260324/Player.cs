@@ -18,9 +18,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         }
 
-
-
-
         public void Move(int X, int Y)
         {
             int nextX = _x + X;
@@ -30,10 +27,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             bool hitEnemy = false;
 
             if (Program.map._currentMapIndex == 0)
-                 Treasure.CheckTreasureCollection();
-                 Captive.CheckCapCollection();
+           
 
-                foreach (var enmy in Program.enemiesMap1)  // back in programs   possible rename check enemy colisions
+            foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
                 {
 
                 

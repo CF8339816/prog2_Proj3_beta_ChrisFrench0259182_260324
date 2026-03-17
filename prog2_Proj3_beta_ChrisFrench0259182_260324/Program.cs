@@ -105,10 +105,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
                
                 player.Move(plX, plY);
-                //Treasure.CheckTreasureCollection();
-                //Captive.CheckCapCollection();
+                Treasure.CheckTreasureCollection();
+                Captive.CheckCapCollection();
 
- /*>>>>>>*/
+                /*>>>>>>*/
                 var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
 
                 if (newSpawn.HasValue) //changes maps if triggers are found
@@ -122,8 +122,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 //CollectSpawner.SetupMapAssets();
                 if (Program.map._currentMapIndex < 3)
                 {
-                    Treasure.activeGoldPiles.Clear();
-                    Captive._prisonerLocations.Clear();
+                    //Treasure.activeGoldPiles.Clear();
+                    //Captive._prisonerLocations.Clear();
                     Treasure.DrawGold();
                     Captive.DrawPrisoner();
                   
