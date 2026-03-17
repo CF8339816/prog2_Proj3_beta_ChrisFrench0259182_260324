@@ -118,7 +118,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
         
-
             Console.SetCursorPosition(60, 0);
             Console.WriteLine("enemies added to  list");
             Console.ReadKey(true);
@@ -132,7 +131,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 //Console.ReadKey(true);
 
 
-                player._name =Name;
+               player._name =Name;
                 player._attack =plaAtkUP;
               
                 int plX = 0, plY = 0;
@@ -155,7 +154,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.WriteLine("Player Move");
                 //Console.ReadKey(true);
                 //LoadMap.(int x, int y) ? MapChanger(int x, int y);
-                var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
+ /*>>>>>>*/    var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
 
                 if (newSpawn.HasValue) //changes maps if triggers are found
                 {
@@ -236,7 +235,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
       
 
-        public static void DrawEntities()// draws the player and the enemy symbols/ sprites
+ /*>>>>>>*/ public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
 
             foreach (var enmy in enemies)
