@@ -10,32 +10,24 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class Buffs
     {   
-        
-        
-        
-      //  static int xp = 0;
-        static int level = 1;
+              
         static Random randomATK = new Random();
         static Random randomXP = new Random();
         public Buffs() 
         {
         
         }
-
-
-
         public static void IncreaseXP(int exp) // evil witchcraft
 
         {
           
             int giveXP = randomXP.Next(15, 30);
-
             exp = giveXP; //randomizes exp
             Player.plXP += exp; //modifies xp to be  xp + exp
 
-            if (Player.plXP >= (level * 100)) // defines level of xp where level will increase
+            if (Player.plXP >= (Player.plLevel * 100)) // defines level of xp where level will increase
             {
-                level++; //increases level by 1
+                Player.plLevel++; //increases level by 1
                 Program.plaMaxHP += 10;
                 Program.plaAtkUP += 5;
 
@@ -44,7 +36,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void IncreaseATK(int Atk) // a warlock did it
 
         {
-            
             int upATK = randomATK.Next(2, 5);
 
             Atk = upATK; //randomizes attack power up

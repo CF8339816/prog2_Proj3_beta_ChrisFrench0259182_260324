@@ -11,7 +11,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     {
         public static int plMaxHP = 50;
         public static int plXP = 0;
-        public static int plLevel = 0;
+        public static int plLevel = 1;
         public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: 20, symbol: '!', hp: 50, color: ConsoleColor.Blue)
         {
 

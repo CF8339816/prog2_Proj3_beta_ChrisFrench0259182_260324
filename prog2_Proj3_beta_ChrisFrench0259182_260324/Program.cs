@@ -168,7 +168,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     player._x = newSpawn.Value.x;
                     player._y = newSpawn.Value.y;
 
-                    CollectSpawner.SetupMapAssets();
+                    //CollectSpawner.SetupMapAssets();
                 }
 
                 Treasure.CheckTreasureCollection();
@@ -185,6 +185,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 
                 if (Program.map._currentMapIndex == 0)
                 {
+                    Treasure.activeGoldPiles.Clear();
+                    Captive._prisonerLocations.Clear();
+                    CollectSpawner.SetupMapAssets();
+                    Treasure.CheckTreasureCollection();
+                    Captive.CheckCapCollection();
                     for (int i = enemiesMap1.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap1[i]._health <= 0)
@@ -203,7 +208,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
                 if (Program.map._currentMapIndex == 1)
+
                 {
+                    Treasure.activeGoldPiles.Clear();
+                    Captive._prisonerLocations.Clear();
+                    CollectSpawner.SetupMapAssets();
+                    Treasure.CheckTreasureCollection();
+                    Captive.CheckCapCollection();
                     for (int i = enemiesMap2.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap2[i]._health <= 0)
@@ -222,7 +233,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 }
 
                 if (Program.map._currentMapIndex == 2)
+
                 {
+                    Treasure.activeGoldPiles.Clear();
+                    Captive._prisonerLocations.Clear();
+                    CollectSpawner.SetupMapAssets();
+                    Treasure.CheckTreasureCollection();
+                    Captive.CheckCapCollection();
                     for (int i = enemiesMap3.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap3[i]._health <= 0)
