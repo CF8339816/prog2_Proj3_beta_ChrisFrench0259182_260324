@@ -105,22 +105,29 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
                
                 player.Move(plX, plY);
-               
- /*>>>>>>*/    var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
+                Treasure.CheckTreasureCollection();
+                Captive.CheckCapCollection();
+
+ /*>>>>>>*/
+                var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
 
                 if (newSpawn.HasValue) //changes maps if triggers are found
                 {
                     // sets player position to new spawn point 
                     player._x = newSpawn.Value.x;
                     player._y = newSpawn.Value.y;
+                    Treasure._goldTreasure = true;
+                    Captive._newPrisoner = true;
                 }
                 //CollectSpawner.SetupMapAssets();
-                Treasure.activeGoldPiles.Clear();
-                Captive._prisonerLocations.Clear();
-                Treasure.DrawGold();
-                Captive.DrawPrisoner();
-                Treasure.CheckTreasureCollection();
-                Captive.CheckCapCollection();
+                if (Program.map._currentMapIndex < 3)
+                {
+                    Treasure.activeGoldPiles.Clear();
+                    Captive._prisonerLocations.Clear();
+                    Treasure.DrawGold();
+                    Captive.DrawPrisoner();
+                  
+                }
                 EnviroHeal.SpringWatterHealling();
                 EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
