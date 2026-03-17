@@ -108,9 +108,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Captive._prisoner_min_max_y = (8, 21);
 
             Captive.DrawPrisoner();
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("prisoner drawn");
-                Console.ReadKey(true);
+            Console.SetCursorPosition(60, 0);
+            Console.WriteLine("prisoner drawn");
+            Console.ReadKey(true);
 
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
@@ -349,20 +349,20 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.Write(enmy._symbol);
                     }
                 }
-                Treasure.treasure_min_max_x = (8, 46);
-                Treasure.treasure_min_max_y = (8, 21);
-                Treasure.DrawGold();
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("gold drawn");
-                Console.ReadKey(true);
+                //Treasure.treasure_min_max_x = (8, 46);
+                //Treasure.treasure_min_max_y = (8, 21);
+                //Treasure.DrawGold();
+                //Console.SetCursorPosition(60, 0);
+                //Console.WriteLine("gold drawn");
+                //Console.ReadKey(true);
 
-                Captive._prisoner_min_max_x = (8, 46);
-                Captive._prisoner_min_max_y = (8, 21);
+                //Captive._prisoner_min_max_x = (8, 46);
+                //Captive._prisoner_min_max_y = (8, 21);
 
-                Captive.DrawPrisoner();
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("prisoner drawn");
-                Console.ReadKey(true);
+                //Captive.DrawPrisoner();
+                //Console.SetCursorPosition(60, 0);
+                //Console.WriteLine("prisoner drawn");
+                //Console.ReadKey(true);
             }
             if (Program.map._currentMapIndex == 2)
             {
@@ -375,20 +375,20 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.Write(enmy._symbol);
                     }
                 }
-                Treasure.treasure_min_max_x = (8, 46);
-                Treasure.treasure_min_max_y = (8, 21);
-                Treasure.DrawGold();
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("gold drawn");
-                Console.ReadKey(true);
+                //Treasure.treasure_min_max_x = (8, 46);
+                //Treasure.treasure_min_max_y = (8, 21);
+                //Treasure.DrawGold();
+                //Console.SetCursorPosition(60, 0);
+                //Console.WriteLine("gold drawn");
+                //Console.ReadKey(true);
 
-                Captive._prisoner_min_max_x = (8, 46);
-                Captive._prisoner_min_max_y = (8, 21);
+                //Captive._prisoner_min_max_x = (8, 46);
+                //Captive._prisoner_min_max_y = (8, 21);
 
-                Captive.DrawPrisoner();
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("prisoner drawn");
-                Console.ReadKey(true);
+                //Captive.DrawPrisoner();
+                //Console.SetCursorPosition(60, 0);
+                //Console.WriteLine("prisoner drawn");
+                //Console.ReadKey(true);
             }
             
                   if (Program.map._currentMapIndex == 3)
