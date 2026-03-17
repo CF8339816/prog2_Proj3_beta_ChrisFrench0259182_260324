@@ -87,20 +87,20 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine("instructions written");
             Console.ReadKey(true);
 
-            Treasure.treasure_min_max_x = (8, 46);
-            Treasure.treasure_min_max_y = (8, 21);
-            Treasure.DrawGold();
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("gold drawn");
-            Console.ReadKey(true);
+            //Treasure.treasure_min_max_x = (8, 46);
+            //Treasure.treasure_min_max_y = (8, 21);
+            //Treasure.DrawGold();
+            //Console.SetCursorPosition(60, 0);
+            //Console.WriteLine("gold drawn");
+            //Console.ReadKey(true);
 
-            Captive._prisoner_min_max_x = (8, 46);
-            Captive._prisoner_min_max_y = (8, 21);
+            //Captive._prisoner_min_max_x = (8, 46);
+            //Captive._prisoner_min_max_y = (8, 21);
 
-            Captive.DrawPrisoner();
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("prisoner drawn");
-            Console.ReadKey(true);
+            //Captive.DrawPrisoner();
+            //Console.SetCursorPosition(60, 0);
+            //Console.WriteLine("prisoner drawn");
+            //Console.ReadKey(true);
 
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
@@ -108,26 +108,26 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemiesMap1.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemiesMap1.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
 
-            enemiesMap1.Clear();
-            enemiesMap1.Add(new Enemy("Gnolie",33, 14, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap1.Add(new Enemy("Gnawlie", 26, 26, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap1.Add(new Enemy("ZugZug", 25, 23, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemy("Boss Gobstomper", 39, 21, 15, 'G', 40, ConsoleColor.DarkRed));
+            enemiesMap2.Clear();
+            enemiesMap2.Add(new Enemy("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemy("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemy("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap2.Add(new Enemy("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
 
-            enemiesMap1.Clear();
-            enemiesMap1.Add(new Enemy("Bammo", 40, 14, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemy("Slammo", 28, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemy("Ogrelet", 11, 17, 20, 'Q', 60, ConsoleColor.Yellow));
-            enemiesMap1.Add(new Enemy("Boss Drowkus", 44, 22, 25, 'D', 80, ConsoleColor.DarkMagenta));
+            enemiesMap3.Clear();
+            enemiesMap3.Add(new Enemy("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemy("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemy("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
+            enemiesMap3.Add(new Enemy("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
 
             enemyRiderList.Clear();
-            enemyRiderList.Add(new Enemy("Slasher", 55, 14, 10, 'k', 25, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Crasher", 23, 28, 8, 'k', 20, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Harrier", 12, 15, 12, 'k', 30, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("PackAlphaNasty", 42, 15, 15, 'K', 40, ConsoleColor.DarkRed));
+            enemyRiderList.Add(new Enemy("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
 
             Console.SetCursorPosition(60, 0);
-            Console.WriteLine("enemies added to  list");
+            Console.WriteLine("enemies added to lists");
             Console.ReadKey(true);
 
             //GameManager.PlayGame();
@@ -168,6 +168,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     player._x = newSpawn.Value.x;
                     player._y = newSpawn.Value.y;
 
+                    CollectSpawner.SetupMapAssets();
                 }
 
                 Treasure.CheckTreasureCollection();
@@ -179,6 +180,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     isPlaying = false;
                     continue; //skips past rest
                 }
+             
+                
+                
                 if (Program.map._currentMapIndex == 0)
                 {
                     for (int i = enemiesMap1.Count - 1; i >= 0; i--)
@@ -254,7 +258,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         }
                     }
                 }
-
+              
                 DrawEntities();
                 Thread.Sleep(20);///
                 HUD.plStats();
