@@ -9,16 +9,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
     public class MyEvents
     {
-        public static List<Enemy> enemyRiderList = new List<Enemy>();
+       
         public static bool _ambushTriggered = false;
 
         public static void MapCheck()
         {
-            enemyRiderList.Clear();
-            enemyRiderList.Add(new Enemy("Slasher", 50, 4, 10, 'k', 25, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Crasher", 20, 23, 8, 'k', 20, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Harrier", 15, 12, 12, 'k', 30, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("PackAlphaNasty", 49, 19, 15, 'K', 40, ConsoleColor.DarkRed));
+            
 
             // Only run this logic on Map 3 if not already triggered
             if (Program.map._currentMapIndex == 3 && !_ambushTriggered)
@@ -31,7 +27,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Console.WriteLine("here comes a new challenger");
                     Console.ReadKey(true);
                     Console.Beep(); // Audio cue for the ambush
-                    foreach (var enmy in enemyRiderList)
+                    foreach (var enmy in Program.enemyRiderList)
                     {
                         if (enmy._health > 0) // Only draw if alive
                         {
@@ -55,7 +51,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // Only move riders if the ambush has started
             if (_ambushTriggered)
             {
-                foreach (var enemy in enemyRiderList)
+                foreach (var enemy in Program.enemyRiderList)
                 {
                     if (enemy._health > 0)
                     {

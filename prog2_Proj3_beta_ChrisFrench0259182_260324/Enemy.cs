@@ -29,7 +29,32 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             nextY = nextRandY;
 
 
-            foreach (Enemy other in Program.enemies)
+            foreach (Enemy other in Program.enemiesMap1)
+            {
+                if (other != enmy && nextX == other._x && nextY == other._y)
+                {
+                    Program.isAlly = true;
+                    break;
+                }
+            }
+            foreach (Enemy other in Program.enemiesMap2)
+            {
+                if (other != enmy && nextX == other._x && nextY == other._y)
+                {
+                    Program.isAlly = true;
+                    break;
+                }
+            }
+            foreach (Enemy other in Program.enemiesMap3)
+            {
+                if (other != enmy && nextX == other._x && nextY == other._y)
+                {
+                    Program.isAlly = true;
+                    break;
+                }
+            }
+
+            foreach (Enemy other in Program.enemyRiderList)
             {
                 if (other != enmy && nextX == other._x && nextY == other._y)
                 {
@@ -40,14 +65,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
-            //if (Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && (nextX != Program.player._x || nextY != Program.player._y) && targetTile != 'w' && targetTile != '#')
-                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
-                           {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                Console.Write(" ");
+            if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
+            {
+            Console.SetCursorPosition(enmy._x, enmy._y);
+            Console.Write(" ");
 
-                enmy._x = nextX;
-                enmy._y = nextY;
+            enmy._x = nextX;
+            enmy._y = nextY;
             }
             else
             {
@@ -59,8 +83,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
          //public static void MoveTowards(Program.player._x, Program.player._y)
         public static void MoveTowards(Enemy enemyRiders)
         {
-          
-           // Thread.Sleep(20);
+           
+            // Thread.Sleep(20);
 
             int nextX = enemyRiders._x;
             int nextY = enemyRiders._y;
@@ -75,7 +99,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
           
             bool isPathBlockedByEnemy = false;
-            foreach (Enemy other in MyEvents.enemyRiderList) 
+            foreach (Enemy other in Program.enemyRiderList) 
             {
                 if (other != enemyRiders && nextX == other._x && nextY == other._y)
                 {
@@ -86,8 +110,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
-            if (!isPathBlockedByEnemy &&
-                Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '^' && targetTile != 'w' && targetTile != 'M' && (nextX != Program.player._x || nextY != Program.player._y))
+            if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '^' && targetTile != 'w' && targetTile != 'M' && (nextX != Program.player._x || nextY != Program.player._y))
             {
              
                 Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);

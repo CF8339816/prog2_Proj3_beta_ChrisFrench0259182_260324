@@ -19,8 +19,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
         public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue);
-        public static List<Enemy> enemies = new List<Enemy>();
-
+        public static List<Enemy> enemiesMap1 = new List<Enemy>();
+        public static List<Enemy> enemiesMap2 = new List<Enemy>();
+        public static List<Enemy> enemiesMap3 = new List<Enemy>();
+        public static List<Enemy> enemyRiderList = new List<Enemy>();
         public static LoadMap map = new LoadMap();
 
         public static bool isPlaying = true;
@@ -48,7 +50,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 return true;
             }
             // check for enemmies
-            if (Program.enemies.Any(enmy => enmy._x == x && enmy._y == y))
+            if (Program.enemiesMap1.Any(enmy => enmy._x == x && enmy._y == y))
             {
                 return true;
             }
@@ -106,18 +108,37 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Captive._prisoner_min_max_y = (8, 21);
 
             Captive.DrawPrisoner();
-
-
                 Console.SetCursorPosition(60, 0);
                 Console.WriteLine("prisoner drawn");
                 Console.ReadKey(true);
 
-           
-            enemies.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
-            enemies.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
-            enemies.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemies.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
-        
+            enemiesMap1.Clear();
+            enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+
+            enemiesMap1.Clear();
+            enemiesMap1.Add(new Enemy("Gnolie",33, 14, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap1.Add(new Enemy("Gnawlie", 26, 26, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap1.Add(new Enemy("ZugZug", 25, 23, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemy("Boss Gobstomper", 39, 21, 15, 'G', 40, ConsoleColor.DarkRed));
+
+            enemiesMap1.Clear();
+            enemiesMap1.Add(new Enemy("Bammo", 40, 14, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemy("Slammo", 28, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemy("Ogrelet", 11, 17, 20, 'Q', 60, ConsoleColor.Yellow));
+            enemiesMap1.Add(new Enemy("Boss Drowkus", 44, 22, 25, 'D', 80, ConsoleColor.DarkMagenta));
+
+
+
+            enemyRiderList.Clear();
+            enemyRiderList.Add(new Enemy("Slasher", 55, 14, 10, 'k', 25, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Crasher", 23, 28, 8, 'k', 20, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("Harrier", 12, 15, 12, 'k', 30, ConsoleColor.Red));
+            enemyRiderList.Add(new Enemy("PackAlphaNasty", 42, 15, 15, 'K', 40, ConsoleColor.DarkRed));
+
+
             Console.SetCursorPosition(60, 0);
             Console.WriteLine("enemies added to  list");
             Console.ReadKey(true);
@@ -176,21 +197,92 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     isPlaying = false;
                     continue; //skips past rest
                 }
-                for (int i = enemies.Count - 1; i >= 0; i--)
+                if (Program.map._currentMapIndex == 0)
                 {
-                    if (enemies[i]._health <= 0)
+                
+                    for (int i = enemiesMap1.Count - 1; i >= 0; i--)
                     {
-                        Console.Beep(300, 100);
-                        Console.Beep(200, 150);
-                        Console.SetCursorPosition(enemies[i]._x, enemies[i]._y);
-                        WriteTileWithColor(map._mapsCurrent[enemies[i]._y][enemies[i]._x]);
-                        enemies.RemoveAt(i);
+                        if (enemiesMap1[i]._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(enemiesMap1[i]._x, enemiesMap1[i]._y);
+                            WriteTileWithColor(map._mapsCurrent[enemiesMap1[i]._y][enemiesMap1[i]._x]);
+                            enemiesMap1.RemoveAt(i);
 
+                        }
+                        else
+                        {
+                            Enemy.MoveEnemy(enemiesMap1[i]);
+                        }
                     }
-                    else
+
+                }
+
+                if (Program.map._currentMapIndex == 1)
+                {
+
+                    for (int i = enemiesMap2.Count - 1; i >= 0; i--)
                     {
-                        Enemy.MoveEnemy(enemies[i]);
+                        if (enemiesMap2[i]._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(enemiesMap2[i]._x, enemiesMap2[i]._y);
+                            WriteTileWithColor(map._mapsCurrent[enemiesMap2[i]._y][enemiesMap2[i]._x]);
+                            enemiesMap2.RemoveAt(i);
+
+                        }
+                        else
+                        {
+                            Enemy.MoveEnemy(enemiesMap2[i]);
+                        }
                     }
+
+                }
+
+                if (Program.map._currentMapIndex == 2)
+                {
+
+                    for (int i = enemiesMap3.Count - 1; i >= 0; i--)
+                    {
+                        if (enemiesMap3[i]._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(enemiesMap3[i]._x, enemiesMap3[i]._y);
+                            WriteTileWithColor(map._mapsCurrent[enemiesMap3[i]._y][enemiesMap3[i]._x]);
+                            enemiesMap3.RemoveAt(i);
+
+                        }
+                        else
+                        {
+                            Enemy.MoveEnemy(enemiesMap3[i]);
+                        }
+                    }
+
+                }
+
+                if (Program.map._currentMapIndex == 3)
+                {
+
+                    for (int i = enemyRiderList.Count - 1; i >= 0; i--)
+                    {
+                        if (enemyRiderList[i]._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(enemyRiderList[i]._x, enemyRiderList[i]._y);
+                            WriteTileWithColor(map._mapsCurrent[enemyRiderList[i]._y][enemyRiderList[i]._x]);
+                            enemyRiderList.RemoveAt(i);
+
+                        }
+                        else
+                        {
+                            Enemy.MoveEnemy(enemyRiderList[i]);
+                        }
+                    }
+
                 }
 
                 DrawEntities();
@@ -206,8 +298,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 {
                     HUD.plDied();
                 }
-
-                if (map._mapsCurrent[player._y][player._x] == 'X')
+              
+                    if (map._mapsCurrent[player._y][player._x] == 'X')
                 {
                      isPlaying = false;
                     HUD.plWin();
@@ -215,8 +307,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
             HUD.Farewell();
         }
-
-
 
         public static void WriteTileWithColor(char tile) //colours the map tiles and writes them to screen
         {
@@ -233,20 +323,88 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
 
-      
-
  /*>>>>>>*/ public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
-
-            foreach (var enmy in enemies)
+            if (Program.map._currentMapIndex == 0)
             {
-                if (enmy._health > 0) // Only draw if alive
+                foreach (var enmy in enemiesMap1)
                 {
-                    Console.SetCursorPosition(enmy._x, enmy._y);
-                    Console.ForegroundColor = enmy._color;
-                    Console.Write(enmy._symbol);
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
                 }
             }
+
+            if (Program.map._currentMapIndex == 1)
+            {
+                foreach (var enmy in enemiesMap2)
+                {
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
+                }
+                Treasure.treasure_min_max_x = (8, 46);
+                Treasure.treasure_min_max_y = (8, 21);
+                Treasure.DrawGold();
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("gold drawn");
+                Console.ReadKey(true);
+
+                Captive._prisoner_min_max_x = (8, 46);
+                Captive._prisoner_min_max_y = (8, 21);
+
+                Captive.DrawPrisoner();
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("prisoner drawn");
+                Console.ReadKey(true);
+            }
+            if (Program.map._currentMapIndex == 2)
+            {
+                foreach (var enmy in enemiesMap3)
+                {
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
+                }
+                Treasure.treasure_min_max_x = (8, 46);
+                Treasure.treasure_min_max_y = (8, 21);
+                Treasure.DrawGold();
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("gold drawn");
+                Console.ReadKey(true);
+
+                Captive._prisoner_min_max_x = (8, 46);
+                Captive._prisoner_min_max_y = (8, 21);
+
+                Captive.DrawPrisoner();
+                Console.SetCursorPosition(60, 0);
+                Console.WriteLine("prisoner drawn");
+                Console.ReadKey(true);
+            }
+            
+                  if (Program.map._currentMapIndex == 3)
+            {
+                foreach (var enmy in enemyRiderList)
+                {
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
+                }
+            }
+
+
 
 
             Console.SetCursorPosition(player._x, player._y);

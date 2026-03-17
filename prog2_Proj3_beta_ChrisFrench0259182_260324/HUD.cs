@@ -30,7 +30,46 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void combat()
         {
-            foreach (var enmy in Program.enemies)
+            foreach (var enmy in Program.enemiesMap1)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(60, 14);
+                Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                Console.SetCursorPosition(60, 15);
+                Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(60, 17);
+                Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                Console.SetCursorPosition(60, 18);
+                Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+            }
+            foreach (var enmy in Program.enemiesMap2)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(60, 14);
+                Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                Console.SetCursorPosition(60, 15);
+                Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(60, 17);
+                Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                Console.SetCursorPosition(60, 18);
+                Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+            }
+            foreach (var enmy in Program.enemiesMap3)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(60, 14);
+                Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                Console.SetCursorPosition(60, 15);
+                Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(60, 17);
+                Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                Console.SetCursorPosition(60, 18);
+                Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+            }
+            foreach (var enmy in Program.enemyRiderList)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.SetCursorPosition(60, 14);

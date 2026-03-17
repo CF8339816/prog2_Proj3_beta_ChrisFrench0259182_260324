@@ -28,11 +28,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
            // Thread.Sleep(0);
 
             bool hitEnemy = false;
-            foreach (var enmy in Program.enemies)  // back in programs   possible rename check enemy colisions
+
+            if (Program.map._currentMapIndex == 0)
+                foreach (var enmy in Program.enemiesMap1)  // back in programs   possible rename check enemy colisions
             {
                 if (nextX == enmy._x && nextY == enmy._y)
                 {
-
                     Console.Beep(800, 50);
                     Console.SetCursorPosition(nextX, nextY);///
                     Console.BackgroundColor = ConsoleColor.Yellow;///
@@ -41,8 +42,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                    _health -= enmy._attack;
 
                     HUD.combat();
-
-                   
 
                     if (_health <= 0 || enmy._health <= 0)
                     {
@@ -68,6 +67,126 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     break;///
                 }
             }
+
+            if (Program.map._currentMapIndex == 1)
+                foreach (var enmy in Program.enemiesMap2)  // back in programs   possible rename check enemy colisions
+                {
+                    if (nextX == enmy._x && nextY == enmy._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Console.ResetColor();///
+                        enmy._health -= _attack;
+                        _health -= enmy._attack;
+
+                        HUD.combat();
+
+                        if (_health <= 0 || enmy._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (enmy._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                enmy._health = 0;
+                                plXP += 15;
+
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+                        break;///
+                    }
+                }
+
+            if (Program.map._currentMapIndex == 2)
+                foreach (var enmy in Program.enemiesMap3)  // back in programs   possible rename check enemy colisions
+                {
+                    if (nextX == enmy._x && nextY == enmy._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Console.ResetColor();///
+                        enmy._health -= _attack;
+                        _health -= enmy._attack;
+
+                        HUD.combat();
+
+                        if (_health <= 0 || enmy._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (enmy._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                enmy._health = 0;
+                                plXP += 15;
+
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+                        break;///
+                    }
+                }
+            if (Program.map._currentMapIndex == 3)
+                foreach (var enmy in Program.enemyRiderList)  // back in programs   possible rename check enemy colisions
+                {
+                    if (nextX == enmy._x && nextY == enmy._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Console.ResetColor();///
+                        enmy._health -= _attack;
+                        _health -= enmy._attack;
+
+                        HUD.combat();
+
+                        if (_health <= 0 || enmy._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (enmy._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                enmy._health = 0;
+                                plXP += 15;
+
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+                        break;///
+                    }
+                }
+
+
+
+
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
             {
                 Console.SetCursorPosition(_x, _y);
