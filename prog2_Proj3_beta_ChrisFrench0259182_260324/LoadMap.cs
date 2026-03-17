@@ -164,12 +164,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 case 'w': Console.ForegroundColor = ConsoleColor.DarkCyan; Console.BackgroundColor = ConsoleColor.Blue; break; 
                 case '^': Console.ForegroundColor = ConsoleColor.Green; Console.BackgroundColor = ConsoleColor.Yellow; break; 
                 case ',': Console.ForegroundColor = ConsoleColor.DarkYellow; Console.BackgroundColor = ConsoleColor.Yellow; break; 
-                case 'M': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.DarkGray; break; 
-                case '.': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break;
-                case '{': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.Black; break;
-                case '}': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.Black; break;
-                case '[': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
-                case ']': Console.ForegroundColor = ConsoleColor.Gray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
+                case 'M': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break; 
+                case '.': Console.ForegroundColor = ConsoleColor.Red; Console.BackgroundColor = ConsoleColor.DarkGray; break;
+                case '{': Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; break;
+                case '}': Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; break;
+                case '[': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break;
+                case ']': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break;
                 case 'X': Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; break;
                 case '`': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
                 default: Console.ForegroundColor = ConsoleColor.Black; Console.BackgroundColor = ConsoleColor.Black; break;

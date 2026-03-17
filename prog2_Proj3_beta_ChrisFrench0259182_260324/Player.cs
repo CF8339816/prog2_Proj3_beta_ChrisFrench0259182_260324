@@ -9,15 +9,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class Player : Character
     {
-        public static int plMaxHP = 50;
+        //public static int plMaxHP = 50;
         public static int plXP = 0;
-        public static int plLevel = 1;
-        public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: 20, symbol: '!', hp: 50, color: ConsoleColor.Blue)
+        public static int plLevel = 0;
+        public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: Program.plaAtkUP, symbol: '!', hp: Program.plaMaxHP, color: ConsoleColor.Blue)
         {
 
 
         }
-
+     
 
 
 
@@ -58,7 +58,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             enmy._health = 0;
                             plXP += 15;
-
+                            Buffs.IncreaseXP(0);
+                            Treasure._gold += 5;
                             Console.SetCursorPosition(60, 21);
                             Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                             Program.isPlaying = true;
@@ -97,7 +98,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                 enmy._health = 0;
                                 plXP += 15;
-
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 6;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
@@ -136,7 +138,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                 enmy._health = 0;
                                 plXP += 15;
-
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 8;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
@@ -174,7 +177,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                 enmy._health = 0;
                                 plXP += 15;
-
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 4;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;

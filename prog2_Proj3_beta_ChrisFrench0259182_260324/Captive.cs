@@ -36,9 +36,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             _prisoner_min_max_y = min_max_y;///
         }
 
-
-       
-
         public static void DrawPrisoner()
         {
             if (_newPrisoner)
@@ -52,8 +49,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 for (int i = 0; i < _prisonerCount; i++)
                 {
                     bool clearPrisonerSpawn = false;
-
-
 
                     while (!clearPrisonerSpawn)
                     {
@@ -104,7 +99,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Player.plXP += 10;
                     Buffs.IncreaseATK(0);
                     Buffs.IncreaseMaxHealth(0);
-                    Treasure._gold += 4;
+                    Treasure._gold += 2;
 
                    
                 }

@@ -34,33 +34,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             char targetTile = Program.map._mapsCurrent[y][x];
             char[] forbiddenTiles = { '#', 'w', '%','|', 'M', '-', '+' };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
-            {
-                return true;
-            }
+            {     return true;      }
             // Check if player  is there
             if (x == Program.player._x && y == Program.player._y)
-            {
-                return true;
-            }
+            {     return true;       }
             // check for enemmies
             if (Program.enemiesMap1.Any(enmy => enmy._x == x && enmy._y == y))
-            {
-                return true;
-            }
+            {   return true;         }
             // Check for gold spawn
             if (Treasure.activeGoldPiles.Any(g => g.x == x && g.y == y))
-            {
-                return true;
-            }
+            {     return true;        }
             // Check there is already a captive there
             if (Captive._prisonerLocations.Any(p => p.x == x && p.y == y))
-            {
-                return true;
-            }
-
+            {    return true;     }
             return false;
         }
-
         public static void Main(string[] args)
         {
             Console.SetCursorPosition(0, 0);
@@ -70,38 +58,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             Console.CursorVisible = false;
             map.DrawMap();
-
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("map drawn");
-            Console.ReadKey(true);
-
             MyEvents.MapCheck();
-
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("map checked");
-            Console.ReadKey(true);
-
             HUD.Instructions();
-
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("instructions written");
-            Console.ReadKey(true);
-
-            //Treasure.treasure_min_max_x = (8, 46);
-            //Treasure.treasure_min_max_y = (8, 21);
-            //Treasure.DrawGold();
-            //Console.SetCursorPosition(60, 0);
-            //Console.WriteLine("gold drawn");
-            //Console.ReadKey(true);
-
-            //Captive._prisoner_min_max_x = (8, 46);
-            //Captive._prisoner_min_max_y = (8, 21);
-
-            //Captive.DrawPrisoner();
-            //Console.SetCursorPosition(60, 0);
-            //Console.WriteLine("prisoner drawn");
-            //Console.ReadKey(true);
-
+              
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
             enemiesMap1.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
@@ -126,18 +85,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemyRiderList.Add(new Enemy("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
             enemyRiderList.Add(new Enemy("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
 
-            Console.SetCursorPosition(60, 0);
-            Console.WriteLine("enemies added to lists");
-            Console.ReadKey(true);
-
-            //GameManager.PlayGame();
             while (isPlaying)
             {
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("Loop running");
-                //Console.ReadKey(true);
-
-               player._name =Name;
+                player._name =Name;
                 player._attack =plaAtkUP;
               
                 int plX = 0, plY = 0;
@@ -153,13 +103,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.S) plY = 1;
 
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
-
-               player.Move(plX, plY);
-
-                Console.SetCursorPosition(60, 0);
-                Console.WriteLine("Player Move");
-                //Console.ReadKey(true);
-                //LoadMap.(int x, int y) ? MapChanger(int x, int y);
+               
+                player.Move(plX, plY);
+               
  /*>>>>>>*/    var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
 
                 if (newSpawn.HasValue) //changes maps if triggers are found
@@ -167,10 +113,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     // sets player position to new spawn point 
                     player._x = newSpawn.Value.x;
                     player._y = newSpawn.Value.y;
-
-                    //CollectSpawner.SetupMapAssets();
                 }
-
+                //CollectSpawner.SetupMapAssets();
+                Treasure.activeGoldPiles.Clear();
+                Captive._prisonerLocations.Clear();
+                Treasure.DrawGold();
+                Captive.DrawPrisoner();
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
                 EnviroHeal.SpringWatterHealling();
@@ -180,16 +128,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     isPlaying = false;
                     continue; //skips past rest
                 }
-             
-                
-                
+                             
                 if (Program.map._currentMapIndex == 0)
                 {
-                    Treasure.activeGoldPiles.Clear();
-                    Captive._prisonerLocations.Clear();
-                    CollectSpawner.SetupMapAssets();
-                    Treasure.CheckTreasureCollection();
-                    Captive.CheckCapCollection();
                     for (int i = enemiesMap1.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap1[i]._health <= 0)
@@ -201,20 +142,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap1.RemoveAt(i);
                         }
                         else
-                        {
-                            Enemy.MoveEnemy(enemiesMap1[i]);
-                        }
+                        { Enemy.MoveEnemy(enemiesMap1[i]); }
                     }
                 }
-
                 if (Program.map._currentMapIndex == 1)
-
-                {
-                    Treasure.activeGoldPiles.Clear();
-                    Captive._prisonerLocations.Clear();
-                    CollectSpawner.SetupMapAssets();
-                    Treasure.CheckTreasureCollection();
-                    Captive.CheckCapCollection();
+                {                   
                     for (int i = enemiesMap2.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap2[i]._health <= 0)
@@ -226,20 +158,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap2.RemoveAt(i);
                         }
                         else
-                        {
-                            Enemy.MoveEnemy(enemiesMap2[i]);
-                        }
+                        { Enemy.MoveEnemy(enemiesMap2[i]); }
                     }
                 }
 
                 if (Program.map._currentMapIndex == 2)
-
-                {
-                    Treasure.activeGoldPiles.Clear();
-                    Captive._prisonerLocations.Clear();
-                    CollectSpawner.SetupMapAssets();
-                    Treasure.CheckTreasureCollection();
-                    Captive.CheckCapCollection();
+                {                    
                     for (int i = enemiesMap3.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap3[i]._health <= 0)
@@ -251,9 +175,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap3.RemoveAt(i);
                         }
                         else
-                        {
-                            Enemy.MoveEnemy(enemiesMap3[i]);
-                        }
+                        {  Enemy.MoveEnemy(enemiesMap3[i]); }
                     }
                 }
 
@@ -270,13 +192,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemyRiderList.RemoveAt(i);
                         }
                         else
-                        {
-                            Enemy.MoveEnemy(enemyRiderList[i]);
-                        }
+                        { Enemy.MoveEnemy(enemyRiderList[i]); }
                     }
                 }
-              
-                DrawEntities();
+                 DrawEntities();
                 Thread.Sleep(20);///
                 HUD.plStats();
             }
@@ -284,12 +203,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if ((map._mapsCurrent[player._y][player._x] == 'X') || (player._health == 0))
             {
                 if (player._health == 0)
-                {
-                    HUD.plDied();
-                }
+                {  HUD.plDied();  }
                 if (map._mapsCurrent[player._y][player._x] == 'X')
-                {
-                     isPlaying = false;
+                { 
+                    isPlaying = false;
                     HUD.plWin();
                 }
             }
@@ -303,6 +220,24 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             { Console.ForegroundColor = ConsoleColor.DarkCyan; Console.BackgroundColor = ConsoleColor.Blue; }
             else if (tile == '#')
             { Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.DarkGray; }
+            else if (tile == ',')
+            { Console.ForegroundColor = ConsoleColor.DarkYellow; Console.BackgroundColor = ConsoleColor.Yellow; }
+            else if (tile == '^')
+            { Console.ForegroundColor = ConsoleColor.DarkGreen; Console.BackgroundColor = ConsoleColor.Green; }
+            else if (tile == '[')
+            { Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; }
+            else if (tile == ']')
+            { Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; }
+            else if (tile == 'M')
+            { Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; }
+            else if (tile == '{')
+            { Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; }
+            else if (tile == '}')
+            { Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; }
+            else if (tile == 'X')
+            { Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; }
+            else if (tile == '.')
+            { Console.ForegroundColor = ConsoleColor.Red; Console.BackgroundColor = ConsoleColor.DarkGray; }
 
             else Console.ForegroundColor = ConsoleColor.White;
 
@@ -326,12 +261,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             if (Program.map._currentMapIndex == 1)
             {
-                //Treasure.treasure_min_max_x = (8, 46);
-                //Treasure.treasure_min_max_y = (8, 21);
-                //Treasure.DrawGold();
-                //Captive._prisoner_min_max_x = (8, 46);
-                //Captive._prisoner_min_max_y = (8, 21);
-                //Captive.DrawPrisoner();
                 foreach (var enmy in enemiesMap2)
                 {
                     if (enmy._health > 0) // Only draw if alive
@@ -344,12 +273,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
             if (Program.map._currentMapIndex == 2)
             {
-                //Treasure.treasure_min_max_x = (8, 46);
-                //Treasure.treasure_min_max_y = (8, 21); 
-                //Treasure.DrawGold();
-                //Captive._prisoner_min_max_x = (8, 46);
-                //Captive._prisoner_min_max_y = (8, 21);
-                //Captive.DrawPrisoner();
                 foreach (var enmy in enemiesMap3)
                 {
                     if (enmy._health > 0) // Only draw if alive
@@ -372,7 +295,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
                 }
             }
-
             Console.SetCursorPosition(player._x, player._y);
             Console.ForegroundColor = player._color;
             Console.Write(player._symbol);

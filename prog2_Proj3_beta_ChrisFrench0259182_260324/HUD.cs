@@ -107,7 +107,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(60, 1);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} XP: {Player.plXP} Level:{Player.plLevel}");
+            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} attack:{Program.plaAtkUP} Xp: {Player.plXP} Level:{Player.plLevel}");
             Console.SetCursorPosition(60, 2);
             Console.WriteLine($"Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
             Console.ResetColor();
