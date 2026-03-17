@@ -105,8 +105,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
                
                 player.Move(plX, plY);
-                Treasure.CheckTreasureCollection();
-                Captive.CheckCapCollection();
+                //Treasure.CheckTreasureCollection();
+                //Captive.CheckCapCollection();
 
  /*>>>>>>*/
                 var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function

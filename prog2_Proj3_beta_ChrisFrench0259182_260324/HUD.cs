@@ -28,73 +28,80 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         Console.ResetColor();
         }
 
-        public static void combat()
-        {
-            if (Program.map._currentMapIndex == 0)
-            {
-                foreach (var enmy in Program.enemiesMap1)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                }
-            }
-            if (Program.map._currentMapIndex == 1)
-            {
-                foreach (var enmy in Program.enemiesMap2)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                }
-            }
-            if (Program.map._currentMapIndex == 2)
-            {
-                foreach (var enmy in Program.enemiesMap3)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                }
-            }
-            if (Program.map._currentMapIndex == 3)
-            {
-                foreach (var enmy in Program.enemyRiderList)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(60, 14);
-                    Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 15);
-                    Console.WriteLine($" {enmy._name} has {enmy._health} health...");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(60, 17);
-                    Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
-                    Console.SetCursorPosition(60, 18);
-                    Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                }
-            }
-        }
+        #region old combat hud
+        /// <summary>
+        /// combat hud worked until i go t the multiple maps working then i couldn't get it to ref the specific enemies being foughr only and alwatys tyhe last in the list. 
+        /// had to move it back into the combat method to display correctly  this is what i was trying and could not get it to work 
+        //public static void combat()
+        //{
+        //    if (Program.map._currentMapIndex == 0)
+        //    {
+        //        foreach (var enmy in Program.enemiesMap1)
+        //        {
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.SetCursorPosition(60, 14);
+        //            Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 15);
+        //            Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+        //            Console.ForegroundColor = ConsoleColor.DarkRed;
+        //            Console.SetCursorPosition(60, 17);
+        //            Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 18);
+        //            Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+        //        }
+        //    }
+        //    if (Program.map._currentMapIndex == 1)
+        //    {
+        //        foreach (var enmy in Program.enemiesMap2)
+        //        {
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.SetCursorPosition(60, 14);
+        //            Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 15);
+        //            Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+        //            Console.ForegroundColor = ConsoleColor.DarkRed;
+        //            Console.SetCursorPosition(60, 17);
+        //            Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 18);
+        //            Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+        //        }
+        //    }
+        //    if (Program.map._currentMapIndex == 2)
+        //    {
+        //        foreach (var enmy in Program.enemiesMap3)
+        //        {
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.SetCursorPosition(60, 14);
+        //            Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 15);
+        //            Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+        //            Console.ForegroundColor = ConsoleColor.DarkRed;
+        //            Console.SetCursorPosition(60, 17);
+        //            Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 18);
+        //            Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+        //        }
+        //    }
+        //    if (Program.map._currentMapIndex == 3)
+        //    {
+        //        foreach (var enmy in Program.enemyRiderList)
+        //        {
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.SetCursorPosition(60, 14);
+        //            Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 15);
+        //            Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+        //            Console.ForegroundColor = ConsoleColor.DarkRed;
+        //            Console.SetCursorPosition(60, 17);
+        //            Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+        //            Console.SetCursorPosition(60, 18);
+        //            Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+        //        }
+        //    }
+        //}
+        /// </summary>
+        #endregion 
+
 
         public static void Instructions()
         {

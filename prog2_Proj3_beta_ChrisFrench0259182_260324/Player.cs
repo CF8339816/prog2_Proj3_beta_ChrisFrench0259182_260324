@@ -17,57 +17,75 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
         }
-     
 
 
 
-        public void Move(int X,int Y)
+
+        public void Move(int X, int Y)
         {
-            int nextX =_x + X;
+            int nextX = _x + X;
             int nextY = _y + Y;
-           // Thread.Sleep(0);
+        
 
             bool hitEnemy = false;
 
             if (Program.map._currentMapIndex == 0)
+                 Treasure.CheckTreasureCollection();
+                 Captive.CheckCapCollection();
+
                 foreach (var enmy in Program.enemiesMap1)  // back in programs   possible rename check enemy colisions
-            {
-                if (nextX == enmy._x && nextY == enmy._y)
                 {
-                    Console.Beep(800, 50);
-                    Console.SetCursorPosition(nextX, nextY);///
-                    Console.BackgroundColor = ConsoleColor.Yellow;///
-                    Console.ResetColor();///
-                    enmy._health -=_attack;
-                   _health -= enmy._attack;
 
-                    HUD.combat();
-
-                    if (_health <= 0 || enmy._health <= 0)
+                
+                    if (nextX == enmy._x && nextY == enmy._y)
                     {
-                        if (_health <= 0)
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Console.ResetColor();///
+                        enmy._health -= _attack;
+                        _health -= enmy._attack;
+
+                        Console.SetCursorPosition(60,0);
+                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage. {enmy._name} has {enmy._health} health,");
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
+
+                        if (_health <= 0 || enmy._health <= 0)
                         {
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            _health = 0;
-                            Console.SetCursorPosition(60, 20);
-                            Console.WriteLine($" {_name} has {_health} health, {_name} has died");
-                            Program.isPlaying = false;
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (enmy._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                enmy._health = 0;
+                                plXP += 15;
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 5;
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
+                                Program.isPlaying = true;
+                            }
                         }
-                        if (enmy._health <= 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            enmy._health = 0;
-                            plXP += 15;
-                            Buffs.IncreaseXP(0);
-                            Treasure._gold += 5;
-                            Console.SetCursorPosition(60, 21);
-                            Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
-                            Program.isPlaying = true;
-                        }
+                        break;///
                     }
-                    break;///
                 }
-            }
 
             if (Program.map._currentMapIndex == 1)
                 foreach (var enmy in Program.enemiesMap2)  // back in programs   possible rename check enemy colisions
@@ -81,7 +99,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         enmy._health -= _attack;
                         _health -= enmy._attack;
 
-                        HUD.combat();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
 
                         if (_health <= 0 || enmy._health <= 0)
                         {
@@ -121,7 +149,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         enmy._health -= _attack;
                         _health -= enmy._attack;
 
-                        HUD.combat();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
 
                         if (_health <= 0 || enmy._health <= 0)
                         {
@@ -160,7 +198,18 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         enmy._health -= _attack;
                         _health -= enmy._attack;
 
-                        HUD.combat();
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {enmy._name} has {enmy._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //  HUD.combat();
 
                         if (_health <= 0 || enmy._health <= 0)
                         {
@@ -205,7 +254,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
     }
-    
+
 }
 
 

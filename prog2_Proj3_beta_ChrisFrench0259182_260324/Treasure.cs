@@ -11,7 +11,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static bool _goldTreasure = true;
         public static Random _goldPileSpawn = new Random();
         public static (int, int) _plPosition = (Program.player._x, Program.player._y);
-        public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
+        //public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
         public static int treasure_x_pos;
         public static int treasure_y_pos;
         public static (int, int) treasure_min_max_x = (8, 46);///

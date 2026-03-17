@@ -95,12 +95,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     _prisonerLocations.RemoveAt(i);
                    
                     _freed +=1;
-                    HUD.Moses();
-                    Player.plXP += 10;
+                  
+                    Buffs.IncreaseXP(10);
                     Buffs.IncreaseATK(0);
                     Buffs.IncreaseMaxHealth(0);
                     Treasure._gold += 2;
-
+                    HUD.Moses();
                    
                 }
             }
