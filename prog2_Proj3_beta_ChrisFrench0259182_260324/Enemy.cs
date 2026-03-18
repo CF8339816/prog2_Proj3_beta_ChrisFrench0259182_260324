@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,59 +25,102 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             int nextRandY = enmy._y + _rando.Next(-1, 2); // randomises moves on y
             nextX = nextRandX;
             nextY = nextRandY;
-             foreach (Enemy other in Program.enemiesMap1)
+///
+            if (enmy._x <= Program.player._x + 3 || enmy._x <= Program.player._x - 3 || enmy._y <= Program.player._y + 3 || enmy._y <= Program.player._y - 3)
             {
-                if (other != enmy && nextX == other._x && nextY == other._y)
-                {
-                    Program.isAlly = true;
-                    break;
-                }
-            }
-            foreach (Enemy other in Program.enemiesMap2)
-            {
-                if (other != enmy && nextX == other._x && nextY == other._y)
-                {
-                    Program.isAlly = true;
-                    break;
-                }
-            }
-            foreach (Enemy other in Program.enemiesMap3)
-            {
-                if (other != enmy && nextX == other._x && nextY == other._y)
-                {
-                    Program.isAlly = true;
-                    break;
-                }
-            }
-
-            foreach (Enemy other in Program.enemyRiderList)
-            {
-                if (other != enmy && nextX == other._x && nextY == other._y)
-                {
-                    Program.isAlly = true;
-                    break;
-                }
-            }
-
-            char targetTile = Program.map._mapsCurrent[nextY][nextX];
-
-            if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
-            {
-
-               Console.SetCursorPosition(enmy._x, enmy._y);
+                Console.SetCursorPosition(enmy._x, enmy._y);
                 char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
                 Program.WriteTileWithColor(oldTile);
-                
-            //Console.Write(" ");
 
-            enmy._x = nextX;
-            enmy._y = nextY;
+               
+                if (enmy._x < Program.player._x) nextX++;
+                else if (enmy._x > Program.player._x) nextX--;
+
+                if (enmy._y < Program.player._y) nextY++;
+                else if (enmy._y > Program.player._y) nextY--;
+
+                bool isPathBlockedByEnemy = false;
+                foreach (Enemy other in Program.enemyRiderList)
+                {
+                    if (other != enmy && nextX == other._x && nextY == other._y)
+                    {
+                        isPathBlockedByEnemy = true;
+                        break;
+                    }
+                }
+
+                char targetTile = Program.map._mapsCurrent[nextY][nextX];
+
+                if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '#' && (nextX != Program.player._x || nextY != Program.player._y))
+                {
+
+                    enmy._x = nextX;
+                    enmy._y = nextY;
+
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    Console.ForegroundColor = enmy._color;
+                    Console.Write(enmy._symbol);
+                    Console.ResetColor();
+                }
+
             }
+  ///
             else
             {
-                nextX = 0;
-                nextY = 0;
-            }
+                foreach (Enemy other in Program.enemiesMap1)
+                {
+                    if (other != enmy && nextX == other._x && nextY == other._y)
+                    {
+                        Program.isAlly = true;
+                        break;
+                    }
+                }
+                foreach (Enemy other in Program.enemiesMap2)
+                {
+                    if (other != enmy && nextX == other._x && nextY == other._y)
+                    {
+                        Program.isAlly = true;
+                        break;
+                    }
+                }
+                foreach (Enemy other in Program.enemiesMap3)
+                {
+                    if (other != enmy && nextX == other._x && nextY == other._y)
+                    {
+                        Program.isAlly = true;
+                        break;
+                    }
+                }
+
+                foreach (Enemy other in Program.enemyRiderList)
+                {
+                    if (other != enmy && nextX == other._x && nextY == other._y)
+                    {
+                        Program.isAlly = true;
+                        break;
+                    }
+                }
+
+                char targetTile = Program.map._mapsCurrent[nextY][nextX];
+
+                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
+                {
+
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
+                    Program.WriteTileWithColor(oldTile);
+
+                    //Console.Write(" ");
+
+                    enmy._x = nextX;
+                    enmy._y = nextY;
+                }
+                else
+                {
+                    nextX = 0;
+                    nextY = 0;
+                }
+            } 
         }
 
          //public static void MoveTowards(Program.player._x, Program.player._y)

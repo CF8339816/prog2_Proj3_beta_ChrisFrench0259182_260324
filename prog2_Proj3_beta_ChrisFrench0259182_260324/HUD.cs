@@ -127,7 +127,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 22);// outputs player death and end of game prompts to exit
             Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died ");
             Console.SetCursorPosition(60, 23); 
-            Console.WriteLine($"with {Treasure._gold} gold on them and freed {Captive._freed} captives who were sadly recaptured");
+            Console.WriteLine($"with {Treasure._gold} gold on them and freed {Captive._freed} captives who were sadly ");
+            Console.SetCursorPosition(60, 24);
+            Console.WriteLine("recaptured, and very mean things were done to them.");
             Console.ReadKey(true);
             Console.ResetColor();
         }
@@ -147,11 +149,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void Farewell()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.SetCursorPosition(60, 24);
-            Console.WriteLine(" please come back soon");
-            Console.ReadKey(true);
+           
+           
             Console.SetCursorPosition(60, 25);
-            Console.WriteLine(" please press any key to exit");
+            Console.WriteLine("We hope you come back soon... Please press any key to exit");
             Console.ReadKey(true);
             Console.WriteLine("\n\n\n\n\n\n");
             Console.ResetColor();
