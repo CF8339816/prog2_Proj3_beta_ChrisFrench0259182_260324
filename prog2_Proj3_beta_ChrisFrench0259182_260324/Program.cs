@@ -120,15 +120,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     Treasure._goldTreasure = true;
                     Captive._newPrisoner = true;
                 }
-                //CollectSpawner.SetupMapAssets();
-                if (Program.map._currentMapIndex < 3)
-                {
-                    //Treasure.activeGoldPiles.Clear();
-                    //Captive._prisonerLocations.Clear();
-                    Treasure.DrawGold();
-                    Captive.DrawPrisoner();
-                  
-                }
+                CollectSpawner.SetupMapAssets(); 
+                
                 EnviroHeal.SpringWatterHealling();
                 EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
@@ -295,15 +288,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (Program.map._currentMapIndex == 3)
             {
                 MyEvents.AmbushMapCheck();
-                //foreach (var enmy in enemyRiderList)
-                //{
-                //    if (enmy._health > 0) // Only draw if alive
-                //    {
-                //        Console.SetCursorPosition(enmy._x, enmy._y);
-                //        Console.ForegroundColor = enmy._color;
-                //        Console.Write(enmy._symbol);
-                //    }
-                //}
+                
             }
             Console.SetCursorPosition(player._x, player._y);
             Console.ForegroundColor = player._color;

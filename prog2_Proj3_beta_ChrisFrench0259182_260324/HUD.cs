@@ -148,7 +148,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void Farewell()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
            
            
             Console.SetCursorPosition(60, 25);
