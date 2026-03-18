@@ -26,41 +26,45 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             nextX = nextRandX;
             nextY = nextRandY;
 ///
-            if (enmy._x <= Program.player._x + 3 || enmy._x <= Program.player._x - 3 || enmy._y <= Program.player._y + 3 || enmy._y <= Program.player._y - 3)
+            if (enmy._x+ 2 <= Program.player._x  || enmy._x- 2 <= Program.player._x  || enmy._y + 2<= Program.player._y  || enmy._y - 2<= Program.player._y )
             {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
-                Program.WriteTileWithColor(oldTile);
-
-               
-                if (enmy._x < Program.player._x) nextX++;
-                else if (enmy._x > Program.player._x) nextX--;
-
-                if (enmy._y < Program.player._y) nextY++;
-                else if (enmy._y > Program.player._y) nextY--;
-
-                bool isPathBlockedByEnemy = false;
-                foreach (Enemy other in Program.enemyRiderList)
-                {
-                    if (other != enmy && nextX == other._x && nextY == other._y)
-                    {
-                        isPathBlockedByEnemy = true;
-                        break;
-                    }
-                }
-
                 char targetTile = Program.map._mapsCurrent[nextY][nextX];
-
-                if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '#' && (nextX != Program.player._x || nextY != Program.player._y))
+                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
                 {
-
-                    enmy._x = nextX;
-                    enmy._y = nextY;
-
                     Console.SetCursorPosition(enmy._x, enmy._y);
-                    Console.ForegroundColor = enmy._color;
-                    Console.Write(enmy._symbol);
-                    Console.ResetColor();
+                    char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
+                    Program.WriteTileWithColor(oldTile);
+
+
+                    if (enmy._x < Program.player._x) nextX++;
+                    else if (enmy._x > Program.player._x) nextX--;
+
+                    if (enmy._y < Program.player._y) nextY++;
+                    else if (enmy._y > Program.player._y) nextY--;
+
+                    bool isPathBlockedByEnemy = false;
+                    foreach (Enemy other in Program.enemyRiderList)
+                    {
+                        if (other != enmy && nextX == other._x && nextY == other._y)
+                        {
+                            isPathBlockedByEnemy = true;
+                            break;
+                        }
+                    }
+
+                    //char targetTile = Program.map._mapsCurrent[nextY][nextX];
+
+                    if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '#' && (nextX != Program.player._x || nextY != Program.player._y))
+                    {
+
+                        enmy._x = nextX;
+                        enmy._y = nextY;
+
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                        Console.ResetColor();
+                    }
                 }
 
             }
