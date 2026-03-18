@@ -14,8 +14,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int plLevel = 0;
         public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: Program.plaAtkUP, symbol: '!', hp: Program.plaMaxHP, color: ConsoleColor.Blue)
         {
-
-
         }
 
         public void Move(int X, int Y)
@@ -23,14 +21,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             int nextX = _x + X;
             int nextY = _y + Y;
         
-
             bool hitEnemy = false;
 
             if (Program.map._currentMapIndex == 0)
-           
-
-            foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
-                {
+              foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
+              {
 
                 
                     if (nextX == enmy._x && nextY == enmy._y)
@@ -78,7 +73,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         }
                         break;///
                     }
-                }
+              }
 
             if (Program.map._currentMapIndex == 1)
                 foreach (var enmy in Program.enemiesMap2)  // back in programs   possible rename check enemy colisions
@@ -191,7 +186,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         enmy._health -= _attack;
                         _health -= enmy._attack;
 
-
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(60, 14);
                         Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage");
@@ -229,9 +223,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;///
                     }
                 }
-
-
-
 
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
             {

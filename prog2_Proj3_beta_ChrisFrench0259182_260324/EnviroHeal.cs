@@ -23,19 +23,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void SpringWatterHealling()
         {
 
-                if (Program.map._mapsCurrent[Program.player._y][Program.player._x] == 'w')// applies spring water healing
+            if (Program.map._mapsCurrent[Program.player._y][Program.player._x] == 'w')// applies spring water healing
+            {
+                Program.player._health += 20;
+                if (Program.player._health > Program.plaMaxHP)
                 {
-                    Program.player._health += 20;
-                    if (Program.player._health > Program.plaMaxHP)
-                    {
                     Program.player._health = Program.plaMaxHP;
-                    }
-                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.SetCursorPosition(60, 11);
-                    Console.WriteLine($"{Program.player._name} Finds cool refreshing sparkling mineral");
-                    Console.SetCursorPosition(60, 12);
-                    Console.WriteLine($" water and is healed for 20 pts {Program.player._name} now has {Program.player._health} HP");
                 }
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.SetCursorPosition(60, 11);
+                Console.WriteLine($"{Program.player._name} Finds cool refreshing sparkling mineral");
+                Console.SetCursorPosition(60, 12);
+                Console.WriteLine($" water and is healed for 20 pts ");
+                Console.SetCursorPosition(60, 12);
+                Console.WriteLine($"{Program.player._name} now has {Program.player._health} HP");
+            }
 
         }
 

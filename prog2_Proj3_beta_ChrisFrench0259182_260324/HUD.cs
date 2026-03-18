@@ -105,17 +105,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void Instructions()
         {
-            Console.SetCursorPosition(0, 27);
+            Console.SetCursorPosition(0, 26);
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'Q' to exit...\nFight enemies '&' by manouvering to them or try to avoid them... Lava '%' will damage you ");
+            Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'Q' to exit...\n" +
+                "Fight enemies by manouvering to them or try to avoid them...\n" +
+                " Lava '%' will damage you, Water 'w' will heal you");
             Console.ResetColor();
         }
         public static void plStats()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.SetCursorPosition(60, 1);
-            Console.WriteLine($" Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} attack:{Program.plaAtkUP} Xp: {Player.plXP} Level:{Player.plLevel}");
-            Console.SetCursorPosition(60, 2);
+            Console.SetCursorPosition(58, 1);
+            Console.WriteLine($"Name:{Program.player._name} Health:{Program.player._health}/{Program.plaMaxHP} attack:{Program.plaAtkUP} Xp:{Player.plXP} Level:{Player.plLevel}");
+            Console.SetCursorPosition(58, 2);
             Console.WriteLine($"Gold:{Treasure._gold} Captives Freed:{Captive._freed}");
             Console.ResetColor();
         }

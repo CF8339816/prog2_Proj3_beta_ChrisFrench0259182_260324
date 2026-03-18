@@ -9,13 +9,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class Enemy : Character
     {
-
         public Enemy(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack, symbol, hp, color)
         {
         }
         private static Random enRando = new Random();
-
-
 
         public static void MoveEnemy(Enemy enmy)
         {
@@ -27,9 +24,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             int nextRandY = enmy._y + _rando.Next(-1, 2); // randomises moves on y
             nextX = nextRandX;
             nextY = nextRandY;
-
-
-            foreach (Enemy other in Program.enemiesMap1)
+             foreach (Enemy other in Program.enemiesMap1)
             {
                 if (other != enmy && nextX == other._x && nextY == other._y)
                 {
@@ -67,8 +62,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
             {
-            Console.SetCursorPosition(enmy._x, enmy._y);
-            Console.Write(" ");
+
+               Console.SetCursorPosition(enmy._x, enmy._y);
+                char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
+                Program.WriteTileWithColor(oldTile);
+                
+            //Console.Write(" ");
 
             enmy._x = nextX;
             enmy._y = nextY;
@@ -83,21 +82,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
          //public static void MoveTowards(Program.player._x, Program.player._y)
         public static void MoveTowards(Enemy enemyRiders)
         {
-           
-            // Thread.Sleep(20);
+            Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
+            char oldTile = Program.map._mapsCurrent[enemyRiders._y][enemyRiders._x];
+            Program.WriteTileWithColor(oldTile);
 
             int nextX = enemyRiders._x;
             int nextY = enemyRiders._y;
 
-            
             if (enemyRiders._x < Program.player._x) nextX++;
             else if (enemyRiders._x > Program.player._x) nextX--;
 
-        
             if (enemyRiders._y < Program.player._y) nextY++;
             else if (enemyRiders._y > Program.player._y) nextY--;
 
-          
             bool isPathBlockedByEnemy = false;
             foreach (Enemy other in Program.enemyRiderList) 
             {
@@ -113,32 +110,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '^' && targetTile != 'w' && targetTile != 'M' && (nextX != Program.player._x || nextY != Program.player._y))
             {
              
-                Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
-                //Console.Write(" ");
-                char oldTile = Program.map._mapsCurrent[enemyRiders._y][enemyRiders._x];
-                Program.WriteTileWithColor(oldTile);
-
                 enemyRiders._x = nextX;
                 enemyRiders._y = nextY;
 
-            
                 Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
                 Console.ForegroundColor = enemyRiders._color;
                 Console.Write(enemyRiders._symbol);
                 Console.ResetColor();
             }
+            
         }
         
-
-
-
-
-}
-
-
-
-
-
-
+    }
 
 }

@@ -59,7 +59,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
             map.DrawMap();
             MyEvents.AmbushMapCheck();
-            HUD.Instructions();
+            //HUD.Instructions();
               
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
@@ -79,14 +79,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemiesMap3.Add(new Enemy("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
             enemiesMap3.Add(new Enemy("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
 
-            enemyRiderList.Clear();
-            enemyRiderList.Add(new Enemy("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
-            enemyRiderList.Add(new Enemy("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
+            //enemyRiderList.Clear();
+            //enemyRiderList.Add(new Enemy("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
+            //enemyRiderList.Add(new Enemy("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
+            //enemyRiderList.Add(new Enemy("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
+            //enemyRiderList.Add(new Enemy("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
 
             while (isPlaying)
             {
+                HUD.Instructions();
                 player._name =Name;
                 player._attack =plaAtkUP;
               
@@ -293,15 +294,16 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
             if (Program.map._currentMapIndex == 3)
             {
-                foreach (var enmy in enemyRiderList)
-                {
-                    if (enmy._health > 0) // Only draw if alive
-                    {
-                        Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
-                        Console.Write(enmy._symbol);
-                    }
-                }
+                MyEvents.AmbushMapCheck();
+                //foreach (var enmy in enemyRiderList)
+                //{
+                //    if (enmy._health > 0) // Only draw if alive
+                //    {
+                //        Console.SetCursorPosition(enmy._x, enmy._y);
+                //        Console.ForegroundColor = enmy._color;
+                //        Console.Write(enmy._symbol);
+                //    }
+                //}
             }
             Console.SetCursorPosition(player._x, player._y);
             Console.ForegroundColor = player._color;

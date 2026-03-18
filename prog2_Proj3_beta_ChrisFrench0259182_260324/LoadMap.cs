@@ -162,7 +162,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 case 'H': Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Black; break;
                 case 'E': Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Black; break;
                 case 'w': Console.ForegroundColor = ConsoleColor.DarkCyan; Console.BackgroundColor = ConsoleColor.Blue; break; 
-                case '^': Console.ForegroundColor = ConsoleColor.Green; Console.BackgroundColor = ConsoleColor.Yellow; break; 
+                case '^': Console.ForegroundColor = ConsoleColor.DarkGreen; Console.BackgroundColor = ConsoleColor.Green; break; 
                 case ',': Console.ForegroundColor = ConsoleColor.DarkYellow; Console.BackgroundColor = ConsoleColor.Yellow; break; 
                 case 'M': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break; 
                 case '.': Console.ForegroundColor = ConsoleColor.Red; Console.BackgroundColor = ConsoleColor.DarkGray; break;
