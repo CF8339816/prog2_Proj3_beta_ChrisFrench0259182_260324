@@ -124,8 +124,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void plDied()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.SetCursorPosition(60, 23);// outputs player death and end of game prompts to exit
-            Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died with {Treasure._gold} golds on them");
+            Console.SetCursorPosition(60, 22);// outputs player death and end of game prompts to exit
+            Console.WriteLine($" {Program.player._name} has {Program.player._health} health, {Program.player._name} has died ");
+            Console.SetCursorPosition(60, 23); 
+            Console.WriteLine($"with {Treasure._gold} gold on them and freed {Captive._freed} captives who were sadly recaptured");
             Console.ReadKey(true);
             Console.ResetColor();
         }
