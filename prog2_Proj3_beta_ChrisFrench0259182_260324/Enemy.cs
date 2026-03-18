@@ -35,7 +35,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
                     Program.WriteTileWithColor(oldTile);
 
-
                     if (enmy._x < Program.player._x) nextX++;
                     else if (enmy._x > Program.player._x) nextX--;
 
@@ -51,12 +50,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             break;
                         }
                     }
-
                     //char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
                     if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '#' && (nextX != Program.player._x || nextY != Program.player._y))
                     {
-
                         enmy._x = nextX;
                         enmy._y = nextY;
 
@@ -66,7 +63,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.ResetColor();
                     }
                 }
-
             }
   ///
             else
@@ -109,12 +105,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '@')
                 {
-
                     Console.SetCursorPosition(enmy._x, enmy._y);
                     char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
                     Program.WriteTileWithColor(oldTile);
-
-                    //Console.Write(" ");
 
                     enmy._x = nextX;
                     enmy._y = nextY;
@@ -157,7 +150,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             if (!isPathBlockedByEnemy && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '^' && targetTile != 'w' && targetTile != 'M' && (nextX != Program.player._x || nextY != Program.player._y))
             {
-             
                 enemyRiders._x = nextX;
                 enemyRiders._y = nextY;
 
@@ -166,9 +158,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.Write(enemyRiders._symbol);
                 Console.ResetColor();
             }
-            
         }
-        
     }
-
 }

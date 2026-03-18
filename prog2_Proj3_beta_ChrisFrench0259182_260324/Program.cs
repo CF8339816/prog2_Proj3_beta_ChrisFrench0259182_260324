@@ -239,9 +239,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             else if (tile == 'M')
             { Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; }
             else if (tile == '{')
-            { Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; }
+            { Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.BackgroundColor = ConsoleColor.Magenta; }
             else if (tile == '}')
-            { Console.ForegroundColor = ConsoleColor.Magenta; Console.BackgroundColor = ConsoleColor.Yellow; }
+            { Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.BackgroundColor = ConsoleColor.Magenta; }
             else if (tile == 'X')
             { Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; }
             else if (tile == '.')
