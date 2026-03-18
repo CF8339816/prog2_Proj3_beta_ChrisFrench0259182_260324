@@ -135,7 +135,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             if (enemyRiders._y < Program.player._y) nextY++;
             else if (enemyRiders._y > Program.player._y) nextY--;
-
+      
             bool isPathBlockedByEnemy = false;
             foreach (Enemy other in Program.enemyRiderList) 
             {
