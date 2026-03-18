@@ -49,7 +49,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                       
                         if (!Program.IsTileOccupied(tSpawnX, tSpawnY))
                         {
-                            //if (treasure_x_pos != Program.player._x || treasure_y_pos != Program.player._y) //checks for player///
                             if (tSpawnX != Program.player._x || tSpawnY != Program.player._y) //checks for player
                             {
                                 clearGoldSpawn = true;
@@ -63,16 +62,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     _goldTreasure = false;
                 }
             }
-            //_gold += loot;
-            // HUD.Looter();
-
             Console.ResetColor();
         }
         public static void CheckTreasureCollection()
         {
-            //if (Program.player._x == treasure_x_pos && Program.player._y == treasure_y_pos)// Check if player is on the treasure tile
-            //{
-
                 for (int i = activeGoldPiles.Count - 1; i >= 0; i--)
                 {
                     if (Program.player._x == activeGoldPiles[i].x && Program.player._y == activeGoldPiles[i].y)
@@ -81,12 +74,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         _gold += loot;
                         HUD.Looter();
 
-
                         activeGoldPiles.RemoveAt(i);// remove picked up loot pile
-
                     }
                 }
-            //}
+          
         } 
     }
 }
