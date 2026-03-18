@@ -114,8 +114,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
              
                 Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
-                Console.Write(" ");
-
+                //Console.Write(" ");
+                char oldTile = Program.map._mapsCurrent[enemyRiders._y][enemyRiders._x];
+                Program.WriteTileWithColor(oldTile);
 
                 enemyRiders._x = nextX;
                 enemyRiders._y = nextY;
@@ -127,13 +128,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.ResetColor();
             }
         }
+        
 
 
 
 
-
-
-    }
+}
 
 
 

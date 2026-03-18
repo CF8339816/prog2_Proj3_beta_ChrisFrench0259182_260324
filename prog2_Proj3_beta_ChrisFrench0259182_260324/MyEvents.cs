@@ -12,7 +12,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
        
         public static bool _ambushTriggered = false;
 
-        public static void MapCheck()
+        public static void AmbushMapCheck()
         {
             
 
@@ -20,7 +20,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (Program.map._currentMapIndex == 3 && !_ambushTriggered)
             {
                 // Define your trigger coordinates (example: x:15, y:10)
-                if (Program.player._x <= 15 || Program.player._y <= 10)
+                if ((Program.map._mapsCurrent[Program.player._y][Program.player._x] == '`'))
                 {
                     _ambushTriggered = true;
                     Console.SetCursorPosition(60, 0);
@@ -39,6 +39,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
                     Console.SetCursorPosition(Program.player._x, Program.player._y);
+                    UpdateRiders();
                     Console.ForegroundColor = Program.player._color;
                     Console.Write(Program.player._symbol);
                     Console.ResetColor();
@@ -55,7 +56,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 {
                     if (enemy._health > 0)
                     {
-                        Enemy.MoveEnemy(enemy); // Or your MoveTowards method
+                        Enemy.MoveTowards(enemy); // Or your MoveTowards method
                     }
                 }
             }

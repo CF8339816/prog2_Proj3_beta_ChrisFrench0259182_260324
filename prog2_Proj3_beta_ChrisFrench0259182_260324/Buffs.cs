@@ -21,7 +21,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         {
           
-            int giveXP = randomXP.Next(15, 30);
+            int giveXP = randomXP.Next(2, 10);
             exp = giveXP; //randomizes exp
             Player.plXP += exp; //modifies xp to be  xp + exp
 

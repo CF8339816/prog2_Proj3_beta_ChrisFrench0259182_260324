@@ -58,7 +58,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             Console.CursorVisible = false;
             map.DrawMap();
-            MyEvents.MapCheck();
+            MyEvents.AmbushMapCheck();
             HUD.Instructions();
               
             enemiesMap1.Clear();
@@ -103,7 +103,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (input == ConsoleKey.S) plY = 1;
 
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
-               
+                HUD.ClearMessage();
                 player.Move(plX, plY);
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
@@ -245,7 +245,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             { Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; }
             else if (tile == '.')
             { Console.ForegroundColor = ConsoleColor.Red; Console.BackgroundColor = ConsoleColor.DarkGray; }
-
+            else if (tile == '`')
+            { Console.ForegroundColor = ConsoleColor.DarkYellow; Console.BackgroundColor = ConsoleColor.Yellow; }
             else Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write(tile);

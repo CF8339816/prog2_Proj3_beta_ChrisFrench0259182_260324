@@ -96,7 +96,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                    
                     _freed +=1;
                   
-                    Buffs.IncreaseXP(10);
+                    Buffs.IncreaseXP(5);
                     Buffs.IncreaseATK(0);
                     Buffs.IncreaseMaxHealth(0);
                     Treasure._gold += 2;

@@ -22,10 +22,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (Program.Name.Length <= Program.MaxNameLLength) break;
 
                 Console.WriteLine($"Error: Input is too long! please limit to 15 characters({Program.Name.Length}/{Program.MaxNameLLength})");
-             alias();
+                alias();
             }
-           
-        Console.ResetColor();
+
+            Console.ResetColor();
         }
 
         #region old combat hud
@@ -151,11 +151,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ReadKey(true);
             Console.WriteLine("\n\n\n\n\n\n");
             Console.ResetColor();
-            
+
         }
 
         public static void Looter()
         {
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.SetCursorPosition(60, 5);
             Console.WriteLine($" {Program.player._name} loots {Treasure.loot} amounts of golds! ");
@@ -163,6 +164,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine($"{Program.player._name} now has {Treasure._gold} gold...woooo!");
 
             Console.ResetColor();
+
+
+
         }
 
         public static void Moses()
@@ -186,7 +190,49 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
 
+        public static void ClearMessage()
+        {
+            Console.SetCursorPosition(60, 4);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 5);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 6);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 7);
+            Console.Write(new string(' ', 55)); 
+            Console.SetCursorPosition(60, 8);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 9);
+            Console.Write(new string(' ', 55)); 
+            Console.SetCursorPosition(60, 10);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 11);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 12);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 13);   
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 14);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 15);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 16);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 17);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 18);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 19);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 20);
+            Console.Write(new string(' ', 55));
+            Console.SetCursorPosition(60, 21);
+            Console.Write(new string(' ', 55));
+       
 
+
+
+        }
 
     }
 }

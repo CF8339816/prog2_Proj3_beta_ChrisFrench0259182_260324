@@ -37,13 +37,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     {
                         Console.Beep(800, 50);
                         Console.SetCursorPosition(nextX, nextY);///
-                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///  // was trying to do a flash of color on the map when combat occured
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;
-
-                        Console.SetCursorPosition(60,0);
-                        Console.WriteLine($" {enmy._name} takes {Program.player._attack} points of combat damage. {enmy._name} has {enmy._health} health,");
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(60, 14);

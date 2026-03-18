@@ -171,7 +171,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 case '[': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break;
                 case ']': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.Gray; break;
                 case 'X': Console.ForegroundColor = ConsoleColor.White; Console.BackgroundColor = ConsoleColor.Gray; break;
-                case '`': Console.ForegroundColor = ConsoleColor.DarkGray; Console.BackgroundColor = ConsoleColor.DarkGray; break;
+                case '`': Console.ForegroundColor = ConsoleColor.DarkYellow; Console.BackgroundColor = ConsoleColor.Yellow; break;
                 default: Console.ForegroundColor = ConsoleColor.Black; Console.BackgroundColor = ConsoleColor.Black; break;
             }
         }
