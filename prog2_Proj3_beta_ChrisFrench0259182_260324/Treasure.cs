@@ -20,64 +20,66 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int loot;
         public static int _gold;
         public static int _gpCount = 6;
-        public static List<(int x, int y)> activeGoldPiles = new List<(int x, int y)>();///
+        //public static List<(int x, int y)> activeGoldPiles = new List<(int x, int y)>();///
 
         public Treasure(string Name, int x, int y, int count, char symbol,  ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 6, symbol: '$', ConsoleColor.Yellow, min_max_x, min_max_y)
         {
             Name = "gold";
-           
-
             treasure_x_pos = x;
             treasure_y_pos = y;
             count = 6;
         }
         public static void DrawGold()
         {
-            if (_goldTreasure)
+            int currentMap = Program.map._currentMapIndex;
+                     
+            if (!Program.MapTreasureRegistry.ContainsKey(currentMap))// onlly spawns new list if map never visited otherwise holds locations of uncolllected treasures
             {
+                List<(int x, int y)> goldPiles = new List<(int x, int y)>();
                 for (int i = 0; i < _gpCount; i++)
                 {
-                   
-                    int tSpawnX = -1, tSpawnY = -1;
-                    bool clearGoldSpawn = false;
-                    while (!clearGoldSpawn)
+                    int tSpawnX, tSpawnY;
+                    bool valid = false;
+                    while (!valid)
                     {
-                        loot = _lootRando.Next(15, 35);
-
                         tSpawnX = _goldPileSpawn.Next(treasure_min_max_x.Item1, treasure_min_max_x.Item2 + 1);
                         tSpawnY = _goldPileSpawn.Next(treasure_min_max_y.Item1, treasure_min_max_y.Item2 + 1);
-                      
+
                         if (!Program.IsTileOccupied(tSpawnX, tSpawnY))
                         {
-                            if (tSpawnX != Program.player._x || tSpawnY != Program.player._y) //checks for player
-                            {
-                                clearGoldSpawn = true;
-                            }
+                           goldPiles.Add((tSpawnX, tSpawnY));
+                            valid = true;
                         }
                     }
-                    activeGoldPiles.Add((tSpawnX, tSpawnY));// goldLoc = (treasure_x_pos, treasure_y_pos);///
-                    Console.SetCursorPosition(tSpawnX, tSpawnY);//(treasure_x_pos, treasure_y_pos);///
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.Write("$");
-                    _goldTreasure = false;
                 }
+                Program.MapTreasureRegistry[currentMap] = goldPiles;
+            }
+
+            foreach (var golds in Program.MapTreasureRegistry[currentMap])//Drawing  from the dictionary list for the current map
+            {
+                Console.SetCursorPosition(golds.x, golds.y);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("$");
             }
             Console.ResetColor();
         }
         public static void CheckTreasureCollection()
         {
-                for (int i = activeGoldPiles.Count - 1; i >= 0; i--)
-                {
-                    if (Program.player._x == activeGoldPiles[i].x && Program.player._y == activeGoldPiles[i].y)
-                    {
-                        loot = _lootRando.Next(15, 35);
-                        _gold += loot;
-                        HUD.Looter();
+            int currentMap = Program.map._currentMapIndex;
+            if (!Program.MapTreasureRegistry.ContainsKey(currentMap)) return;
 
-                        activeGoldPiles.RemoveAt(i);// remove picked up loot pile
-                    }
+            var piles = Program.MapTreasureRegistry[currentMap];
+
+            for (int i = piles.Count - 1; i >= 0; i--)
+            {
+                if (Program.player._x == piles[i].x && Program.player._y == piles[i].y)
+                {
+                    _gold += _lootRando.Next(15, 35);
+                    HUD.Looter();
+
+                    piles.RemoveAt(i);// Remove collected treasure from map list
                 }
-          
+            }
         } 
     }
 }

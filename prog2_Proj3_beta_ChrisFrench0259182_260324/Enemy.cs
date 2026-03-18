@@ -29,7 +29,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (enmy._x+ 2 <= Program.player._x  || enmy._x- 2 <= Program.player._x  || enmy._y + 2<= Program.player._y  || enmy._y - 2<= Program.player._y )
             {
                 char targetTile = Program.map._mapsCurrent[nextY][nextX];
-                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '!' && targetTile != '@')
+                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '!' && targetTile != '#' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '%' && targetTile != '@')
                 {
                     Console.SetCursorPosition(enmy._x, enmy._y);
                     char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
@@ -103,7 +103,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 char targetTile = Program.map._mapsCurrent[nextY][nextX];
 
-                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '!' && targetTile != '@')
+                if (!Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '!' && targetTile != 'S' && targetTile != '$' && targetTile != '#' && targetTile != 'w' && targetTile != '%' && targetTile != '@')
                 {
                     Console.SetCursorPosition(enmy._x, enmy._y);
                     char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,29 +25,37 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static List<Enemy> enemiesMap3 = new List<Enemy>();
         public static List<Enemy> enemyRiderList = new List<Enemy>();
         public static LoadMap map = new LoadMap();
-
+        public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
+        public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
         public static bool isPlaying = true;
 
         public static bool isAlly = false; //sets bool to check for other allies in movement path
         public static bool IsTileOccupied(int x, int y)
         {
             // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
+            int currentMap = Program.map._currentMapIndex;// checks using info from current map
             char targetTile = Program.map._mapsCurrent[y][x];
-            char[] forbiddenTiles = { '#', 'w', '%','|', 'M', '-', '+' };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
+            char[] forbiddenTiles = { '#', 'w', '%', '|', 'M', '-', '+' };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
-            {     return true;      }
+            { return true; }
             // Check if player  is there
             if (x == Program.player._x && y == Program.player._y)
-            {     return true;       }
+            { return true; }
             // check for enemmies
             if (Program.enemiesMap1.Any(enmy => enmy._x == x && enmy._y == y))
-            {   return true;         }
-            // Check for gold spawn
-            if (Treasure.activeGoldPiles.Any(g => g.x == x && g.y == y))
-            {     return true;        }
-            // Check there is already a captive there
-            if (Captive._prisonerLocations.Any(p => p.x == x && p.y == y))
-            {    return true;     }
+            { return true; }
+            // Check for gold spawn using current map's dictionary list
+            if (Program.MapTreasureRegistry.ContainsKey(currentMap))
+            { 
+            if (Program.MapTreasureRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
+            { return true; }
+            }
+            // Check there is already a captive there using current dictionary list for current map
+            if (Program.MapCaptiveRegistry.ContainsKey(currentMap))
+            {
+                if (Program.MapCaptiveRegistry[currentMap].Any(p => p.x == x && p.y == y))
+                { return true; }
+            }
             return false;
         }
         public static void Main(string[] args)
@@ -59,8 +68,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
             map.DrawMap();
             MyEvents.AmbushMapCheck();
-            //HUD.Instructions();
-              
+                       
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
             enemiesMap1.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
@@ -78,13 +86,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemiesMap3.Add(new Enemy("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
             enemiesMap3.Add(new Enemy("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
             enemiesMap3.Add(new Enemy("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
-
-            //enemyRiderList.Clear();
-            //enemyRiderList.Add(new Enemy("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
-            //enemyRiderList.Add(new Enemy("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
-            //enemyRiderList.Add(new Enemy("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
-            //enemyRiderList.Add(new Enemy("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
-
+          
             while (isPlaying)
             {
                 HUD.Instructions();
@@ -117,8 +119,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     // sets player position to new spawn point 
                     player._x = newSpawn.Value.x;
                     player._y = newSpawn.Value.y;
-                    Treasure._goldTreasure = true;
-                    Captive._newPrisoner = true;
+                    //Treasure._goldTreasure = true;
+                    //Captive._newPrisoner = true;
                 }
                 CollectSpawner.SetupMapAssets(); 
                 
