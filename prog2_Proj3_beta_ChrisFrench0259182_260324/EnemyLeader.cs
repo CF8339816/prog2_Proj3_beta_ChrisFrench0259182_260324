@@ -18,18 +18,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void MoveEnemy(EnemyLeader enmy)
         {
-            //Thread.Sleep(40);
+          
             int nextX = enmy._x;
             int nextY = enmy._y;
-            Random _rando = new Random();
-            int nextRandX = enmy._x + _rando.Next(-1, 2); //randomises mocve on x
-            int nextRandY = enmy._y + _rando.Next(-1, 2); // randomises moves on y
-            nextX = nextRandX;
-            nextY = nextRandY;
-            ///
+        
             bool isPlayerNear = (enmy._x + 2 >= Program.player._x && enmy._x - 2 <= Program.player._x && enmy._y + 2 >= Program.player._y && enmy._y - 2 <= Program.player._y);
            
-
             if (isPlayerNear)
             {
 
@@ -78,8 +72,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 char oldTile = Program.map._mapsCurrent[enmy._y][enmy._x];
                 Program.WriteTileWithColor(oldTile);
 
-
-
                 enmy._x = nextX;
                 enmy._y = nextY;
 
@@ -88,8 +80,6 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Console.Write(enmy._symbol);
                 Console.ResetColor();
             }
-        
-    
             else
             {
                 foreach (EnemyLeader other in Program.enemiesMap1)
@@ -116,8 +106,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;
                     }
                 }
-                            
-
+       
                 if (inBounds && !Program.IsTileOccupied(nextX, nextY) && targetTile != '*' && targetTile != '!' && targetTile != 'S' && targetTile != '$' && targetTile != '#' && targetTile != 'w' && targetTile != '%' && targetTile != '@')
                 {
                     Console.SetCursorPosition(enmy._x, enmy._y);
@@ -146,6 +135,5 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             } 
         }
 
-       
     }
 }
