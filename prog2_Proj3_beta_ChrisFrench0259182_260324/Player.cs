@@ -12,15 +12,18 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //public static int plMaxHP = 50;
         public static int plXP = 0;
         public static int plLevel = 0;
-        public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack: Program.plaAtkUP, symbol: '!', hp: Program.plaMaxHP, color: ConsoleColor.Blue)
+        public Player(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) :
+            base(Name, x, y, attack: Program.plaAtkUP, symbol: '!', hp: Program.plaMaxHP, color: ConsoleColor.Blue, (1, 55), (1, 24))
         {
         }
 
         public void Move(int X, int Y)
         {
+
             int nextX = _x + X;
             int nextY = _y + Y;
         
+            bool inBounds = (nextX >= 1 && nextX <= 55 && nextY >= 1 && nextY <= 24);
             bool hitEnemy = false;
 
             if (Program.map._currentMapIndex == 0)

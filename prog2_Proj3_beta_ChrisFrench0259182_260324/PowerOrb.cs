@@ -14,19 +14,20 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static bool _powerOrb = true;
         public static Random _powerOrbSpawn = new Random();
         public static (int, int) _plPosition = (Program.player._x, Program.player._y);
-      //  public static char orbSymbol = '\u2699'; will not diaplay . 
+        //  public static char orbSymbol = '\u2699'; will not diaplay . 
         public static int powerOrb_x_pos;
         public static int powerOrb_y_pos;
         public static (int, int) powerOrb_min_max_x = (8, 46);///
         public static (int, int) powerOrb_min_max_y = (8, 21);///
-
+        public static int peonsDestroyed;
+        public static int bonusXP = peonsDestroyed * 10;
         public static int _poCount = 1;
 
 
         public PowerOrb(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 1, symbol: '0' /*orbSymbol*/, ConsoleColor.Cyan, min_max_x, min_max_y)
         {
             Name = "Power Orb";
-            powerOrb_x_pos = x;
+            powerOrb_x_pos= x;
             powerOrb_y_pos = y;
             count = 1;
         }
@@ -86,6 +87,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         {
                             var currentPeons = Program.MapPeonRegistry[currentMap];
 
+                          
+
                             foreach (var peonPos in currentPeons)// cascades tthrough them to clear them
                             {
                                 Console.SetCursorPosition(peonPos.x, peonPos.y);
@@ -96,15 +99,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(peonPos.x, peonPos.y);
                                 Program.WriteTileWithColor(Program.map._mapsCurrent[peonPos.y][peonPos.x]);// resets the oroignal map tile
                             }
+                            peonsDestroyed = currentPeons.Count;
+                            
 
                             currentPeons.Clear();// clears the peons from the map
-                            Player.plXP += 150;
+                            Player.plXP += bonusXP;
                             Buffs.IncreaseXP(0);  //awards a base xp
                             HUD.Kaboom();
                         }
-
-
-                       
 
                         orbs.RemoveAt(i);
                     }

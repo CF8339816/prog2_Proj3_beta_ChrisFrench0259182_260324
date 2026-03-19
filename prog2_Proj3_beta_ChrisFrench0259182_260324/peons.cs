@@ -21,14 +21,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
        // public static Random _rando = new Random();
  
 
-        public Peons(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base("Peon", x, y, 2, '6', 3, ConsoleColor.Green)
+        public Peons(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) : base("Peon", x, y, 2, '6', 3, ConsoleColor.Green, (8, 46) ,(8, 21) )
         {
             Name = "hostage";
             _peonCount = 9;
             _peon_x_pos = x;
             _peon_y_pos = y;
-            _peon_min_max_x = (8, 46);
-            _peon_min_max_y = (8, 21);
+            _peon_min_max_x = ;
+            _peon_min_max_y = ;
 
         }
 
@@ -110,9 +110,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 int nextX = oldX + _peonSpawn.Next(-1, 2);
                 int nextY = oldY + _peonSpawn.Next(-1, 2);
 
-                // 3. Validation: Check if it's the same spot OR if the new spot is occupied
-                // We use IsTileOccupied, but since the Peon is ALREADY in the registry at (oldX, oldY), 
-                // IsTileOccupied might return true for its own spot.
+                
                 if ((nextX != oldX || nextY != oldY) && !Program.IsTileOccupied(nextX, nextY))//checks if the taget tile is free and availabl to write to
                 {
                     

@@ -172,7 +172,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(58, 7);
             Console.WriteLine($"A wave of energy pulses out and kills all low level peons");
             Console.SetCursorPosition(58, 8);
-            Console.WriteLine($"on this stage {Program.player._name} gets 150 XP...woooo!");
+            Console.WriteLine($"on this stage {Program.player._name} gets {PowerOrb.bonusXP} XP...woooo!");
             Console.ResetColor();
 
 
