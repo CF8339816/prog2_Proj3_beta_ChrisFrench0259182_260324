@@ -48,6 +48,7 @@
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Collectable.cs" />
+    <Compile Include="EnemyRiders.cs" />
     <Compile Include="EnviroDmg.cs" />
     <Compile Include="EnemyLeader.cs" />
     <Compile Include="GameManager.cs" />
@@ -55,7 +56,7 @@
     <Compile Include="HUD.cs" />
     <Compile Include="LoadMap.cs" />
     <Compile Include="MyEvents.cs" />
-    <Compile Include="peons.cs" />
+    <Compile Include="Peons.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerOrb.cs" />
     <Compile Include="Program.cs" />

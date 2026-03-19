@@ -23,7 +23,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
-        public static List<EnemyLeader> enemyRiderList = new List<EnemyLeader>();
+        public static List<EnemyRiders> enemyRiderList = new List<EnemyRiders>();
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
@@ -37,7 +37,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // moved the  tile check here  to see if it would stop the treasure and  captive spawns in the lava
             int currentMap = Program.map._currentMapIndex;// checks using info from current map
             char targetTile = Program.map._mapsCurrent[y][x];
-            char[] forbiddenTiles = { '#', 'w', '%', '|', 'M', '-', '+' };//, 'S', '$', '&', 'O', 'H', '@', '!','*'
+            char[] forbiddenTiles = { '#', 'w', '%', '|', 'M', '-', '+' , 'S', '$', '&','6', 'O', 'H', '@', '!','*'};
             if (Array.Exists(forbiddenTiles, t => t == targetTile))
             { return true; }
             // Check if player  is there
@@ -45,6 +45,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             { return true; }
             // check for enemmies
             if (Program.enemiesMap1.Any(enmy => enmy._x == x && enmy._y == y))
+            { return true; }
+            if (Program.enemiesMap2.Any(enmy => enmy._x == x && enmy._y == y))
+            { return true; }
+            if (Program.enemiesMap3.Any(enmy => enmy._x == x && enmy._y == y))
+            { return true; }
+            if (Program.enemyRiderList.Any(enmy => enmy._x == x && enmy._y == y))
             { return true; }
             // Check for gold spawn using current map's dictionary list
             if (Program.MapTreasureRegistry.ContainsKey(currentMap))
@@ -84,22 +90,22 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             MyEvents.AmbushMapCheck();
                        
             enemiesMap1.Clear();
-            enemiesMap1.Add(new EnemyLeader("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new EnemyLeader("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap1.Add(new EnemyLeader("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+            enemiesMap1.Add(new EnemyLeader("Gobbo",      50,  4, 10, '&', 25, ConsoleColor.Yellow));
+            enemiesMap1.Add(new EnemyLeader("Slobbo",     20, 23,  8, '&', 20, ConsoleColor.Yellow));
+            enemiesMap1.Add(new EnemyLeader("Orcus",      15, 13, 12, 'O', 40, ConsoleColor.Yellow));
+            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 80, ConsoleColor.DarkYellow));
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new EnemyLeader("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap2.Add(new EnemyLeader("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap2.Add(new EnemyLeader("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
+            enemiesMap2.Add(new EnemyLeader("Gnolie",           4,  4, 16, 'g',  35, ConsoleColor.Red));
+            enemiesMap2.Add(new EnemyLeader("Gnawlie",          5, 20, 18, 'g',  30, ConsoleColor.Red));
+            enemiesMap2.Add(new EnemyLeader("ZugZug",          31, 12, 12, 'O',  60, ConsoleColor.Red));
+            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 140, ConsoleColor.DarkRed));
 
             enemiesMap3.Clear();
-            enemiesMap3.Add(new EnemyLeader("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new EnemyLeader("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new EnemyLeader("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
-            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
+            enemiesMap3.Add(new EnemyLeader("Bammo",        17, 6 , 10, 'O',  65, ConsoleColor.Magenta));
+            enemiesMap3.Add(new EnemyLeader("Slammo",       17, 23,  8, 'O',  60, ConsoleColor.Magenta));
+            enemiesMap3.Add(new EnemyLeader("Ogrelet",      37, 10, 20, 'Q',  90, ConsoleColor.Magenta));
+            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta));
           
             while (isPlaying)
             {
@@ -137,8 +143,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     player._y = newSpawn.Value.y;
                   
                 }
-                CollectSpawner.SetupMapAssets(); 
-                
+                CollectSpawner.SetupMapAssets();
+                Peons.DrawPeon();
                 EnviroHeal.SpringWatterHealling();
                 EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
@@ -210,7 +216,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemyRiderList.RemoveAt(i);
                         }
                         else
-                        { EnemyLeader.MoveEnemy(enemyRiderList[i]); }
+                        { EnemyRiders.MoveTowards(enemyRiderList[i]); }
                     }
                 }
                  DrawEntities();
@@ -311,6 +317,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ForegroundColor = player._color;
             Console.Write(player._symbol);
             Console.ResetColor();
+            Peons.MovePeonsRandomly();
         }
     }
 }

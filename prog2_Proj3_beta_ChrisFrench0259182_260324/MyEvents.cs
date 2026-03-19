@@ -22,10 +22,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     _ambushTriggered = true;
 
                     Program.enemyRiderList.Clear();
-                    Program.enemyRiderList.Add(new EnemyLeader("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyLeader("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyLeader("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyLeader("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
+                    Program.enemyRiderList.Add(new EnemyRiders("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
 
                     //Console.SetCursorPosition(60, 0);
                     //Console.WriteLine("here comes a new challenger");
@@ -34,13 +34,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                 }
             }
-            foreach (var enmy in Program.enemyRiderList)
+            foreach (var enmyRide in Program.enemyRiderList)
             {
-                if (enmy._health > 0) // Only draw if alive
+                if (enmyRide._health > 0) // Only draw if alive
                 {
-                    Console.SetCursorPosition(enmy._x, enmy._y);
-                    Console.ForegroundColor = enmy._color;
-                    Console.Write(enmy._symbol);
+                    Console.SetCursorPosition(enmyRide._x, enmyRide._y);
+                    Console.ForegroundColor = enmyRide._color;
+                    Console.Write(enmyRide._symbol);
                 }
             }
             UpdateRiders();
@@ -51,15 +51,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             // Only move riders if the ambush has started
             if (_ambushTriggered)
             {
-                foreach (var enmy in Program.enemyRiderList)
+                foreach (var enmyRide in Program.enemyRiderList)
                 {
-                    if (enmy._health > 0) //verifies enemy alive before move
+                    if (enmyRide._health > 0) //verifies enemy alive before move
                     {
-                       Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
-                        Console.Write(enmy._symbol);
+                       Console.SetCursorPosition(enmyRide._x, enmyRide._y);
+                        Console.ForegroundColor = enmyRide._color;
+                        Console.Write(enmyRide._symbol);
                         
-                        EnemyLeader.MoveTowards(enmy); //  move towards rather than randopm 
+                        EnemyRiders.MoveTowards(enmyRide); //  move towards rather than randopm 
                     }
                     
                 }

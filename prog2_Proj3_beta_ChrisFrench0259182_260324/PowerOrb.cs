@@ -99,7 +99,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                             currentPeons.Clear();// clears the peons from the map
                             Player.plXP += 150;
-                            Buffs.IncreaseXP(150);  //awards a base xp
+                            Buffs.IncreaseXP(0);  //awards a base xp
                             HUD.Kaboom();
                         }
 
@@ -115,38 +115,3 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     }
 }
 
-
-                //    if (!Program.MapTreasureRegistry.ContainsKey(currentMap)) return;
-
-                //    var orbs = Program.MapTreasureRegistry[currentMap];
-
-                //    for (int i = orbs.Count - 1; i >= 0; i--)
-                //    {
-                //        if (Program.player._x == orbs[i].x && Program.player._y == orbs[i].y)
-                //        {
-
-                //            foreach (var enmy in Program.enemiesMap1)
-                //            {
-
-                //                Console.SetCursorPosition(enmy._x, enmy._y);
-                //                //WriteTileWithColor(map._mapsCurrent[enmy._y][enmy._x]);
-                //                Console.ForegroundColor = ConsoleColor.Cyan;
-                //                Console.Write("░");
-                //                Console.ReadKey(true);
-                //                Console.ForegroundColor = ConsoleColor.Black;
-                //                Console.Write(" ");
-                //            }
-
-
-                //            Console.Beep(400, 200);
-
-                //            Program.enemiesMap1.Clear();
-
-
-                //            Player.plXP += 150;
-                //             HUD.Kaboom();
-
-                //            orbs.RemoveAt(i);// Remove collected orb
-                //        }
-                //    }
-                //}

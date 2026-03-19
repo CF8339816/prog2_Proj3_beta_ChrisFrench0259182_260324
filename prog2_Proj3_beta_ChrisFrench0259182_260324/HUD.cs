@@ -153,9 +153,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void plWin()
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.SetCursorPosition(60, 22);// outputs player death and end of game prompts to exit
-            Console.WriteLine($" {Program.player._name} has reached the goal with {Program.player._health} health, ");
-            Console.SetCursorPosition(60, 23);
+            Console.SetCursorPosition(58, 22);// outputs player death and end of game prompts to exit
+            Console.WriteLine($"{Program.player._name} has reached the goal with {Program.player._health} health, ");
+            Console.SetCursorPosition(58, 23);
             Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._freed} captives.");
             Console.ReadKey(true);
             Console.ResetColor();

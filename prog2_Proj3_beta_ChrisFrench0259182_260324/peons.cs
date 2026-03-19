@@ -89,14 +89,50 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             }
         }
 
+        public static void MovePeonsRandomly()
+        {
+            int currentMap = Program.map._currentMapIndex;
+            if (!Program.MapPeonRegistry.ContainsKey(currentMap)) return;
 
+            var peonList = Program.MapPeonRegistry[currentMap];
+
+            for (int i = 0; i < peonList.Count; i++)
+            {
+                
+                int oldX = peonList[i].x;// gets current x
+                int oldY = peonList[i].y;//gets current y
+
+               
+                int nextX = oldX + _peonSpawn.Next(-1, 2);
+                int nextY = oldY + _peonSpawn.Next(-1, 2);
+
+                // 3. Validation: Check if it's the same spot OR if the new spot is occupied
+                // We use IsTileOccupied, but since the Peon is ALREADY in the registry at (oldX, oldY), 
+                // IsTileOccupied might return true for its own spot.
+                if ((nextX != oldX || nextY != oldY) && !Program.IsTileOccupied(nextX, nextY))//checks if the taget tile is free and availabl to write to
+                {
+                    
+                    Console.SetCursorPosition(oldX, oldY);// clears old location
+                    Program.WriteTileWithColor(Program.map._mapsCurrent[oldY][oldX]);
+
+                   
+                    peonList[i] = (nextX, nextY); // adds new location to the dictionary 
+
+                  
+                    Console.SetCursorPosition(nextX, nextY); //0draws at new location
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write('6');
+                    Console.ResetColor();
+                }
+            }
+        }
 
         //public static void MoveEnemy(Peons Peon)
         //{
         //    //Thread.Sleep(40);
         //    int nextX = Peon._x;
         //    int nextY = Peon._y;
-           
+
         //    int nextRandX = Peon._x + _rando.Next(-1, 2); //randomises mocve on x
         //    int nextRandY = Peon._y + _rando.Next(-1, 2); // randomises moves on y
         //    nextX = nextRandX;
@@ -144,8 +180,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //                        break;
         //                    }
         //                }
-                    
-          
+
+
         //            if (!isPathBlockedByEnemy && !isPathBlockedByPeon && Program.map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != 'S' && targetTile != '$' && targetTile != 'w' && targetTile != '#' && (nextX != Program.player._x || nextY != Program.player._y))
         //            {
         //                for (int i = 0; i < Program.MapPeonRegistry[currentMap].Count; i++)// ensures the peon's new position is tracked for checking and not its sapwn point
