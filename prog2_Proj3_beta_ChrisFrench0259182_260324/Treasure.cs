@@ -74,8 +74,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 if (Program.player._x == piles[i].x && Program.player._y == piles[i].y)
                 {
-                    loot = _lootRando.Next(15, 35);
-                    _gold += loot;
+                    _gold += _lootRando.Next(15, 35);
                     HUD.Looter();
 
                     piles.RemoveAt(i);// Remove collected treasure from map list

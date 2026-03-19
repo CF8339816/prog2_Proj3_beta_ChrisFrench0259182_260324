@@ -11,7 +11,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
    
         public static bool _newPrisoner = true;
         public static Random _prisonerSpawn = new Random();
-        public static int _prisonerCount=9;
+        public static int _prisonerCount=6;
         public static int _prisoner_x_pos;
         public static int _prisoner_y_pos;
         public static (int, int) _prisoner_min_max_x = (8, 46);
@@ -20,7 +20,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
        
         //public static List<(int x, int y)> _prisonerLocations = new List<(int, int)>();
 
-        public Captive(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 9, symbol: 'S', ConsoleColor.White, min_max_x, min_max_y)
+        public Captive(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 8, symbol: 'S', ConsoleColor.White, min_max_x, min_max_y)
         {
             Name = "hostage";
             _prisonerCount = count;
