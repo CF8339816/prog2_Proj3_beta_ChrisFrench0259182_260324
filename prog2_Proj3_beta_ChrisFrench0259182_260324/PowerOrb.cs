@@ -48,10 +48,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                         if (!Program.IsTileOccupied(poSpawnX, poSpawnY))
                         {
-                            PowerOrb.Add((poSpawnX, poSpawnY));
+                                }
+                  PowerOrb.Add((poSpawnX, poSpawnY));
                             valid = true;
-                        }
-                    }
+                      }
                 }
                 Program.MapOrbRegistry[currentMap] = PowerOrb;
             }
@@ -90,12 +90,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
 
                     Program.enemiesMap1.Clear(); //Clears the enemy list 
+                    Player.plXP += 150;
                     Buffs.IncreaseXP(150);  //awards a base xp
                     HUD.Kaboom();
 
                     orbs.RemoveAt(i);
 
                 }
+            }
+        }
+    }
+}
 
 
                 //    if (!Program.MapTreasureRegistry.ContainsKey(currentMap)) return;
@@ -132,7 +137,3 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 //        }
                 //    }
                 //}
-            }
-        }
-    }
-}

@@ -49,7 +49,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.WriteLine($" {Program.player._name} takes {boss._attack} points of combat damage");
                         Console.SetCursorPosition(60, 18);
                         Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                        //HUD.combat();
+                      
 
                         if (_health <= 0 || boss._health <= 0)
                         {

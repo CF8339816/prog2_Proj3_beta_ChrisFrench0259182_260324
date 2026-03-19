@@ -172,7 +172,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Console.Beep(200, 150);
                             Console.SetCursorPosition(boss._x, boss._y);
                             WriteTileWithColor(map._mapsCurrent[boss._y][boss._x]);
-                            enemyBoss.RemoveAt(0); // Remove the first boss
+                            //enemyBoss.RemoveAt(0); // Remove the first boss
                         }
                         else
                         {
