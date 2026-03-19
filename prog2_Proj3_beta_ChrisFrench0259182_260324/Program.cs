@@ -20,10 +20,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
         public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue);
-        public static List<Enemy> enemiesMap1 = new List<Enemy>();
-        public static List<Enemy> enemiesMap2 = new List<Enemy>();
-        public static List<Enemy> enemiesMap3 = new List<Enemy>();
-        public static List<Enemy> enemyRiderList = new List<Enemy>();
+        public static List<Enemypeon> enemiesMap1 = new List<Enemypeon>();
+        public static List<Enemypeon> enemiesMap2 = new List<Enemypeon>();
+        public static List<Enemypeon> enemiesMap3 = new List<Enemypeon>();
+        public static List<EnemyBoss> enemyBoss = new List<EnemyBoss>();
+        public static List<EnemyRiders> enemyRiderList = new List<EnemyRiders>();
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
@@ -70,22 +71,42 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             MyEvents.AmbushMapCheck();
                        
             enemiesMap1.Clear();
-            enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+            enemiesMap1.Add(new Enemypeon("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemypeon("Lawbbo", 6, 22, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Rawbbo", 8, 23, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Morcus", 10, 2, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemypeon("Pawbbo", 24, 2, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Steve", 31, 8, 8, '&', 20, ConsoleColor.Green));
+
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new Enemy("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemy("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemy("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap2.Add(new Enemy("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
+            enemiesMap2.Add(new Enemypeon("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap2.Add(new Enemypeon("Chawlie", 10, 12, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("WaAAAlieeEE", 7, 9, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("Gabbo", 25, 2, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap2.Add(new Enemypeon("Slabbo", 51, 3, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap2.Add(new Enemypeon("Orcus", 6, 20, 12, 'O', 30, ConsoleColor.DarkGreen));
 
             enemiesMap3.Clear();
-            enemiesMap3.Add(new Enemy("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemy("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemy("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
-            enemiesMap3.Add(new Enemy("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
+            enemiesMap3.Add(new Enemypeon("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
+            enemiesMap3.Add(new Enemypeon("Gobby", 9, 5, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap3.Add(new Enemypeon("Slobby", 20, 6, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap3.Add(new Enemypeon("Dorcus", 38, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Wammo", 28, 23, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Shammo", 21, 22, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Ogrelot", 52, 3, 20, 'Q', 60, ConsoleColor.Yellow));
+
+
+            enemyBoss.Add(new EnemyBoss("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+            enemyBoss.Add(new EnemyBoss("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
+            enemyBoss.Add(new EnemyBoss("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
+
           
             while (isPlaying)
             {
@@ -134,9 +155,27 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                              
                 if (Program.map._currentMapIndex == 0)
                 {
-                    for (int i = enemiesMap1.Count - 1; i >= 0; i--)
+                    if (enemyBoss.Count > 0) // checks count to prevent crash
                     {
-                        if (enemiesMap1[i]._health <= 0)
+                        var boss = enemyBoss[0]; // First entry in the boss list
+
+                        if (boss._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(boss._x, boss._y);
+                            WriteTileWithColor(map._mapsCurrent[boss._y][boss._x]);
+                            enemyBoss.RemoveAt(0); // Remove the first boss
+                        }
+                        else
+                        {
+                            EnemyBoss.MoveEnemy(boss);
+                        }
+                    }
+
+                    for (int i = enemiesMap1.Count - 1; i >= 0; i--)
+                        {
+                            if (enemiesMap1[i]._health <= 0)
                         {
                             Console.Beep(300, 100);
                             Console.Beep(200, 150);
@@ -145,11 +184,33 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap1.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemiesMap1[i]); }
+                        { Enemypeon.MoveEnemy(enemiesMap1[i]); }
                     }
                 }
+              
+                
                 if (Program.map._currentMapIndex == 1)
-                {                   
+                {
+
+                    if (enemyBoss.Count > 1) // checks count to prevent crash
+                    {
+                        var boss = enemyBoss[1]; // First entry in the boss list
+
+                        if (boss._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(boss._x, boss._y);
+                            WriteTileWithColor(map._mapsCurrent[boss._y][boss._x]);
+                            enemyBoss.RemoveAt(1); // Remove the first boss
+                        }
+                        else
+                        {
+                            EnemyBoss.MoveEnemy(boss);
+                        }
+                    }
+
+
                     for (int i = enemiesMap2.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap2[i]._health <= 0)
@@ -161,12 +222,33 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap2.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemiesMap2[i]); }
+                        { Enemypeon.MoveEnemy(enemiesMap2[i]); }
                     }
                 }
 
+              
+                
                 if (Program.map._currentMapIndex == 2)
-                {                    
+                {
+
+                    if (enemyBoss.Count > 2) // checks count to prevent crash
+                    {
+                        var boss = enemyBoss[2]; // First entry in the boss list
+
+                        if (boss._health <= 0)
+                        {
+                            Console.Beep(300, 100);
+                            Console.Beep(200, 150);
+                            Console.SetCursorPosition(boss._x, boss._y);
+                            WriteTileWithColor(map._mapsCurrent[boss._y][boss._x]);
+                            enemyBoss.RemoveAt(2); // Remove the first boss
+                        }
+                        else
+                        {
+                            EnemyBoss.MoveEnemy(boss);
+                        }
+                    }
+
                     for (int i = enemiesMap3.Count - 1; i >= 0; i--)
                     {
                         if (enemiesMap3[i]._health <= 0)
@@ -178,7 +260,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap3.RemoveAt(i);
                         }
                         else
-                        {  Enemy.MoveEnemy(enemiesMap3[i]); }
+                        {  Enemypeon.MoveEnemy(enemiesMap3[i]); }
                     }
                 }
 
@@ -195,7 +277,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemyRiderList.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemyRiderList[i]); }
+                        { EnemyRiders.MoveTowards(enemyRiderList[i]); }
                     }
                 }
                  DrawEntities();

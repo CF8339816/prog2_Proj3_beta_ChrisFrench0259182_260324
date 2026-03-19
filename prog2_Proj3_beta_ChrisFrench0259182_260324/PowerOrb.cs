@@ -6,7 +6,78 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    internal class PowerOrb
+public class PowerOrb : Collectable
     {
+        public static bool _powerOrb = true;
+        public static Random _powerOrbSpawn = new Random();
+        public static (int, int) _plPosition = (Program.player._x, Program.player._y);
+     
+        public static int powerOrb_x_pos;
+        public static int powerOrb_y_pos;
+        public static (int, int) powerOrb_min_max_x = (8, 46);///
+        public static (int, int) powerOrb_min_max_y = (8, 21);///
+        
+        public static int _poCount = 1;
+        
+
+        public PowerOrb(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 6, symbol: '$', ConsoleColor.Yellow, min_max_x, min_max_y)
+        {
+            Name = "Power Orb";
+            powerOrb_x_pos = x;
+            powerOrb_y_pos = y;
+            count = 1;
+        }
+        public static void DrawGold()
+        {
+            int currentMap = Program.map._currentMapIndex;
+
+            if (!Program.MapTreasureRegistry.ContainsKey(currentMap))// onlly spawns new list if map never visited otherwise holds locations of uncolllected treasures
+            {
+                List<(int x, int y)> goldPiles = new List<(int x, int y)>();
+                for (int i = 0; i < _gpCount; i++)
+                {
+                    int tSpawnX, tSpawnY;
+                    bool valid = false;
+                    while (!valid)
+                    {
+                        tSpawnX = _goldPileSpawn.Next(treasure_min_max_x.Item1, treasure_min_max_x.Item2 + 1);
+                        tSpawnY = _goldPileSpawn.Next(treasure_min_max_y.Item1, treasure_min_max_y.Item2 + 1);
+
+                        if (!Program.IsTileOccupied(tSpawnX, tSpawnY))
+                        {
+                            goldPiles.Add((tSpawnX, tSpawnY));
+                            valid = true;
+                        }
+                    }
+                }
+                Program.MapTreasureRegistry[currentMap] = goldPiles;
+            }
+
+            foreach (var golds in Program.MapTreasureRegistry[currentMap])//Drawing  from the dictionary list for the current map
+            {
+                Console.SetCursorPosition(golds.x, golds.y);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("$");
+            }
+            Console.ResetColor();
+        }
+        public static void CheckTreasureCollection()
+        {
+            int currentMap = Program.map._currentMapIndex;
+            if (!Program.MapTreasureRegistry.ContainsKey(currentMap)) return;
+
+            var piles = Program.MapTreasureRegistry[currentMap];
+
+            for (int i = piles.Count - 1; i >= 0; i--)
+            {
+                if (Program.player._x == piles[i].x && Program.player._y == piles[i].y)
+                {
+                    _gold += _lootRando.Next(15, 35);
+                    HUD.Looter();
+
+                    piles.RemoveAt(i);// Remove collected treasure from map list
+                }
+            }
+        }
     }
 }

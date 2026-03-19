@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class Enemy : Character
+    public class Enemypeon : Character
     {
-        public Enemy(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack, symbol, hp, color)
+        public Enemypeon(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color) : base(Name, x, y, attack, symbol, hp, color)
         {
         }
         private static Random enRando = new Random();
 
-        public static void MoveEnemy(Enemy enmy)
+        public static void MoveEnemy(Enemypeon enmy)
         {
             //Thread.Sleep(40);
             int nextX = enmy._x;
@@ -42,7 +42,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     else if (enmy._y > Program.player._y) nextY--;
 
                     bool isPathBlockedByEnemy = false;
-                    foreach (Enemy other in Program.enemyRiderList)
+                    foreach (Enemypeon other in Program.enemyRiderList)
                     {
                         if (other != enmy && nextX == other._x && nextY == other._y)
                         {
@@ -67,7 +67,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
   ///
             else
             {
-                foreach (Enemy other in Program.enemiesMap1)
+                foreach (Enemypeon other in Program.enemiesMap1)
                 {
                     if (other != enmy && nextX == other._x && nextY == other._y)
                     {
@@ -75,7 +75,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;
                     }
                 }
-                foreach (Enemy other in Program.enemiesMap2)
+                foreach (Enemypeon other in Program.enemiesMap2)
                 {
                     if (other != enmy && nextX == other._x && nextY == other._y)
                     {
@@ -83,7 +83,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;
                     }
                 }
-                foreach (Enemy other in Program.enemiesMap3)
+                foreach (Enemypeon other in Program.enemiesMap3)
                 {
                     if (other != enmy && nextX == other._x && nextY == other._y)
                     {
@@ -92,7 +92,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
                 }
 
-                foreach (Enemy other in Program.enemyRiderList)
+                foreach (Enemypeon other in Program.enemyRiderList)
                 {
                     if (other != enmy && nextX == other._x && nextY == other._y)
                     {
@@ -121,7 +121,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         }
 
          //public static void MoveTowards(Program.player._x, Program.player._y)
-        public static void MoveTowards(Enemy enemyRiders)
+        public static void MoveTowards(Enemypeon enemyRiders)
         {
             Console.SetCursorPosition(enemyRiders._x, enemyRiders._y);
             char oldTile = Program.map._mapsCurrent[enemyRiders._y][enemyRiders._x];
@@ -137,7 +137,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             else if (enemyRiders._y > Program.player._y) nextY--;
       
             bool isPathBlockedByEnemy = false;
-            foreach (Enemy other in Program.enemyRiderList) 
+            foreach (Enemypeon other in Program.enemyRiderList) 
             {
                 if (other != enemyRiders && nextX == other._x && nextY == other._y)
                 {
