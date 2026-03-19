@@ -28,7 +28,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             nextY = nextRandY;
             ///
             bool isPlayerNear = (enmy._x + 2 >= Program.player._x && enmy._x - 2 <= Program.player._x && enmy._y + 2 >= Program.player._y && enmy._y - 2 <= Program.player._y);
-            bool inBounds = (nextX >= 1 && nextX <= 55 && nextY >= 1 && nextY <= 24);
+           
 
             if (isPlayerNear)
             {
@@ -44,7 +44,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 nextX += enRando.Next(-1, 2);
                 nextY += enRando.Next(-1, 2);
             }
-                
+            bool inBounds = (nextX >= 1 && nextX <= 55 && nextY >= 1 && nextY <= 24);
             bool isPathBlockedByEnemy = false;
             foreach (EnemyLeader other in Program.enemiesMap1)
             {
@@ -126,11 +126,22 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                     enmy._x = nextX;
                     enmy._y = nextY;
+
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    Console.ForegroundColor = enmy._color;
+                    Console.Write(enmy._symbol);
+                    Console.ResetColor();
                 }
                 else
                 {
                     nextX = 0;
                     nextY = 0;
+
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    Console.ForegroundColor = enmy._color;
+                    Console.Write(enmy._symbol);
+                    Console.ResetColor();
+
                 }
             } 
         }

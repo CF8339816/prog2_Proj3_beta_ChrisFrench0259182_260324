@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int MaxNameLLength = 15;
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
-        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue);
+        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue, (1, 55), (1, 24));
         public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();

@@ -125,7 +125,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'Q' to exit...\n" +
                 "Fight enemies by manouvering to them or try to avoid them...\n" +
-                " Lava '%' will damage you, Water 'w' will heal you");
+                " Lava '%' will damage you, Water 'w' will heal you, '@' and '*' will port you forward and back through the maps");
             Console.ResetColor();
         }
         public static void plStats()
@@ -172,7 +172,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(58, 7);
             Console.WriteLine($"A wave of energy pulses out and kills all low level peons");
             Console.SetCursorPosition(58, 8);
-            Console.WriteLine($"on this stage {Program.player._name} gets {PowerOrb.bonusXP} XP...woooo!");
+            Console.WriteLine($"on this stage {Program.player._name} gets {PowerOrb._XP} XP...woooo!");
             Console.ResetColor();
 
 

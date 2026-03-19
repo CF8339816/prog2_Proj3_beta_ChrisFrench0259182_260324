@@ -20,7 +20,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static (int, int) powerOrb_min_max_x = (8, 46);///
         public static (int, int) powerOrb_min_max_y = (8, 21);///
         public static int peonsDestroyed;
-        public static int bonusXP = peonsDestroyed * 10;
+        public static int _XP = 0;
         public static int _poCount = 1;
 
 
@@ -99,12 +99,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(peonPos.x, peonPos.y);
                                 Program.WriteTileWithColor(Program.map._mapsCurrent[peonPos.y][peonPos.x]);// resets the oroignal map tile
                             }
-                            peonsDestroyed = currentPeons.Count;
-                            
-
+                            int peonsDestroyed = currentPeons.Count;
+                            int bonusXP = peonsDestroyed * 10;
+                            _XP = bonusXP;
                             currentPeons.Clear();// clears the peons from the map
                             Player.plXP += bonusXP;
-                            Buffs.IncreaseXP(0);  //awards a base xp
+                            Buffs.IncreaseXP(bonusXP);  //awards a base xp
                             HUD.Kaboom();
                         }
 

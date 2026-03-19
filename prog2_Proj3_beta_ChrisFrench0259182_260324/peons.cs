@@ -15,20 +15,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int _peonCount = 9;
         public static int _peon_x_pos;
         public static int _peon_y_pos;
-        public static (int, int) _peon_min_max_x = (8, 46);
-        public static (int, int) _peon_min_max_y = (8, 21);
+        public static (int, int) _peon_min_max_x = (1, 55);
+        public static (int, int) _peon_min_max_y = (1, 24);
         public static int _defeated;
        // public static Random _rando = new Random();
  
 
-        public Peons(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) : base("Peon", x, y, 2, '6', 3, ConsoleColor.Green, (8, 46) ,(8, 21) )
+        public Peons(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) : base("Peon", x, y, 2, '6', 3, ConsoleColor.Green, (1, 55), (1, 24))
         {
             Name = "hostage";
             _peonCount = 9;
             _peon_x_pos = x;
             _peon_y_pos = y;
-            _peon_min_max_x = ;
-            _peon_min_max_y = ;
+          
 
         }
 
