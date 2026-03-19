@@ -28,6 +28,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
+        public static Dictionary<int, List<(int x, int y)>> MapOrbRegistry = new Dictionary<int, List<(int x, int y)>>();
         public static bool isPlaying = true;
 
         public static bool isAlly = false; //sets bool to check for other allies in movement path
@@ -47,10 +48,16 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             { return true; }
             // Check for gold spawn using current map's dictionary list
             if (Program.MapTreasureRegistry.ContainsKey(currentMap))
-            { 
-            if (Program.MapTreasureRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
-            { return true; }
+            {
+                if (Program.MapTreasureRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
+                { return true; }
             }
+            if (Program.MapOrbRegistry.ContainsKey(currentMap))
+            {
+                if (Program.MapOrbRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
+                { return true; }
+            }
+
             // Check there is already a captive there using current dictionary list for current map
             if (Program.MapCaptiveRegistry.ContainsKey(currentMap))
             {
@@ -69,7 +76,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.CursorVisible = false;
             map.DrawMap();
             MyEvents.AmbushMapCheck();
-                       
+
             enemiesMap1.Clear();
             enemiesMap1.Add(new Enemypeon("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
             enemiesMap1.Add(new Enemypeon("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
@@ -82,7 +89,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new Enemypeon("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("Gnolie", 4, 4, 16, 'g', 25, ConsoleColor.Red));
             enemiesMap2.Add(new Enemypeon("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
             enemiesMap2.Add(new Enemypeon("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
             enemiesMap2.Add(new Enemypeon("Chawlie", 10, 12, 16, 'g', 25, ConsoleColor.Red));
@@ -107,13 +114,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemyBoss.Add(new EnemyBoss("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
             enemyBoss.Add(new EnemyBoss("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
 
-          
+
             while (isPlaying)
             {
                 HUD.Instructions();
-                player._name =Name;
-                player._attack =plaAtkUP;
-              
+                player._name = Name;
+                player._attack = plaAtkUP;
+
                 int plX = 0, plY = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
                 // move player with W,A,S,D or optional arrow keys 
@@ -131,7 +138,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 player.Move(plX, plY);
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
-
+                PowerOrb.CheckOrbCollection();
                 /*>>>>>>*/
                 var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
 
@@ -143,8 +150,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     //Treasure._goldTreasure = true;
                     //Captive._newPrisoner = true;
                 }
-                CollectSpawner.SetupMapAssets(); 
-                
+                CollectSpawner.SetupMapAssets();
+
                 EnviroHeal.SpringWatterHealling();
                 EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
@@ -152,7 +159,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     isPlaying = false;
                     continue; //skips past rest
                 }
-                             
+
                 if (Program.map._currentMapIndex == 0)
                 {
                     if (enemyBoss.Count > 0) // checks count to prevent crash
@@ -174,8 +181,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
 
                     for (int i = enemiesMap1.Count - 1; i >= 0; i--)
-                        {
-                            if (enemiesMap1[i]._health <= 0)
+                    {
+                        if (enemiesMap1[i]._health <= 0)
                         {
                             Console.Beep(300, 100);
                             Console.Beep(200, 150);
@@ -187,12 +194,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         { Enemypeon.MoveEnemy(enemiesMap1[i]); }
                     }
                 }
-              
-                
+
+
                 if (Program.map._currentMapIndex == 1)
                 {
 
-                    if (enemyBoss.Count > 1) // checks count to prevent crash
+                    if (enemyBoss.Count > 0) // checks count to prevent crash
                     {
                         var boss = enemyBoss[1]; // First entry in the boss list
 
@@ -226,12 +233,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     }
                 }
 
-              
-                
+
+
                 if (Program.map._currentMapIndex == 2)
                 {
 
-                    if (enemyBoss.Count > 2) // checks count to prevent crash
+                    if (enemyBoss.Count > 0) // checks count to prevent crash
                     {
                         var boss = enemyBoss[2]; // First entry in the boss list
 
@@ -260,7 +267,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap3.RemoveAt(i);
                         }
                         else
-                        {  Enemypeon.MoveEnemy(enemiesMap3[i]); }
+                        { Enemypeon.MoveEnemy(enemiesMap3[i]); }
                     }
                 }
 
@@ -280,7 +287,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         { EnemyRiders.MoveTowards(enemyRiderList[i]); }
                     }
                 }
-                 DrawEntities();
+                DrawEntities();
                 Thread.Sleep(20);///
                 HUD.plStats();
             }
@@ -288,9 +295,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if ((map._mapsCurrent[player._y][player._x] == 'X') || (player._health == 0))
             {
                 if (player._health == 0)
-                {  HUD.plDied();  }
+                { HUD.plDied(); }
                 if (map._mapsCurrent[player._y][player._x] == 'X')
-                { 
+                {
                     isPlaying = false;
                     HUD.plWin();
                 }
@@ -330,7 +337,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.Write(tile);
             Console.ResetColor();
         }
- /*>>>>>>*/ public static void DrawEntities()// draws the player and the enemy symbols/ sprites
+        /*>>>>>>*/
+        public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
             if (Program.map._currentMapIndex == 0)
             {
@@ -343,41 +351,74 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.Write(enmy._symbol);
                     }
                 }
-            }
+                if (Program.enemyBoss.Count > 0)
+                {
+                    var boss = Program.enemyBoss[0];// grabs first boss
 
-            if (Program.map._currentMapIndex == 1)
-            {
-                foreach (var enmy in enemiesMap2)
-                {
-                    if (enmy._health > 0) // Only draw if alive
+                    if (boss._health > 0) // Only draw if alive
                     {
-                        Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
-                        Console.Write(enmy._symbol);
+                        Console.SetCursorPosition(boss._x, boss._y);
+                        Console.ForegroundColor = boss._color;
+                        Console.Write(boss._symbol);
                     }
                 }
-            }
-            if (Program.map._currentMapIndex == 2)
-            {
-                foreach (var enmy in enemiesMap3)
+
+                if (Program.map._currentMapIndex == 1)
                 {
-                    if (enmy._health > 0) // Only draw if alive
+                    foreach (var enmy in enemiesMap2)
                     {
-                        Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
-                        Console.Write(enmy._symbol);
+                        if (enmy._health > 0) // Only draw if alive
+                        {
+                            Console.SetCursorPosition(enmy._x, enmy._y);
+                            Console.ForegroundColor = enmy._color;
+                            Console.Write(enmy._symbol);
+                        }
+                    }
+                    if (Program.enemyBoss.Count > 0)
+                    {
+                        var boss = Program.enemyBoss[1];// grabs second boss
+
+                        if (boss._health > 0) // Only draw if alive
+                        {
+                            Console.SetCursorPosition(boss._x, boss._y);
+                            Console.ForegroundColor = boss._color;
+                            Console.Write(boss._symbol);
+                        }
                     }
                 }
+                if (Program.map._currentMapIndex == 2)
+                {
+                    foreach (var enmy in enemiesMap3)
+                    {
+                        if (enmy._health > 0) // Only draw if alive
+                        {
+                            Console.SetCursorPosition(enmy._x, enmy._y);
+                            Console.ForegroundColor = enmy._color;
+                            Console.Write(enmy._symbol);
+                        }
+                    }
+                    if (Program.enemyBoss.Count > 0)
+                    {
+                        var boss = Program.enemyBoss[2];// grabs third boss
+
+                        if (boss._health > 0) // Only draw if alive
+                        {
+                            Console.SetCursorPosition(boss._x, boss._y);
+                            Console.ForegroundColor = boss._color;
+                            Console.Write(boss._symbol);
+                        }
+                    }
+                }
+                if (Program.map._currentMapIndex == 3)
+                {
+                    MyEvents.AmbushMapCheck();
+
+                }
+                Console.SetCursorPosition(player._x, player._y);
+                Console.ForegroundColor = player._color;
+                Console.Write(player._symbol);
+                Console.ResetColor();
             }
-            if (Program.map._currentMapIndex == 3)
-            {
-                MyEvents.AmbushMapCheck();
-                
-            }
-            Console.SetCursorPosition(player._x, player._y);
-            Console.ForegroundColor = player._color;
-            Console.Write(player._symbol);
-            Console.ResetColor();
         }
     }
 }

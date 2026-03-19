@@ -23,6 +23,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 Treasure.DrawGold();
                 Captive.DrawPrisoner();
+                PowerOrb.DrawPowerOrb();
             }
         }
 

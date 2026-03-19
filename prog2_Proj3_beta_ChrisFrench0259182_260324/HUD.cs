@@ -173,7 +173,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
 
         }
+        public static void Kaboom()
+        {
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition(60, 5);
+            Console.WriteLine($" {Program.player._name} loots the Holy Fraculator! A wave of energy ");
+            Console.SetCursorPosition(60, 6);
+            Console.WriteLine($"pulses out and kills all low level monsters on this stage");
+            Console.SetCursorPosition(60, 7);
+            Console.WriteLine($"{Program.player._name} gets 150 XP...woooo!");
+            Console.ResetColor();
+
+
+
+        }
         public static void Moses()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -198,41 +212,41 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static void ClearMessage()
         {
             Console.SetCursorPosition(60, 4);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 5);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 6);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 7);
-            Console.Write(new string(' ', 55)); 
+            Console.Write(new string(' ', 57)); 
             Console.SetCursorPosition(60, 8);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 9);
-            Console.Write(new string(' ', 55)); 
+            Console.Write(new string(' ', 57)); 
             Console.SetCursorPosition(60, 10);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 11);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 12);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 13);   
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 14);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 15);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 16);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 17);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 18);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 19);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 20);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
             Console.SetCursorPosition(60, 21);
-            Console.Write(new string(' ', 55));
+            Console.Write(new string(' ', 57));
        
 
 
