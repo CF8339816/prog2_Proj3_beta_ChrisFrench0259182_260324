@@ -22,10 +22,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     _ambushTriggered = true;
 
                     Program.enemyRiderList.Clear();
-                    Program.enemyRiderList.Add(new EnemyRiders("Slasher", 44, 5, 10, 'k', 25, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyRiders("Crasher", 3, 12, 8, 'k', 20, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyRiders("Harrier", 13, 3, 12, 'k', 30, ConsoleColor.Red));
-                    Program.enemyRiderList.Add(new EnemyRiders("PackAlphaNasty", 39, 17, 15, 'K', 40, ConsoleColor.DarkRed));
+                    Program.enemyRiderList.Add(new EnemyRiders("Slasher",        44,  5, 10, 'k', 25, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("Crasher",         3, 12,  8, 'k', 20, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("Harrier",        13,  3, 12, 'k', 30, ConsoleColor.Red));
+                    Program.enemyRiderList.Add(new EnemyRiders("PackAlphaNasty", 39, 15, 15, 'K', 200, ConsoleColor.DarkRed));
 
                     //Console.SetCursorPosition(60, 0);
                     //Console.WriteLine("here comes a new challenger");

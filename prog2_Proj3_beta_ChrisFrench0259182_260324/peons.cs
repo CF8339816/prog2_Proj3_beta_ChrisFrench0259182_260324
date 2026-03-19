@@ -32,40 +32,44 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         }
 
+
+                       
         public static void DrawPeon()
         {
-            int currentMap = Program.map._currentMapIndex;
+            if (Program.map._currentMapIndex < 3) {
+                int currentMap = Program.map._currentMapIndex;
 
-            if (!Program.MapPeonRegistry.ContainsKey(currentMap))// onlly spawns new list if map never visited otherwise holds locations of uncolllected captives
-            {
-                List<(int x, int y)> Peon = new List<(int x, int y)>();
-                for (int i = 0; i < _peonCount; i++)
+                if (!Program.MapPeonRegistry.ContainsKey(currentMap))// onlly spawns new list if map never visited otherwise holds locations of uncolllected captives
                 {
-                    int peonSpawnX, peonSpawnY;
-                    bool valid = false;
-                    while (!valid)
+                    List<(int x, int y)> Peon = new List<(int x, int y)>();
+                    for (int i = 0; i < _peonCount; i++)
                     {
-                        peonSpawnX = _peonSpawn.Next(_peon_min_max_x.Item1, _peon_min_max_x.Item2 + 1);///
-                        peonSpawnY = _peonSpawn.Next(_peon_min_max_y.Item1, _peon_min_max_y.Item2 + 1);///
-
-                        if (!Program.IsTileOccupied(peonSpawnX, peonSpawnY))
+                        int peonSpawnX, peonSpawnY;
+                        bool valid = false;
+                        while (!valid)
                         {
-                            Peon.Add((peonSpawnX, peonSpawnY));
-                            valid = true;
+                            peonSpawnX = _peonSpawn.Next(_peon_min_max_x.Item1, _peon_min_max_x.Item2 + 1);///
+                            peonSpawnY = _peonSpawn.Next(_peon_min_max_y.Item1, _peon_min_max_y.Item2 + 1);///
+
+                            if (!Program.IsTileOccupied(peonSpawnX, peonSpawnY))
+                            {
+                                Peon.Add((peonSpawnX, peonSpawnY));
+                                valid = true;
+                            }
                         }
                     }
+                    Program.MapPeonRegistry[currentMap] = Peon;
                 }
-                Program.MapPeonRegistry[currentMap] = Peon;
-            }
 
-            foreach (var peons in Program.MapPeonRegistry[currentMap])// checks the dictionary to draw from fro the currerent map
-            {
-                Console.SetCursorPosition(peons.x, peons.y);
-              
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write('6');
+                foreach (var peons in Program.MapPeonRegistry[currentMap])// checks the dictionary to draw from fro the currerent map
+                {
+                    Console.SetCursorPosition(peons.x, peons.y);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write('6');
+                }
+                Console.ResetColor();
             }
-            Console.ResetColor();
         }
         public static void CheckPeonCollection()
         {
