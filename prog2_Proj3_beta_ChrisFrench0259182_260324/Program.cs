@@ -78,41 +78,41 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             MyEvents.AmbushMapCheck();
 
             enemiesMap1.Clear();
-            enemiesMap1.Add(new Enemypeon("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemypeon("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemypeon("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemypeon("Lawbbo", 6, 22, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemypeon("Rawbbo", 8, 23, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemypeon("Morcus", 10, 2, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemypeon("Pawbbo", 24, 2, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemypeon("Steve", 31, 8, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Gobbo",  50,  4, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Slobbo", 20, 23,  8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Orcus",  15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemypeon("Lawbbo",  7, 22, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Rawbbo",  8, 23,  8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Morcus", 10,  2, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new Enemypeon("Pawbbo", 24,  2, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new Enemypeon("Steve",  31,  8,  8, '&', 20, ConsoleColor.Green));
 
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new Enemypeon("Gnolie", 4, 4, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemypeon("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemypeon("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap2.Add(new Enemypeon("Chawlie", 10, 12, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemypeon("WaAAAlieeEE", 7, 9, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemypeon("Gabbo", 25, 2, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap2.Add(new Enemypeon("Slabbo", 51, 3, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap2.Add(new Enemypeon("Orcus", 6, 20, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap2.Add(new Enemypeon("Gnolie",      4,  4, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("Gnawlie",     5, 20, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("ZugZug",     31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap2.Add(new Enemypeon("Chawlie",    10, 12, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("WaAAAlieeEE", 7,  9, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new Enemypeon("Gabbo",      25,  2, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap2.Add(new Enemypeon("Slabbo",     51,  3,  8, '&', 20, ConsoleColor.Green));
+            enemiesMap2.Add(new Enemypeon("Orcus",       6, 20, 12, 'O', 30, ConsoleColor.DarkGreen));
 
             enemiesMap3.Clear();
-            enemiesMap3.Add(new Enemypeon("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemypeon("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Bammo",   17,  6, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Slammo",  17, 23,  8, 'O', 20, ConsoleColor.DarkGreen));
             enemiesMap3.Add(new Enemypeon("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
-            enemiesMap3.Add(new Enemypeon("Gobby", 9, 5, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap3.Add(new Enemypeon("Slobby", 20, 6, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap3.Add(new Enemypeon("Dorcus", 38, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemypeon("Wammo", 28, 23, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemypeon("Shammo", 21, 22, 8, 'O', 20, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemypeon("Ogrelot", 52, 3, 20, 'Q', 60, ConsoleColor.Yellow));
+            enemiesMap3.Add(new Enemypeon("Gobby",    9,  5, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap3.Add(new Enemypeon("Slobby",  20,  6,  8, '&', 20, ConsoleColor.Green));
+            enemiesMap3.Add(new Enemypeon("Dorcus",  38, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Wammo",   28, 23, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Shammo",  21, 22,  8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new Enemypeon("Ogrelot", 52,  3, 20, 'Q', 60, ConsoleColor.Yellow));
 
 
-            enemyBoss.Add(new EnemyBoss("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+            enemyBoss.Add(new EnemyBoss("Boss Hobbo",      49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
             enemyBoss.Add(new EnemyBoss("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
-            enemyBoss.Add(new EnemyBoss("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
+            enemyBoss.Add(new EnemyBoss("Boss Drowkus",    48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
 
 
             while (isPlaying)

@@ -22,7 +22,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int _poCount = 1;
 
 
-        public PowerOrb(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 1, symbol: 'G' /*orbSymbol*/, ConsoleColor.Cyan, min_max_x, min_max_y)
+        public PowerOrb(string Name, int x, int y, int count, char symbol, ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 1, symbol: '0' /*orbSymbol*/, ConsoleColor.Cyan, min_max_x, min_max_y)
         {
             Name = "Power Orb";
             powerOrb_x_pos = x;
@@ -60,7 +60,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 Console.SetCursorPosition(pOrb.x, pOrb.y);
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write('G');
+                Console.Write('0');
             }
             Console.ResetColor();
         }
