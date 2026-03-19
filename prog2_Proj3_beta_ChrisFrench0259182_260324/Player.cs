@@ -24,10 +24,64 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             bool hitEnemy = false;
 
             if (Program.map._currentMapIndex == 0)
-              foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
-              {
+            {
 
-                
+                if (Program.enemyBoss.Count > 0) // checks count to prevent crash
+                {
+                    var boss = Program.enemyBoss[0]; // First entry in the boss list
+
+                    if (nextX == boss._x && nextY == boss._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///  // was trying to do a flash of color on the map when combat occured
+                        Console.ResetColor();///
+                        boss._health -= _attack;
+                        _health -= boss._attack;
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {boss._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {boss._name} has {boss._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {boss._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
+
+                        if (_health <= 0 || boss._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (boss._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                boss._health = 0;
+                                plXP += 15;
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 5;
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {boss._name} has {boss._health} health, {boss._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+
+
+                    }
+                }
+
+                foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
+                {
+
+
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
                         Console.Beep(800, 50);
@@ -73,11 +127,70 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         }
                         break;///
                     }
-              }
+                }
+            }
 
             if (Program.map._currentMapIndex == 1)
+            {
+
+                if (Program.enemyBoss.Count > 0) // checks count to prevent crash
+                {
+                    var boss = Program.enemyBoss[1]; // second entry in the boss list
+
+                    if (nextX == boss._x && nextY == boss._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///  // was trying to do a flash of color on the map when combat occured
+                        Console.ResetColor();///
+                        boss._health -= _attack;
+                        _health -= boss._attack;
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {boss._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {boss._name} has {boss._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {boss._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
+
+                        if (_health <= 0 || boss._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (boss._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                boss._health = 0;
+                                plXP += 15;
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 5;
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {boss._name} has {boss._health} health, {boss._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+
+
+                    }
+                }
+
+
+
                 foreach (var enmy in Program.enemiesMap2)  // back in programs   possible rename check enemy colisions
                 {
+
+
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
                         Console.Beep(800, 50);
@@ -124,8 +237,64 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;///
                     }
                 }
+            }
 
             if (Program.map._currentMapIndex == 2)
+            {
+
+                if (Program.enemyBoss.Count > 0) // checks count to prevent crash
+                {
+                    var boss = Program.enemyBoss[2]; // third entry in the boss list
+
+                    if (nextX == boss._x && nextY == boss._y)
+                    {
+                        Console.Beep(800, 50);
+                        Console.SetCursorPosition(nextX, nextY);///
+                        Console.BackgroundColor = ConsoleColor.Yellow;///  // was trying to do a flash of color on the map when combat occured
+                        Console.ResetColor();///
+                        boss._health -= _attack;
+                        _health -= boss._attack;
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(60, 14);
+                        Console.WriteLine($" {boss._name} takes {Program.player._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 15);
+                        Console.WriteLine($" {boss._name} has {boss._health} health...");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(60, 17);
+                        Console.WriteLine($" {Program.player._name} takes {boss._attack} points of combat damage");
+                        Console.SetCursorPosition(60, 18);
+                        Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+                        //HUD.combat();
+
+                        if (_health <= 0 || boss._health <= 0)
+                        {
+                            if (_health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                _health = 0;
+                                Console.SetCursorPosition(60, 20);
+                                Console.WriteLine($" {_name} has {_health} health, {_name} has died");
+                                Program.isPlaying = false;
+                            }
+                            if (boss._health <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                boss._health = 0;
+                                plXP += 15;
+                                Buffs.IncreaseXP(0);
+                                Treasure._gold += 5;
+                                Console.SetCursorPosition(60, 21);
+                                Console.WriteLine($" {boss._name} has {boss._health} health, {boss._name} has died");
+                                Program.isPlaying = true;
+                            }
+                        }
+
+
+                    }
+                }
+
+
                 foreach (var enmy in Program.enemiesMap3)  // back in programs   possible rename check enemy colisions
                 {
                     if (nextX == enmy._x && nextY == enmy._y)
@@ -174,7 +343,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;///
                     }
                 }
+            }
             if (Program.map._currentMapIndex == 3)
+            {
                 foreach (var enmy in Program.enemyRiderList)  // back in programs   possible rename check enemy colisions
                 {
                     if (nextX == enmy._x && nextY == enmy._y)
@@ -223,6 +394,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         break;///
                     }
                 }
+            }
 
             if (!hitEnemy && Program.map.CanMoveTo(nextX, nextY))
             {
