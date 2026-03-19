@@ -27,6 +27,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
+        public static Dictionary<int, List<(int x, int y)>> MapOrbRegistry = new Dictionary<int, List<(int x, int y)>>();
         public static bool isPlaying = true;
 
         public static bool isAlly = false; //sets bool to check for other allies in movement path
@@ -49,6 +50,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             { 
             if (Program.MapTreasureRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
             { return true; }
+            }
+
+            if (Program.MapOrbRegistry.ContainsKey(currentMap))
+            {
+                if (Program.MapOrbRegistry[currentMap].Any(g => g.x == x && g.y == y))/// checks positions from dictionary for current map
+                { return true; }
             }
             // Check there is already a captive there using current dictionary list for current map
             if (Program.MapCaptiveRegistry.ContainsKey(currentMap))
