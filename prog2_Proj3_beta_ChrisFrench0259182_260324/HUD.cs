@@ -101,7 +101,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //}
         /// </summary>
         #endregion 
-
+        public static void PeonSmite()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(60, 14);
+            Console.WriteLine($" the clueless peon looks up at you and takes {Program.player._attack} points of combat damage");
+            Console.SetCursorPosition(60, 15);
+            Console.WriteLine($" you have turned this poor peon into gooo how much health do you think it has?");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.SetCursorPosition(60, 17);
+            Console.WriteLine($" {Program.player._name} takes 2 points of combat damage, '...tis but a scratch' ");
+            Console.SetCursorPosition(60, 18);
+            Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
+        }
 
         public static void Instructions()
         {
@@ -145,7 +157,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
 
+        public static void Kaboom()
+        {
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition(60, 5);
+            Console.WriteLine($" {Program.player._name} loots the Holy Fraculator! A wave of energy ");
+            Console.SetCursorPosition(60, 6);
+            Console.WriteLine($"pulses out and kills all low level monsters on this stage");
+            Console.SetCursorPosition(60, 7);
+            Console.WriteLine($"{Program.player._name} gets 150 XP...woooo!");
+            Console.ResetColor();
+
+
+
+        }
         public static void Farewell()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;

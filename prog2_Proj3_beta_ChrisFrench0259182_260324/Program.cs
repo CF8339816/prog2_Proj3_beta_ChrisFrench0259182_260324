@@ -20,10 +20,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
         public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue);
-        public static List<Enemy> enemiesMap1 = new List<Enemy>();
-        public static List<Enemy> enemiesMap2 = new List<Enemy>();
-        public static List<Enemy> enemiesMap3 = new List<Enemy>();
-        public static List<Enemy> enemyRiderList = new List<Enemy>();
+        public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
+        public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
+        public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
+        public static List<EnemyLeader> enemyRiderList = new List<EnemyLeader>();
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
@@ -77,22 +77,22 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             MyEvents.AmbushMapCheck();
                        
             enemiesMap1.Clear();
-            enemiesMap1.Add(new Enemy("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemy("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
-            enemiesMap1.Add(new Enemy("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap1.Add(new Enemy("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
+            enemiesMap1.Add(new EnemyLeader("Gobbo", 50, 4, 10, '&', 25, ConsoleColor.Green));
+            enemiesMap1.Add(new EnemyLeader("Slobbo", 20, 23, 8, '&', 20, ConsoleColor.Green));
+            enemiesMap1.Add(new EnemyLeader("Orcus", 15, 13, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 40, ConsoleColor.DarkYellow));
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new Enemy("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemy("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
-            enemiesMap2.Add(new Enemy("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
-            enemiesMap2.Add(new Enemy("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
+            enemiesMap2.Add(new EnemyLeader("Gnolie",4, 4, 16, 'g', 25, ConsoleColor.Red));
+            enemiesMap2.Add(new EnemyLeader("Gnawlie", 5, 20, 18, 'g', 20, ConsoleColor.Red));
+            enemiesMap2.Add(new EnemyLeader("ZugZug", 31, 12, 12, 'O', 30, ConsoleColor.DarkGreen));
+            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 40, ConsoleColor.DarkRed));
 
             enemiesMap3.Clear();
-            enemiesMap3.Add(new Enemy("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemy("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
-            enemiesMap3.Add(new Enemy("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
-            enemiesMap3.Add(new Enemy("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
+            enemiesMap3.Add(new EnemyLeader("Bammo", 17, 6, 10, 'O', 25, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new EnemyLeader("Slammo", 17, 23, 8, 'O', 20, ConsoleColor.DarkGreen));
+            enemiesMap3.Add(new EnemyLeader("Ogrelet", 37, 10, 20, 'Q', 60, ConsoleColor.Yellow));
+            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 80, ConsoleColor.DarkMagenta));
           
             while (isPlaying)
             {
@@ -152,7 +152,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap1.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemiesMap1[i]); }
+                        { EnemyLeader.MoveEnemy(enemiesMap1[i]); }
                     }
                 }
                 if (Program.map._currentMapIndex == 1)
@@ -168,7 +168,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap2.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemiesMap2[i]); }
+                        { EnemyLeader.MoveEnemy(enemiesMap2[i]); }
                     }
                 }
 
@@ -185,7 +185,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemiesMap3.RemoveAt(i);
                         }
                         else
-                        {  Enemy.MoveEnemy(enemiesMap3[i]); }
+                        {  EnemyLeader.MoveEnemy(enemiesMap3[i]); }
                     }
                 }
 
@@ -202,7 +202,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemyRiderList.RemoveAt(i);
                         }
                         else
-                        { Enemy.MoveEnemy(enemyRiderList[i]); }
+                        { EnemyLeader.MoveEnemy(enemyRiderList[i]); }
                     }
                 }
                  DrawEntities();
