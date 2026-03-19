@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,9 +49,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                         if (!Program.IsTileOccupied(poSpawnX, poSpawnY))
                         {
-                                }
-                  PowerOrb.Add((poSpawnX, poSpawnY));
+                            PowerOrb.Add((poSpawnX, poSpawnY));
                             valid = true;
+                        }
+                  
                       }
                 }
                 Program.MapOrbRegistry[currentMap] = PowerOrb;
@@ -77,24 +79,35 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 if (Program.player._x == orbs[i].x && Program.player._y == orbs[i].y)// checks for player on the Orb
                 {
 
-                    foreach (var enmy in Program.enemiesMap1)
+                    if (Program.player._x == orbs[i].x && Program.player._y == orbs[i].y)
                     {
-                        Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write("░"); // plays  some nice crunch 
-                        Console.Beep(800, 50);
-                        Thread.Sleep(650); // delay  for effect
-                        Console.SetCursorPosition(enmy._x, enmy._y);
-                        Program.WriteTileWithColor(Program.map._mapsCurrent[enmy._y][enmy._x]); //Resets  map tile
-                        Thread.Sleep(20); // resets threadsleep
+
+                        if (Program.MapPeonRegistry.ContainsKey(currentMap))// finds the current peon locations on the map
+                        {
+                            var currentPeons = Program.MapPeonRegistry[currentMap];
+
+                            foreach (var peonPos in currentPeons)// cascades tthrough them to clear them
+                            {
+                                Console.SetCursorPosition(peonPos.x, peonPos.y);
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.Write("░");
+                                Console.Beep(800, 50);
+                                Thread.Sleep(500); //adds a dellay to make itt feel like a wave  not super fast
+                                Console.SetCursorPosition(peonPos.x, peonPos.y);
+                                Program.WriteTileWithColor(Program.map._mapsCurrent[peonPos.y][peonPos.x]);// resets the oroignal map tile
+                            }
+
+                            currentPeons.Clear();// clears the peons from the map
+                            Player.plXP += 150;
+                            Buffs.IncreaseXP(150);  //awards a base xp
+                            HUD.Kaboom();
+                        }
+
+
+                       
+
+                        orbs.RemoveAt(i);
                     }
-
-                    Program.enemiesMap1.Clear(); //Clears the enemy list 
-                    Player.plXP += 150;
-                    Buffs.IncreaseXP(150);  //awards a base xp
-                    HUD.Kaboom();
-
-                    orbs.RemoveAt(i);
 
                 }
             }
