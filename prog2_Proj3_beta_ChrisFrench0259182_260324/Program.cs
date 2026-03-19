@@ -172,7 +172,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             Console.Beep(200, 150);
                             Console.SetCursorPosition(boss._x, boss._y);
                             WriteTileWithColor(map._mapsCurrent[boss._y][boss._x]);
-                            //enemyBoss.RemoveAt(0); // Remove the first boss
+                            enemyBoss.RemoveAt(0); // Remove the first boss
                         }
                         else
                         {
@@ -201,7 +201,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
                     if (enemyBoss.Count > 0) // checks count to prevent crash
                     {
-                        var boss = enemyBoss[1]; // First entry in the boss list
+                        var boss = enemyBoss[1]; // second entry in the boss list
 
                         if (boss._health <= 0)
                         {
@@ -338,6 +338,23 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ResetColor();
         }
         /*>>>>>>*/
+        public static void DrawBoss()
+        {
+            int bossIndex = Program.map._currentMapIndex; // Map 0 -> Boss 0, Map 1 -> Boss 1
+
+            if (Program.enemyBoss.Count > bossIndex)
+            {
+                var boss = Program.enemyBoss[bossIndex];
+
+                if (boss._health > 0) // Only draw if alive
+                {
+                    Console.SetCursorPosition(boss._x, boss._y);
+                    Console.ForegroundColor = boss._color;
+                    Console.Write(boss._symbol);
+                }
+            }
+        }
+
         public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
             if (Program.map._currentMapIndex == 0)
@@ -351,76 +368,47 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.Write(enmy._symbol);
                     }
                 }
-                if (Program.enemyBoss.Count > 0)
-                {
-                    var boss = Program.enemyBoss[0];// grabs first boss
-
-                    if (boss._health > 0) // Only draw if alive
-                    {
-                        Console.SetCursorPosition(boss._x, boss._y);
-                        Console.ForegroundColor = boss._color;
-                        Console.Write(boss._symbol);
-                    }
-                }
-
-                if (Program.map._currentMapIndex == 1)
-                {
-                    foreach (var enmy in enemiesMap2)
-                    {
-                        if (enmy._health > 0) // Only draw if alive
-                        {
-                            Console.SetCursorPosition(enmy._x, enmy._y);
-                            Console.ForegroundColor = enmy._color;
-                            Console.Write(enmy._symbol);
-                        }
-                    }
-                    if (Program.enemyBoss.Count > 0)
-                    {
-                        var boss = Program.enemyBoss[1];// grabs second boss
-
-                        if (boss._health > 0) // Only draw if alive
-                        {
-                            Console.SetCursorPosition(boss._x, boss._y);
-                            Console.ForegroundColor = boss._color;
-                            Console.Write(boss._symbol);
-                        }
-                    }
-                }
-                if (Program.map._currentMapIndex == 2)
-                {
-                    foreach (var enmy in enemiesMap3)
-                    {
-                        if (enmy._health > 0) // Only draw if alive
-                        {
-                            Console.SetCursorPosition(enmy._x, enmy._y);
-                            Console.ForegroundColor = enmy._color;
-                            Console.Write(enmy._symbol);
-                        }
-                    }
-                    if (Program.enemyBoss.Count > 0)
-                    {
-                        var boss = Program.enemyBoss[2];// grabs third boss
-
-                        if (boss._health > 0) // Only draw if alive
-                        {
-                            Console.SetCursorPosition(boss._x, boss._y);
-                            Console.ForegroundColor = boss._color;
-                            Console.Write(boss._symbol);
-                        }
-                    }
-                }
-                if (Program.map._currentMapIndex == 3)
-                {
-                    MyEvents.AmbushMapCheck();
-
-                }
-                Console.SetCursorPosition(player._x, player._y);
-                Console.ForegroundColor = player._color;
-                Console.Write(player._symbol);
-                Console.ResetColor();
+                DrawBoss();
             }
+
+            if (Program.map._currentMapIndex == 1)
+            {
+                foreach (var enmy in enemiesMap2)
+                {
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
+                }
+                DrawBoss();
+            }
+            if (Program.map._currentMapIndex == 2)
+            {
+                foreach (var enmy in enemiesMap3)
+                {
+                    if (enmy._health > 0) // Only draw if alive
+                    {
+                        Console.SetCursorPosition(enmy._x, enmy._y);
+                        Console.ForegroundColor = enmy._color;
+                        Console.Write(enmy._symbol);
+                    }
+                }
+                DrawBoss();
+            }
+            if (Program.map._currentMapIndex == 3)
+            {
+                MyEvents.AmbushMapCheck();
+
+            }
+            Console.SetCursorPosition(player._x, player._y);
+            Console.ForegroundColor = player._color;
+            Console.Write(player._symbol);
+            Console.ResetColor();
         }
     }
 }
+
 
 
