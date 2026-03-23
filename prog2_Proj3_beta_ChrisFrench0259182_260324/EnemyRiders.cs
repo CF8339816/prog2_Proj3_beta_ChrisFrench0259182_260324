@@ -9,8 +9,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     internal class EnemyRiders : Character
     {
-        public EnemyRiders(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) 
-            : base(Name, x, y, attack, symbol, hp, color, (1, 55), (1, 24))
+        public EnemyRiders(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) 
+            : base(Name, x, y, attack, symbol, hp, fgColor, bgColor, (1, 55), (1, 24))
         {
         }
 
@@ -53,7 +53,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 enemyRider._y = nextY;
 
                 Console.SetCursorPosition(enemyRider._x, enemyRider._y);
-                Console.ForegroundColor = enemyRider._color;
+                Console.ForegroundColor = enemyRider._fgColor;
+                Console.BackgroundColor = enemyRider._bgColor;
                 Console.Write(enemyRider._symbol);
                 Console.ResetColor();
             }

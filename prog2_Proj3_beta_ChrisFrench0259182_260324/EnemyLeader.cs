@@ -10,7 +10,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
     public class EnemyLeader : Character
     {
-        public EnemyLeader(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color, (int, int) _min_max_x, (int, int) _min_max_y) : base(Name, x, y, attack, symbol, hp, color, (1, 55), (1, 24))
+        public EnemyLeader(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) :
+            base(Name, x, y, attack, symbol, hp, fgColor, bgColor, (1, 55), (1, 24))
         {
         }
 
@@ -76,7 +77,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 enmy._y = nextY;
 
                 Console.SetCursorPosition(enmy._x, enmy._y);
-                Console.ForegroundColor = enmy._color;
+                Console.ForegroundColor = enmy._fgColor;
+                Console.ForegroundColor = enmy._bgColor;
                 Console.Write(enmy._symbol);
                 Console.ResetColor();
             }

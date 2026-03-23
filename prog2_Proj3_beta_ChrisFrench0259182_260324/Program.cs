@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int MaxNameLLength = 15;
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
-        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.Blue, (1, 55), (1, 24));
+        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.DarkBlue, ConsoleColor.Blue, (1, 55), (1, 24));
         public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
@@ -90,22 +90,22 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             MyEvents.AmbushMapCheck();
                        
             enemiesMap1.Clear();
-            enemiesMap1.Add(new EnemyLeader("Gobbo",      50,  4, 10, '&', 25, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap1.Add(new EnemyLeader("Slobbo",     20, 23,  8, '&', 20, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap1.Add(new EnemyLeader("Orcus",      15, 13, 12, 'O', 40, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 80, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+            enemiesMap1.Add(new EnemyLeader("Gobbo",      50,  4, 10, '&', 25, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap1.Add(new EnemyLeader("Slobbo",     20, 23,  8, '&', 20, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap1.Add(new EnemyLeader("Orcus",      15, 13, 12, 'O', 40, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 80, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
 
             enemiesMap2.Clear();
-            enemiesMap2.Add(new EnemyLeader("Gnolie",           4,  4, 16, 'g',  35, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap2.Add(new EnemyLeader("Gnawlie",          5, 20, 18, 'g',  30, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap2.Add(new EnemyLeader("ZugZug",          31, 12, 12, 'O',  60, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 140, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+            enemiesMap2.Add(new EnemyLeader("Gnolie",           4,  4, 16, 'g',  35, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap2.Add(new EnemyLeader("Gnawlie",          5, 20, 18, 'g',  30, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap2.Add(new EnemyLeader("ZugZug",          31, 12, 12, 'O',  60, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 140, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
 
             enemiesMap3.Clear();
-            enemiesMap3.Add(new EnemyLeader("Bammo",        17, 6 , 10, 'O',  65, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap3.Add(new EnemyLeader("Slammo",       17, 23,  8, 'O',  60, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap3.Add(new EnemyLeader("Ogrelet",      37, 10, 20, 'Q',  90, ConsoleColor.Magenta,     (1, 55), (1, 24)));
-            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+            enemiesMap3.Add(new EnemyLeader("Bammo",        17, 6 , 10, 'O',  65, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap3.Add(new EnemyLeader("Slammo",       17, 23,  8, 'O',  60, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap3.Add(new EnemyLeader("Ogrelet",      37, 10, 20, 'Q',  90, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
+            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
           
             while (isPlaying)
             {
