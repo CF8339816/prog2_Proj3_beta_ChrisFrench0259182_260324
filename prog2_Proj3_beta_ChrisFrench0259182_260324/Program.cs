@@ -19,7 +19,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static int MaxNameLLength = 15;
         public static int plaAtkUP = 15;
         public static int plaMaxHP = 50;
-        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.DarkBlue, ConsoleColor.Blue, (1, 55), (1, 24));
+        public static Player player = new Player(" ", 3, 3, plaAtkUP, '!', plaMaxHP, ConsoleColor.DarkBlue, ConsoleColor.White, (1, 55), (1, 24));
         public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
@@ -93,22 +93,23 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             enemiesMap1.Add(new EnemyLeader("Gobbo",      50,  4, 10, '&', 25, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap1.Add(new EnemyLeader("Slobbo",     20, 23,  8, '&', 20, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap1.Add(new EnemyLeader("Orcus",      15, 13, 12, 'O', 40, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
-            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 80, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
+            enemiesMap1.Add(new EnemyLeader("Boss Hobbo", 49, 20, 15, 'H', 80, ConsoleColor.DarkMagenta, ConsoleColor.Green, (1, 55), (1, 24)));
 
             enemiesMap2.Clear();
             enemiesMap2.Add(new EnemyLeader("Gnolie",           4,  4, 16, 'g',  35, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap2.Add(new EnemyLeader("Gnawlie",          5, 20, 18, 'g',  30, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap2.Add(new EnemyLeader("ZugZug",          31, 12, 12, 'O',  60, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
-            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 140, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
+            enemiesMap2.Add(new EnemyLeader("Boss Gobstomper", 45, 22, 15, 'G', 140, ConsoleColor.DarkMagenta, ConsoleColor.Green, (1, 55), (1, 24)));
 
             enemiesMap3.Clear();
             enemiesMap3.Add(new EnemyLeader("Bammo",        17, 6 , 10, 'O',  65, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap3.Add(new EnemyLeader("Slammo",       17, 23,  8, 'O',  60, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap3.Add(new EnemyLeader("Ogrelet",      37, 10, 20, 'Q',  90, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
-            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, ConsoleColor.Magenta, (1, 55), (1, 24)));
+            enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, ConsoleColor.Green, (1, 55), (1, 24)));
           
             while (isPlaying)
             {
+                Console.BackgroundColor = ConsoleColor.Black;
                 HUD.Instructions();
                 player._name =Name;
                 player._attack =plaAtkUP;
@@ -219,8 +220,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         { EnemyRiders.MoveTowards(enemyRiderList[i]); }
                     }
                 }
-                 DrawEntities();
-                Thread.Sleep(20);///
+                Console.BackgroundColor = ConsoleColor.Black;
+                DrawEntities();
+                Thread.Sleep(50);///
                 HUD.plStats();
             }
 
@@ -269,6 +271,78 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.Write(tile);
             Console.ResetColor();
         }
+
+
+        public static void ColorFlash()
+        {
+           
+            foreach (var enmy in enemiesMap1)
+            {
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.Red;
+                Console.Write(enmy._symbol);
+                Thread.Sleep(500);
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.DarkGreen;
+                Console.Write(enmy._symbol);
+                break;
+            }
+            foreach (var enmy in enemiesMap2)
+            {
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.Red;
+                Console.Write(enmy._symbol);
+                Thread.Sleep(500);
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.DarkGreen;
+                Console.Write(enmy._symbol);
+                break;
+            }
+            foreach (var enmy in enemiesMap3)
+            {
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.Red;
+                Console.Write(enmy._symbol);
+                Thread.Sleep(500);
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.DarkGreen;
+                Console.Write(enmy._symbol);
+                break;
+            }
+            foreach (var enmy in enemyRiderList)
+            {
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.Red;
+                Console.Write(enmy._symbol);
+                Thread.Sleep(500);
+                Console.SetCursorPosition(enmy._x, enmy._y);
+                enmy._fgColor = enmy._fgColor;
+                enmy._bgColor = ConsoleColor.DarkMagenta;
+                Console.Write(enmy._symbol);
+                break;
+            }
+
+            Thread.Sleep(500);
+            Console.SetCursorPosition(player._x, player._y);
+            player._fgColor = player._fgColor;
+            player._bgColor = ConsoleColor.DarkYellow;
+            Console.Write(player._symbol);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(player._x, player._y);
+            player._fgColor = player._fgColor;
+            player._bgColor = ConsoleColor.White;
+            Console.Write(player._symbol);
+        }
+
+
+
  /*>>>>>>*/ public static void DrawEntities()// draws the player and the enemy symbols/ sprites
         {
             if (Program.map._currentMapIndex == 0)
@@ -278,7 +352,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (enmy._health > 0) // Only draw if alive
                     {
                         Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
+                        Console.ForegroundColor = enmy._fgColor;
+                        Console.BackgroundColor = enmy._bgColor;
                         Console.Write(enmy._symbol);
                     }
                 }
@@ -291,7 +366,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (enmy._health > 0) // Only draw if alive
                     {
                         Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
+                        Console.ForegroundColor = enmy._fgColor;
+                        Console.BackgroundColor = enmy._bgColor;
                         Console.Write(enmy._symbol);
                     }
                 }
@@ -303,7 +379,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (enmy._health > 0) // Only draw if alive
                     {
                         Console.SetCursorPosition(enmy._x, enmy._y);
-                        Console.ForegroundColor = enmy._color;
+                        Console.ForegroundColor = enmy._fgColor;
+                        Console.BackgroundColor = enmy._bgColor;
                         Console.Write(enmy._symbol);
                     }
                 }
@@ -313,8 +390,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 MyEvents.AmbushMapCheck();
                 
             }
+
             Console.SetCursorPosition(player._x, player._y);
-            Console.ForegroundColor = player._color;
+            Console.ForegroundColor = player._fgColor;
+            Console.BackgroundColor = player._bgColor;
             Console.Write(player._symbol);
             Console.ResetColor();
             Peons.MovePeonsRandomly();

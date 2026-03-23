@@ -10,7 +10,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     public class HUD
     {
 
-        public static void alias()
+            
+            public static void alias()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.BackgroundColor = ConsoleColor.Black;

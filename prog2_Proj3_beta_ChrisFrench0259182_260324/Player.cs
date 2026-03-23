@@ -35,7 +35,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     {
                         Console.Beep(800, 50);
                         Console.SetCursorPosition(nextX, nextY);///
-                        Console.BackgroundColor = ConsoleColor.Yellow;///  // was trying to do a flash of color on the map when combat occured
+                        Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;
@@ -85,7 +85,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     {
                         Console.Beep(800, 50);
                         Console.SetCursorPosition(nextX, nextY);///
-                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Program.ColorFlash();
+
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;
@@ -135,7 +136,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     {
                         Console.Beep(800, 50);
                         Console.SetCursorPosition(nextX, nextY);///
-                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;
@@ -184,7 +185,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     {
                         Console.Beep(800, 50);
                         Console.SetCursorPosition(nextX, nextY);///
-                        Console.BackgroundColor = ConsoleColor.Yellow;///
+                        Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;

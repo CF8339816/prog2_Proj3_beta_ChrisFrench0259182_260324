@@ -119,7 +119,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     enmy._y = nextY;
 
                     Console.SetCursorPosition(enmy._x, enmy._y);
-                    Console.ForegroundColor = enmy._color;
+                    Console.ForegroundColor = enmy._fgColor;
+                    Console.ForegroundColor = enmy._bgColor;
                     Console.Write(enmy._symbol);
                     Console.ResetColor();
                 }
@@ -129,7 +130,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     nextY = 0;
 
                     Console.SetCursorPosition(enmy._x, enmy._y);
-                    Console.ForegroundColor = enmy._color;
+                    Console.ForegroundColor = enmy._fgColor;
+                    Console.ForegroundColor = enmy._bgColor;
                     Console.Write(enmy._symbol);
                     Console.ResetColor();
 
