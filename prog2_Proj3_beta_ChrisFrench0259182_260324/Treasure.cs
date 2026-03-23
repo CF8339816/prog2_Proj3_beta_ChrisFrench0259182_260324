@@ -10,6 +10,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
     {
         public static bool _goldTreasure = true;
         public static Random _goldPileSpawn = new Random();
+        public static Random _goldCount = new Random();
         public static (int, int) _plPosition = (Program.player._x, Program.player._y);
         //public static (int, int) goldLoc = (treasure_x_pos, treasure_y_pos);
         public static int treasure_x_pos;
@@ -19,15 +20,19 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static Random _lootRando = new Random();
         public static int loot;
         public static int _gold;
-        public static int _gpCount = 6;
+        public static int goldie;
+        public static int _gpCount;
         //public static List<(int x, int y)> activeGoldPiles = new List<(int x, int y)>();///
 
-        public Treasure(string Name, int x, int y, int count, char symbol,  ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: 6, symbol: '$', ConsoleColor.Yellow, min_max_x, min_max_y)
+        public Treasure(string Name, int x, int y, int count, char symbol,  ConsoleColor color, (int, int) min_max_x, (int, int) min_max_y) : base(Name, x, y, count: _gpCount, symbol: '$', ConsoleColor.Yellow, min_max_x, min_max_y)
         {
+            
+
+
             Name = "gold";
             treasure_x_pos = x;
             treasure_y_pos = y;
-            count = 6;
+            count = _gpCount;
         }
         public static void DrawGold()
         {
@@ -35,6 +40,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                      
             if (!Program.MapTreasureRegistry.ContainsKey(currentMap))// onlly spawns new list if map never visited otherwise holds locations of uncolllected treasures
             {
+                _gpCount = _goldCount.Next(6, 12);
                 List<(int x, int y)> goldPiles = new List<(int x, int y)>();
                 for (int i = 0; i < _gpCount; i++)
                 {
@@ -74,7 +80,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 if (Program.player._x == piles[i].x && Program.player._y == piles[i].y)
                 {
-                    _gold += _lootRando.Next(15, 35);
+                   
+                    loot= _lootRando.Next(15, 35);
+                    _gold += loot;
+                    goldie = _gold; 
+                   // _gold += _lootRando.Next(15, 35);
                     HUD.Looter();
 
                     piles.RemoveAt(i);// Remove collected treasure from map list

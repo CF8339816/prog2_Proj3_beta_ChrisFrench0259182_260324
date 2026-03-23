@@ -157,6 +157,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.WriteLine($"{Program.player._name} has reached the goal with {Program.player._health} health, ");
             Console.SetCursorPosition(58, 23);
             Console.WriteLine($"{Program.player._name} is safe with {Treasure._gold} golds and freed {Captive._freed} captives.");
+            Console.SetCursorPosition(58, 24);
+            Console.WriteLine($"{Program.player._name}'s legend will be told till the ends of time.");
             Console.ReadKey(true);
             Console.ResetColor();
         }
@@ -198,7 +200,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.SetCursorPosition(60, 5);
             Console.WriteLine($" {Program.player._name} loots {Treasure.loot} amounts of golds! ");
             Console.SetCursorPosition(60, 6);
-            Console.WriteLine($"{Program.player._name} now has {Treasure._gold} gold...woooo!");
+            Console.WriteLine($"{Program.player._name} now has {Treasure.goldie} gold...woooo!");
 
             Console.ResetColor();
 
@@ -211,7 +213,9 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.ForegroundColor = ConsoleColor.Gray;
 
             Console.SetCursorPosition(60, 4);
-            Console.WriteLine($"{Program.player._name} has freed a captive... Good Job!");
+            Console.WriteLine($"{Program.player._name} has freed a captive... Good Job! They thank");
+                Console.SetCursorPosition(60, 5);
+            Console.WriteLine($"you with a small power up an a couple of gold they hid.");
 
             Console.ResetColor();
         }
