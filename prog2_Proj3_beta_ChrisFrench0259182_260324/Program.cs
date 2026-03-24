@@ -275,58 +275,71 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public static void ColorFlash()
         {
-           
-            foreach (var enmy in enemiesMap1)
+
+            if (Program.map._currentMapIndex == 0)
             {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.Red;
-                Console.Write(enmy._symbol);
-                Thread.Sleep(500);
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.DarkGreen;
-                Console.Write(enmy._symbol);
-                break;
+                foreach (var enmy in enemiesMap1)
+                {
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.Red;
+                    Console.Write(enmy._symbol);
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.DarkGreen;
+                    Console.Write(enmy._symbol);
+                    break;
+                }
             }
-            foreach (var enmy in enemiesMap2)
+            if (Program.map._currentMapIndex == 1)
             {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.Red;
-                Console.Write(enmy._symbol);
-                Thread.Sleep(500);
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.DarkGreen;
-                Console.Write(enmy._symbol);
-                break;
+                foreach (var enmy in enemiesMap2)
+                {
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.Red;
+                    Console.Write(enmy._symbol);
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.DarkGreen;
+                    Console.Write(enmy._symbol);
+                    break;
+                }
             }
-            foreach (var enmy in enemiesMap3)
+
+            if (Program.map._currentMapIndex == 2)
             {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.Red;
-                Console.Write(enmy._symbol);
-                Thread.Sleep(500);
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.DarkGreen;
-                Console.Write(enmy._symbol);
-                break;
+                foreach (var enmy in enemiesMap3)
+                {
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.Red;
+                    Console.Write(enmy._symbol);
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.DarkGreen;
+                    Console.Write(enmy._symbol);
+                    break;
+                }
             }
-            foreach (var enmy in enemyRiderList)
+            if (Program.map._currentMapIndex == 3)
             {
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.Red;
-                Console.Write(enmy._symbol);
-                Thread.Sleep(500);
-                Console.SetCursorPosition(enmy._x, enmy._y);
-                enmy._fgColor = enmy._fgColor;
-                enmy._bgColor = ConsoleColor.DarkMagenta;
-                Console.Write(enmy._symbol);
-                break;
+                foreach (var enmy in enemyRiderList)
+                {
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.Red;
+                    Console.Write(enmy._symbol);
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(enmy._x, enmy._y);
+                    enmy._fgColor = enmy._fgColor;
+                    enmy._bgColor = ConsoleColor.DarkMagenta;
+                    Console.Write(enmy._symbol);
+                    break;
+                }
             }
 
             Thread.Sleep(500);

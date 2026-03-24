@@ -25,16 +25,20 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         
             bool inBounds = (nextX >= 1 && nextX <= 55 && nextY >= 1 && nextY <= 24);
             bool hitEnemy = false;
-
+          // bool isNextStepEnemy = true; ////  
+          
             if (Program.map._currentMapIndex == 0)
               foreach (var enmy in Program.enemiesMap1)  // back in programs possible rename check enemy colisions
               {
+                                
 
-                
+
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
+                        //isNextStepEnemy = true;////
+
                         Console.Beep(800, 50);
-                        Console.SetCursorPosition(nextX, nextY);///
+                        //Console.SetCursorPosition(nextX, nextY);///
                         Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
@@ -61,6 +65,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(60, 20);
                                 Console.WriteLine($" {_name} has {_health} health, {_name} has died");
                                 Program.isPlaying = false;
+                                break;//
                             }
                             if (enmy._health <= 0)
                             {
@@ -72,6 +77,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
+                                Console.SetCursorPosition(nextX, nextY);///
                             }
                         }
                         break;///
@@ -84,9 +90,8 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
                         Console.Beep(800, 50);
-                        Console.SetCursorPosition(nextX, nextY);///
+                        //Console.SetCursorPosition(nextX, nextY);///
                         Program.ColorFlash();
-
                         Console.ResetColor();///
                         enmy._health -= _attack;
                         _health -= enmy._attack;
@@ -112,6 +117,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(60, 20);
                                 Console.WriteLine($" {_name} has {_health} health, {_name} has died");
                                 Program.isPlaying = false;
+                                break;//
                             }
                             if (enmy._health <= 0)
                             {
@@ -119,10 +125,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 enmy._health = 0;
                                 plXP += 15;
                                 Buffs.IncreaseXP(0);
-                                Treasure._gold += 6;
+                                Treasure._gold += 5;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
+                                Console.SetCursorPosition(nextX, nextY);///
                             }
                         }
                         break;///
@@ -135,7 +142,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
                         Console.Beep(800, 50);
-                        Console.SetCursorPosition(nextX, nextY);///
+                        //Console.SetCursorPosition(nextX, nextY);///
                         Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
@@ -162,6 +169,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(60, 20);
                                 Console.WriteLine($" {_name} has {_health} health, {_name} has died");
                                 Program.isPlaying = false;
+                                break;//
                             }
                             if (enmy._health <= 0)
                             {
@@ -169,10 +177,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 enmy._health = 0;
                                 plXP += 15;
                                 Buffs.IncreaseXP(0);
-                                Treasure._gold += 8;
+                                Treasure._gold += 5;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
+                                Console.SetCursorPosition(nextX, nextY);///
                             }
                         }
                         break;///
@@ -184,7 +193,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     if (nextX == enmy._x && nextY == enmy._y)
                     {
                         Console.Beep(800, 50);
-                        Console.SetCursorPosition(nextX, nextY);///
+                        //Console.SetCursorPosition(nextX, nextY);///
                         Program.ColorFlash();
                         Console.ResetColor();///
                         enmy._health -= _attack;
@@ -200,7 +209,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.WriteLine($" {Program.player._name} takes {enmy._attack} points of combat damage");
                         Console.SetCursorPosition(60, 18);
                         Console.WriteLine($" {Program.player._name} has {Program.player._health} health...");
-                        //  HUD.combat();
+                        //HUD.combat();
 
                         if (_health <= 0 || enmy._health <= 0)
                         {
@@ -211,6 +220,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 Console.SetCursorPosition(60, 20);
                                 Console.WriteLine($" {_name} has {_health} health, {_name} has died");
                                 Program.isPlaying = false;
+                                break;//
                             }
                             if (enmy._health <= 0)
                             {
@@ -218,10 +228,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                                 enmy._health = 0;
                                 plXP += 15;
                                 Buffs.IncreaseXP(0);
-                                Treasure._gold += 4;
+                                Treasure._gold += 5;
                                 Console.SetCursorPosition(60, 21);
                                 Console.WriteLine($" {enmy._name} has {enmy._health} health, {enmy._name} has died");
                                 Program.isPlaying = true;
+                                Console.SetCursorPosition(nextX, nextY);///
                             }
                         }
                         break;///
