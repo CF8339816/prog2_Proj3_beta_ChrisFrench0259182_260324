@@ -48,7 +48,7 @@
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Collectable.cs" />
-    <Compile Include="EnemyRiders.cs" />
+    <Compile Include="EnemyRider.cs" />
     <Compile Include="EnviroDmg.cs" />
     <Compile Include="EnemyLeader.cs" />
     <Compile Include="GameManager.cs" />

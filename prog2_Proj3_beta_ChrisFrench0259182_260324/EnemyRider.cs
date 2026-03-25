@@ -7,16 +7,16 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    internal class EnemyRiders : Character
+    internal class EnemyRider : Character
     {
-        public EnemyRiders(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) 
+        public EnemyRider(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) 
             : base(Name, x, y, attack, symbol, hp, fgColor, bgColor, (1, 55), (1, 24))
         {
         }
 
 
         //public static void MoveTowards(Program.player._x, Program.player._y)
-        public static void MoveTowards(EnemyRiders enemyRider)
+        public static void MoveTowards(EnemyRider enemyRider)
         {
            
             int nextX = enemyRider._x;
@@ -32,7 +32,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
             bool isPathBlockedByEnemy = false;
 
-            foreach (EnemyRiders rideOther in Program.enemyRiderList)
+            foreach (EnemyRider rideOther in Program.enemyRiderList)
             {
                 if (rideOther != enemyRider && nextX == rideOther._x && nextY == rideOther._y)
                 {

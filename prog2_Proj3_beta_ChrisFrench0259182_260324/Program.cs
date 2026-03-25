@@ -23,7 +23,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public static List<EnemyLeader> enemiesMap1 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
-        public static List<EnemyRiders> enemyRiderList = new List<EnemyRiders>();
+        public static List<EnemyRider> enemyRiderList = new List<EnemyRider>();
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<(int x, int y)>> MapCaptiveRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
@@ -217,7 +217,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                             enemyRiderList.RemoveAt(i);
                         }
                         else
-                        { EnemyRiders.MoveTowards(enemyRiderList[i]); }
+                        { EnemyRider.MoveTowards(enemyRiderList[i]); }
                     }
                 }
                 Console.BackgroundColor = ConsoleColor.Black;

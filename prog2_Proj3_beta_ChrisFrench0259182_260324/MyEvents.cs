@@ -22,10 +22,10 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                     _ambushTriggered = true;
 
                     Program.enemyRiderList.Clear();
-                    Program.enemyRiderList.Add(new EnemyRiders("Slasher",        44,  5, 10, 'k', 25, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
-                    Program.enemyRiderList.Add(new EnemyRiders("Crasher",         3, 12,  8, 'k', 20, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
-                    Program.enemyRiderList.Add(new EnemyRiders("Harrier",        13,  3, 12, 'k', 30, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
-                    Program.enemyRiderList.Add(new EnemyRiders("PackAlphaNasty", 39, 15, 15, 'K', 200, ConsoleColor.DarkYellow, ConsoleColor.Magenta, (1, 55), (1, 24)));
+                    Program.enemyRiderList.Add(new EnemyRider("Slasher",        44,  5, 10, 'k', 25, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+                    Program.enemyRiderList.Add(new EnemyRider("Crasher",         3, 12,  8, 'k', 20, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+                    Program.enemyRiderList.Add(new EnemyRider("Harrier",        13,  3, 12, 'k', 30, ConsoleColor.Yellow, ConsoleColor.DarkMagenta, (1, 55), (1, 24)));
+                    Program.enemyRiderList.Add(new EnemyRider("PackAlphaNasty", 39, 15, 15, 'K', 200, ConsoleColor.DarkYellow, ConsoleColor.Magenta, (1, 55), (1, 24)));
 
                     //Console.SetCursorPosition(60, 0);
                     //Console.WriteLine("here comes a new challenger");
@@ -61,7 +61,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                         Console.BackgroundColor = enmyRide._bgColor;
                         Console.Write(enmyRide._symbol);
                         
-                        EnemyRiders.MoveTowards(enmyRide); //  move towards rather than randopm 
+                        EnemyRider.MoveTowards(enmyRide); //  move towards rather than randopm 
                     }
                     
                 }
