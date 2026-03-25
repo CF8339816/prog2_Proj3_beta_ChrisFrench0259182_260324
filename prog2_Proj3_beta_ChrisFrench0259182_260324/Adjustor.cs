@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
 
-    public class Adjustors
+    public class Adjustor
     {
         public string _name { get; set; }
        
@@ -16,7 +16,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public ConsoleColor _color;
 
-        protected Adjustors(string Name, char symbol, int output, ConsoleColor color)
+        protected Adjustor(string Name, char symbol, int output, ConsoleColor color)
         {
             _name = Name;
         

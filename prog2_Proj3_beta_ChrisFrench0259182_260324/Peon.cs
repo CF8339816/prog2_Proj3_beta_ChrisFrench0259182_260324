@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class Peons : Character
+    public class Peon : Character
     {
 
         public static bool _newPeon = true;
@@ -21,7 +21,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
        // public static Random _rando = new Random();
  
 
-        public Peons(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) : 
+        public Peon(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor fgColor, ConsoleColor bgColor, (int, int) _min_max_x, (int, int) _min_max_y) : 
             base("Peon", x, y, 2, '6', 3, fgColor: ConsoleColor.Green, bgColor: ConsoleColor.Black, (1, 55), (1, 24))
         {
             Name = "hostage";

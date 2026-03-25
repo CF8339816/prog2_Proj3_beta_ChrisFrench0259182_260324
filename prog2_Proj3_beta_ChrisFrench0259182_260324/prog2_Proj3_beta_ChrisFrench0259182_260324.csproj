@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adjustors.cs" />
+    <Compile Include="Adjustor.cs" />
     <Compile Include="Buffs.cs" />
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="HUD.cs" />
     <Compile Include="LoadMap.cs" />
     <Compile Include="MyEvents.cs" />
-    <Compile Include="Peons.cs" />
+    <Compile Include="Peon.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerOrb.cs" />
     <Compile Include="Program.cs" />

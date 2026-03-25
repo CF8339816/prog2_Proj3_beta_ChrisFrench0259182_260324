@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 { 
-    public class EnviroDmg : Adjustors
+    public class EnviroDmg : Adjustor
     {
 
         public static int _lavaDmg;

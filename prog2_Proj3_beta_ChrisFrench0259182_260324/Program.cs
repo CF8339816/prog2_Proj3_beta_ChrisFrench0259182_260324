@@ -132,7 +132,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                 Treasure.CheckTreasureCollection();
                 Captive.CheckCapCollection();
                 PowerOrb.CheckOrbCollection();
-                Peons.CheckPeonCollection(); 
+                Peon.CheckPeonCollection(); 
 
                 /*>>>>>>*/
                 var newSpawn = map.MapChanger(player._x, player._y); //references the map changer function
@@ -145,7 +145,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
                   
                 }
                 CollectSpawner.SetupMapAssets();
-                Peons.DrawPeon();
+                Peon.DrawPeon();
                 EnviroHeal.SpringWatterHealling();
                 EnviroDmg.LavaDamage();
                 if (map._mapsCurrent[player._y][player._x] == 'X')
@@ -409,7 +409,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             Console.BackgroundColor = player._bgColor;
             Console.Write(player._symbol);
             Console.ResetColor();
-            Peons.MovePeonsRandomly();
+            Peon.MovePeonsRandomly();
         }
     }
 }
